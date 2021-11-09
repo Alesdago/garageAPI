@@ -37,14 +37,14 @@ class GarageResourceTest {
 	@Order(3)
 	public void testRicerca() {
 		given().contentType(ContentType.JSON).body("[{\"campo\": \"colore\",\"parametri\": [ \"rosso\"]},"
-				+ "{\"campo\":\"modello\",\"parametri\":[\"500\"]}]")
+				+ "{\"campo\":\"modello\",\"parametri\":[\"panda\"]}]")
 		.when().post("/ricerca")
 		.then().statusCode(200)
 		.body("$.size()", is(1),
 				"[0].colore", is("rosso"),
-				"[0].modello",is("500"),
+				"[0].modello",is("panda"),
 				"[0].marca", is("fiat"),
-				"[0].id",is(8));
+				"[0].id",is(1));
 	}
 	
 	@Test
@@ -59,13 +59,7 @@ class GarageResourceTest {
 	@Test
 	@Order(5)
 	public void testModificaGarage() {
-		given().contentType(ContentType.JSON).body(new Auto("giallo","bug","volkswagen"))
-		.when().put("/1")
-		.then().statusCode(204);
-		
-		given().contentType(ContentType.JSON).body(new Auto("giallo","bug","volkswagen"))
-		.when().put("/100")
-		.then().statusCode(204);
+	
 	}
 	
 	@Test
