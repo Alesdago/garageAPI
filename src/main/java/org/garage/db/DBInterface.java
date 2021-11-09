@@ -15,12 +15,10 @@ public interface DBInterface {
 
 	void modificaGarage(int chiave, Auto auto);
 
-	void modificaColoreAuto(int id, String colore);
+	void modificaAuto(int id, String campo, String parametro);
 	
 	void eliminaAuto(int id);
 	
 	Boolean contiene(Auto auto);
 	
-	List<Auto> cercaColore(String colore);
-
 }
