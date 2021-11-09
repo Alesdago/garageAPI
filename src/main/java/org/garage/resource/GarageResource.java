@@ -14,6 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.garage.Auto;
 import org.garage.Condizione;
@@ -33,16 +34,15 @@ public class GarageResource {
 
 	@POST
 	public void aggiungiAuto(Auto auto){
-
 		garage.aggiungiAuto(auto);
-		LOG.debug("auto " + auto.getMarca() + " " + auto.getModello() + " di colore " + 
-				auto.getColore() + ", con id " + auto.getId() + " AGGIUNTA AL DB");
+		LOG.info("Aggiunta dell'auto riuscita");
+        LOG.debug("Aggiunta dell'auto " + auto.toString() + " al garage");
 	}
 	
 	@GET
 	@Path("/auto/{id}")
-	public Auto getAuto(@PathParam("id")int id) {
-		LOG.info("get auto id: " + id);
+	public Auto getAuto(@PathParam("id") int id) {
+		LOG.info("Get auto con id: " + id);
 		return garage.getAuto(id);
 	}
 
@@ -50,8 +50,9 @@ public class GarageResource {
 	@POST
 	@Path("/ricerca")
 	public List<Auto> ricerca(List<Condizione> condizioni){
-		LOG.info("ricerca " + condizioni);
-		return garage.ricerca(condizioni);
+		List<Auto> listaRicerca = garage.ricerca(condizioni);
+		LOG.debug("Risultato della ricerca \"" + condizioni + "\" : " + listaRicerca);
+        return listaRicerca;
 	}
 	
 	@DELETE
@@ -59,28 +60,44 @@ public class GarageResource {
 	public Response rimuoviAuto(@PathParam("id") int id) {
 		LOG.info("elimina auto tramite id " + id);
 
-		if(garage.getAuto(id)!= null) {
+		if(garage.getAuto(id) != null) {
 			garage.eliminaAuto(id);
+			LOG.info("Rimozione dell'auto riuscita");
+			LOG.debug("Rimozione dell'auto con id: " + id + " dal garage");
+			return Response.status(Status.NO_CONTENT).build();
 		}
-		else {
-			LOG.error("nessuna auto con quell'id");
-		}
-		return Response.status(Response.Status.NO_CONTENT).build();
+		
+		LOG.error("Rimozione dell'auto non riuscita, l'id dell'auto da rimuovere non e' esistente");
+		return Response.status(Status.NOT_FOUND).build();
 	}
 
 	@PUT
 	@Path("/auto/{id}")
-	public void modificaGarage(@PathParam("id")Integer id, Auto auto){
-		LOG.info("modifica auto " + id);
-		garage.modificaGarage(id, auto);
-
+	public Response modificaGarage(@PathParam("id")Integer id, Auto auto){
+		if(garage.getAuto(id) != null) {
+			garage.modificaGarage(id, auto);
+			LOG.info("Modifica auto riuscita");
+			LOG.debug("Modifica dell'auto con id " + id);
+			return Response.ok().build();
+		}
+		
+		LOG.error("Modifica dell'auto non riuscita, l'id dell'auto da modificare non e' esistente");
+		return Response.status(Status.NOT_FOUND).build();
 	}
 	
 	@PATCH
 	@Path("/auto/{id}/modifica-{campo}/{parametro}")
-	public void modificaAuto(@PathParam("id") int id, @PathParam("campo") String campo, @PathParam("parametro") String parametro) {
-		LOG.info("modifica " + campo + " auto " + id + " in " + parametro);
-		garage.modificaAuto(id, campo, parametro);
+	public Response modificaAuto(@PathParam("id") int id, @PathParam("campo") String campo, @PathParam("parametro") String parametro) {
+		
+		if(garage.getAuto(id) != null) {
+			garage.modificaAuto(id, campo, parametro);
+			LOG.info("Modifica auto riuscita");
+			LOG.debug("Modifica auto " + campo + " auto " + id + " in " + parametro);
+			return Response.ok().build();
+		}
+		
+		LOG.error("Modifica dell'auto non riuscita, l'id dell'auto da modificare non e' esistente");
+		return Response.status(Status.NOT_FOUND).build();
 	}
 
 }
