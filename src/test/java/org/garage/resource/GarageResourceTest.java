@@ -66,11 +66,15 @@ class GarageResourceTest {
 	@Test
 	@Order(5)
 	public void testModificaGarage() {
-
+		given().contentType(ContentType.JSON).body(new Auto("nero","a1","audi"))
+		.when().put("/auto/1")
+		.then().statusCode(200);
 	}
 	
 	@Test
-	public void testModificaAUto() {
-		
+	public void testModificaAuto() {
+		given()
+		.when().patch("/auto/1/modifica-colore/bianco")
+		.then().statusCode(200);
 	}
 }
