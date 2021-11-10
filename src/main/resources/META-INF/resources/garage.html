@@ -8,10 +8,10 @@
 <script
 	src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script type="text/javascript">
-      var app = angular.module("GarageManagement", []);
+      var app = angular.module("GarageResource", []);
 
       //Controller Part
-      app.controller("GarageManagementController", function ($scope, $http) {
+      app.controller("GarageResourceController", function ($scope, $http) {
 
         //Initialize page with default data which is blank in this example
         $scope.garage = [];
@@ -26,11 +26,11 @@
         _refreshPageData();
 
         //HTTP POST methods for add 
-        $scope.add = function () {
+        $scope.aggiungiAuto = function () {
           var data = { "colore": $scope.form.colore, "modello": $scope.form.modello, "marca" : $scope.form.marca };
 
           $http({
-            method: "POST",
+            method: 'POST',
             url: '/garage',
             data: angular.toJson(data),
             headers: {
@@ -45,7 +45,7 @@
         	
         	$http({
                 method: "DELETE",
-                url: '/garage',
+                url: '/garage/auto/{id}',
                 data: angular.toJson(data),
                 headers:{'Content-Type': 'application/json'}
               }).then(_success, _error);
@@ -93,7 +93,7 @@
 
 
 				<h3>Aggiungi un'automobile</h3>
-				<form ng-submit="add()">
+				<form ng-submit="aggiungiAuto()">
 					<div class="row">
 						<div class="col-6">
 							<input type="text" placeholder="Colore" ng-model="form.colore"
