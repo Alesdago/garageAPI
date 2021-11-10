@@ -30,6 +30,13 @@ class GarageResourceTest {
 	@Test
 	@Order(2)
 	public void testGetAuto() {
+		given()
+		.when().get("/auto/1")
+		.then().statusCode(200)
+		.body("colore", is("rosso"),
+				"modello", is("panda"),
+				"marca", is("fiat"),
+				"id", is(1));
 		
 	}
 	
