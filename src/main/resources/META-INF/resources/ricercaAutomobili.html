@@ -8,6 +8,22 @@
 <script
 	src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script type="text/javascript">
+	  
+		  /*     [
+				  {
+				    "campo": "marca",
+				    "parametri": [
+				      "fiat", "citroen"
+				    ]
+				  },
+				  {
+				    "campo": "colore",
+				    "parametri": [
+				      "verde"
+				    ]
+				  }
+				]
+		 */
       var app = angular.module("GarageManagement", []);
 
       //Controller Part
@@ -16,22 +32,35 @@
         //Initialize page with default data which is blank in this example
         $scope.garage = [];
 
-        $scope.form = {	
-          colore: "",
-          modello: "",
-          marca: ""
-        };
+        $scope.parametri1 = [];
+        $scope.parametri2 = [];
+        $scope.parametri3 = [];
+        
 
         //Now load the data from server
         _refreshPageData();
 
-        //HTTP POST methods for add 
-        $scope.add = function () {
-          var data = { "colore": $scope.form.colore, "modello": $scope.form.modello, "marca" : $scope.form.marca };
+      
+        $scope.search = function () {
+        	 
+          var data = [
+        	  			  {
+						    "campo": "marca",
+						    "parametri": [ $scope.parametri1 ]
+						  },
+						  {
+						    "campo": "modello",
+						    "parametri": [ $scope.parametri2 ]
+						  },
+						  {
+						    "campo": "colore",
+						    "parametri": [ $scope.parametri3 ]
+						  }
+					 ];
 
           $http({
-            method: "POST",
-            url: '/garage',
+            method: 'POST',
+            url: '/garage/ricerca',
             data: angular.toJson(data),
             headers: {
               'Content-Type': 'application/json'
@@ -63,9 +92,9 @@
 
         //Clear the form
         function _clearForm() {
-          $scope.form.colore = "";
-          $scope.form.modello = "";
-          $scope.form.marca = ""
+          $scope.parametri1 = "";
+          $scope.parametri2 = "";
+          $scope.parametri3 = ""
         }
       });
     </script>
@@ -80,23 +109,23 @@
 
 
 				<h3>Ricerca automobili</h3>
-				<form ng-submit="post()">
+				<form ng-submit="search()">
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Marca" ng-model="form.marca"
-								size="60" required="required" />
+						<input type="text" placeholder="Marca" ng-model="parametri1"
+								size="60" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Modello" ng-model="form.modello"
-								size="60" required="required" />
+							<input type="text" placeholder="Modello" ng-model="parametri2"
+								size="60"/>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Colore" ng-model="form.colore"
-								size="60" required="required" />
+							<input type="text" placeholder="Colore" ng-model="parametri3"
+								size="60"/>
 						</div>
 					</div>
 					<input type="submit" value="Ricerca" />
