@@ -42,21 +42,84 @@
 
       
         $scope.search = function () {
-        	 
-          var data = [
-        	  			  {
-						    "campo": "marca",
-						    "parametri": [ $scope.parametri1 ]
-						  },
-						  {
-						    "campo": "modello",
-						    "parametri": [ $scope.parametri2 ]
-						  },
-						  {
-						    "campo": "colore",
-						    "parametri": [ $scope.parametri3 ]
-						  }
-					 ];
+        	var data;
+        	if($scope.parametri1.length != 0 && $scope.parametri2.length != 0 && $scope.parametri3.length != 0){
+        		data = [
+  	  			  {
+					    "campo": "marca",
+					    "parametri": [ $scope.parametri1 ]
+					  },
+					  {
+					    "campo": "modello",
+					    "parametri": [ $scope.parametri2 ]
+					  },
+					  {
+					    "campo": "colore",
+					    "parametri": [ $scope.parametri3 ]
+					  }
+				 ];
+        	}
+        	else if($scope.parametri1.length != 0 && $scope.parametri2.length != 0 && $scope.parametri3.length == 0){
+        		data = [
+    	  			  {
+  					    "campo": "marca",
+  					    "parametri": [ $scope.parametri1 ]
+  					  },
+  					  {
+  					    "campo": "modello",
+  					    "parametri": [ $scope.parametri2 ]
+  					  }
+  				 ];
+        	}
+        	else if($scope.parametri1.length != 0 && $scope.parametri2.length == 0 && $scope.parametri3.length != 0){
+        		data = [
+    	  			  {
+  					    "campo": "marca",
+  					    "parametri": [ $scope.parametri1 ]
+  					  },
+  					  {
+  					    "campo": "colore",
+  					    "parametri": [ $scope.parametri3 ]
+  					  }
+  				 ];
+        	}
+        	else if($scope.parametri1.length == 0 && $scope.parametri2.length != 0 && $scope.parametri3.length != 0){
+        		data = [
+    	  			  {
+  					    "campo": "modello",
+  					    "parametri": [ $scope.parametri2 ]
+  					  },
+  					  {
+  					    "campo": "colore",
+  					    "parametri": [ $scope.parametri3 ]
+  					  }
+  				 ];
+        	}
+        	else if($scope.parametri1.length != 0 && $scope.parametri2.length == 0 && $scope.parametri3.length == 0){
+        		data = [
+    	  			  {
+  					    "campo": "marca",
+  					    "parametri": [ $scope.parametri1 ]
+  					  }
+  				 ];
+        	}
+        	else if($scope.parametri1.length == 0 && $scope.parametri2.length != 0 && $scope.parametri3.length == 0){
+        		data = [
+  					  {
+  					    "campo": "modello",
+  					    "parametri": [ $scope.parametri2 ]
+  					  }
+  				 ];
+        	}
+        	else if($scope.parametri1.length == 0 && $scope.parametri2.length == 0 && $scope.parametri3.length != 0){
+        		data = [
+    	  			  {
+  					    "campo": "colore",
+  					    "parametri": [ $scope.parametri3 ]
+  					  }
+  				 ];
+        	}
+          		
 
           $http({
             method: 'POST',
