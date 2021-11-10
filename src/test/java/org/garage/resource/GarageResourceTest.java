@@ -102,6 +102,7 @@ class GarageResourceTest {
 	}
 	
 	@Test
+	@Order(6)
 	public void testModificaAuto() {
 		String url = "/auto/" + recuperaId() +"/modifica-colore/testMA";
 		given()
