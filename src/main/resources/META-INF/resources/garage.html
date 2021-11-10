@@ -51,6 +51,19 @@
               }).then(_success, _error);
          };
          
+         
+         //Methods for get
+         $scope.get = function(){
+         	var data = {"id": $scope.form.id2};
+         	
+         	$http({
+                 method: "GET",
+                 url: '/garage/auto/' + $scope.form.id2,
+                 data: angular.toJson(data),
+                 headers:{'Content-Type': 'application/json'}
+               }).then(_success, _error);
+          };
+         
 
         /* Private Methods */
         
@@ -78,7 +91,8 @@
         function _clearForm() {
           $scope.form.colore = "";
           $scope.form.modello = "";
-          $scope.form.marca = "";
+          $scope.form.marca = ""
+          $scope.form.id = "";
         }
       });
     </script>
@@ -124,6 +138,17 @@
 						</div>
 					</div>
 					<input type="submit" value="Elimina" />
+				</form>
+				
+				<h3>Recupera un'automobile tramite il suo id</h3>
+				<form ng-submit="get()">
+				<div class="row">
+				<div class="col-6">
+							<input type="text" placeholder="Id" ng-model="form.id2" size="60" />
+						</div>
+				</div>
+				<input type="submit" value="Recupera" />
+				
 				</form>
 			</div>
 		</div>
