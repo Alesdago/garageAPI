@@ -69,7 +69,7 @@
         function _refreshPageData() {
           $http({
             method: 'GET',
-            url: '/garage'
+            url:'/garage/auto/' + $scope.form.id2
           }).then(function successCallback(response) {
             $scope.garage = response.data;
           }, function errorCallback(response) {
