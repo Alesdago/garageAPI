@@ -35,7 +35,6 @@ public class GarageResource {
 	@POST
 	public void aggiungiAuto(Auto auto){
 		garage.aggiungiAuto(auto);
-		LOG.info("Aggiunta dell'auto riuscita");
         LOG.debug("Aggiunta dell'auto " + auto.toString() + " al garage");
 	}
 	
