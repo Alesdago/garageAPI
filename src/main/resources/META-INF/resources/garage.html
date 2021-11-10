@@ -45,7 +45,7 @@
         	
         	$http({
                 method: "DELETE",
-                url: '/garage/auto/{id}',
+                url: '/garage/auto/' + $scope.form.id,
                 data: angular.toJson(data),
                 headers:{'Content-Type': 'application/json'}
               }).then(_success, _error);
