@@ -26,13 +26,13 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: Quicksand;
 	color: white;
 	font-weight: bold;
-	text-shadow: 1px 2px orange;
-	font-family: Blippo, fantasy;
+	text-shadow: 1px 2px black;
+	font-family: Verdana, sans-serif;
 }
 
 h1 {
 	font-weight: bolder;
-	text-shadow: 3px 4px orange;
+	text-shadow: 3px 4px black;
 	
 }
 
@@ -161,7 +161,7 @@ h1 {
 	border: 0;
 	border-radius: 4px;
 	color: white;
-	background: rgb(206, 96, 52);
+	background:black;
 	font-family: inherit;
 	font-weight: 500;
 	line-height: 1.3;
