@@ -23,6 +23,8 @@
 			body: JSON.stringify(data),
 		});
 		
+		alert("auto: " + marca + ", " + modello + ", " + colore + " aggiunta con successo!");
+		
 		return response.json();
 	}
 	
@@ -35,7 +37,7 @@
 			      'Content-Type': 'application/json'
 			    },
 		});
-		
+		alert("auto all'id " + id + " eliminata con successo!");
 		return response.json();
 	}
 	
@@ -48,6 +50,11 @@
 			      'Content-Type': 'application/json'
 			    },
 		});
+		
+		response.then(function(result) {
+			  console.log('promise returned: ' + result);
+		});
+		
 		
 		return response.json();
 	}
