@@ -1,3 +1,10 @@
+.sfondo{
+	background-image: url(images/gar.jpg);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
 body, h6 {
 	line-height: 1.6
 }
