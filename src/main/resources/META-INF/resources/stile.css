@@ -43,11 +43,15 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 2rem;
 	font-weight: 300;
-	font-family: Quicksand
+	font-family: Quicksand;
+	color: white;
+	font-weight: bold;
+	text-shadow: 1px 2px orange;
 }
 
 h1, h2, h3 {
-	letter-spacing: -.1rem
+	letter-spacing: -.1rem;
+
 }
 
 h1 {
@@ -107,6 +111,7 @@ h6 {
 	max-width: 960px;
 	margin: 0 auto 1.5em;
 	width: 80%
+
 }
 
 .row {
