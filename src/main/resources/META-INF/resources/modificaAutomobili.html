@@ -4,82 +4,33 @@
 <meta charset="UTF-8">
 <title>Modifica Automobili</title>
 <link rel="stylesheet" href="stile.css" />
-<!-- Load AngularJS -->
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-
 
 <script type="text/javascript">
-	var app = angular.module("GarageManagment", []);
-
-	//Controller Part
-	app.controller("GarageManagementController", function($scope, $http) {
-
-		//Initialize page with default data which is blank in this example
-		$scope.garage = [];
-
-		$scope.form = {
-			colore : "",
-			modello : "",
-			marca : ""
-		};
-
-		//Now load the data from server
-		_refreshPageData();
-
-		//PUT
-		$scope.put = function() {
-			var data = {
-				"colore" : $scope.form.colore,
-				"modello" : $scope.form.modello,
-				"marca" : $scope.form.marca
-			};
-
-			$http({
-				method : "PUT",
-				url : '/garage/auto/' + $scope.form.id,
-				data : angular.toJson(data),
-				headers : {
-					'Content-Type' : 'application/json'
-				}
-			}).then(_success, _error);
-		};
-
-		function _refreshPageData() {
-			$http({
-				method : 'GET',
-				url : '/garage/auto/' + $scope.form.id2
-			}).then(function successCallback(response) {
-				$scope.garage = response.data;
-			}, function errorCallback(response) {
-				console.log(response.statusText);
-			});
-		}
-
-		function _success(response) {
-			_refreshPageData();
-			_clearForm();
-		}
-
-		function _error(response) {
-			alert(response.data.message || response.statusText);
-		}
-
-		//Clear the form
-		function _clearForm() {
-			$scope.form.colore = "";
-			$scope.form.modello = "";
-			$scope.form.marca = ""
-			$scope.form.id = "";
-			$scope.form.id2 = "";
-		}
-	});
+	
+	function modificaGarage(){
+		var id = document.getElementById("modifica").elements[0].value;
+		var marca = document.getElementById("modifica").elements[1].value;
+		var modello = document.getElementById("modifica").elements[2].value;
+		var colore = document.getElementById("modifica").elements[3].value;
+		
+		const data = {"colore": colore,"modello": modello,  "marca": marca,  "id": 0};
+		
+		const response = fetch('http://localhost:8080/garage/auto/'+id,{
+			method: 'PUT',
+			headers: {
+			      'Content-Type': 'application/json'
+			    },
+			body: JSON.stringify(data),
+		});
+		
+		return response.json();
+	}
+	
 </script>
 
 </head>
 
-<body ng-app="GarageManagement"
-	ng-controller="GarageManagementController">
+<body>
 
 	<div class="container">
 		<h1 align="center">Modifica Automobili</h1>
@@ -89,39 +40,39 @@
 
 
 				<h3>Modifica Garage via ID</h3>
-				<form ng-submit="put()">
+				<form id="modifica">
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Id" ng-model="form.id" size="60"
+							<input type="text" placeholder="Id" size="60"
 								required="required" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Marca" ng-model="form.marca"
+							<input type="text" placeholder="Marca"
 								size="60" required="required" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Modello" ng-model="form.modello"
+							<input type="text" placeholder="Modello" 
 								size="60" required="required" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Colore" ng-model="form.colore"
+							<input type="text" placeholder="Colore"
 								size="60" required="required" />
 						</div>
 					</div>
-					<input type="submit" value="Invia modifica" />
+					<input type="submit" value="Invia modifica" onclick="modificaGarage()"/>
 				</form>
 			</div>
 
 
 			<div style="width: 50%; float: left;">
 				<h3>Modifica campo</h3>
-				<form ng-submit="delete()">
+				<form function="delete()">
 					<div class="row">
 						<div class="col-6">
 							<input type="text" placeholder="Id" ng-model="form.id" size="60" />
