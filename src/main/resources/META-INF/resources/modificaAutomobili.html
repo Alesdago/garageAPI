@@ -95,8 +95,13 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-6">
-							<input type="text" placeholder="Campo" size="60" />
+						<div class="col-6">					
+						    <select name="campo">
+						    <option value="">Scegli il campo</option>
+							<option value="marca">Marca</option>
+							<option value="modello">Modello</option>
+							<option value="colore">Colore</option>
+							</select>
 						</div>
 					</div>
 					<div class="row">
@@ -104,9 +109,14 @@
 							<input type="text" placeholder="Parametro" size="60" />
 						</div>
 					</div>
-			</div>
-			<input type="submit" value="Elimina" onclick="modificaCampo()"/>
+			<input type="submit" value="Modifica" onclick="modificaCampo()"/>
 			</form>
+			</div>
+		</div>
+	
+	
+		<div align="center">
+			<a href="home.html"><button>Torna alla home</button></a>
 		</div>
 	</div>
 </body>
