@@ -4,97 +4,54 @@
 <meta charset="utf-8" />
 <title>Garage</title>
 <link rel="stylesheet" href="stile.css" />
-<!-- Load AngularJS -->
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
 <script type="text/javascript">
-      var app = angular.module("GarageManagement", []);
 
-      //Controller Part
-      app.controller("GarageManagementController", function ($scope, $http) {
+	function add(){
+		var marca = document.getElementById("aggiungi").elements[0].value;
+		var modello = document.getElementById("aggiungi").elements[1].value;
+		var colore = document.getElementById("aggiungi").elements[2].value;
+		
 
-        //Initialize page with default data which is blank in this example
-        $scope.garage = [];
-
-        $scope.form = {	
-          colore: "",
-          modello: "",
-          marca: ""
-        };
-
-        //Now load the data from server
-        _refreshPageData();
-
-        //HTTP POST methods for add 
-        $scope.add = function () {
-          var data = { "colore": $scope.form.colore, "modello": $scope.form.modello, "marca" : $scope.form.marca };
-
-          $http({
-            method: "POST",
-            url: '/garage',
-            data: angular.toJson(data),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }).then(_success, _error);
-        };
-
-        //Methods for delete
-        $scope.delete = function(){
-        	var data = {"id": $scope.form.id};
-
-        	$http({
-                method: "DELETE",
-                url: '/garage/auto/' + $scope.form.id,
-                data: angular.toJson(data),
-                headers:{'Content-Type': 'application/json'}
-              }).then(_success, _error);
-         };
-         
-       //Methods for get
-         $scope.get = function(){
-         	var data = {"id": $scope.form.id2};
-
-         	$http({
-                 method: "GET",
-                 url: '/garage/auto/' + $scope.form.id2,
-                 data: angular.toJson(data),
-                 headers:{'Content-Type': 'application/json'}
-               }).then(_success, _error);
-          };
-
-
-        /* Private Methods */
-
-        function _refreshPageData() {
-          $http({
-            method: 'GET',
-            url:'/garage/auto/' + $scope.form.id2
-          }).then(function successCallback(response) {
-            $scope.garage = response.data;
-          }, function errorCallback(response) {
-            console.log(response.statusText);
-          });
-        }
-
-        function _success(response) {
-          _refreshPageData();
-          _clearForm();
-        }
-
-        function _error(response) {
-          alert(response.data.message || response.statusText);
-        }
-
-        //Clear the form
-        function _clearForm() {
-          $scope.form.colore = "";
-          $scope.form.modello = "";
-          $scope.form.marca = ""
-          $scope.form.id = "";
-          $scope.form.id2 = "";
-        }
-      });
+		const data = {"colore": colore,"modello": modello,  "marca": marca};
+		
+		const response = fetch('http://localhost:8080/garage',{
+			method: 'POST',
+			headers: {
+			      'Content-Type': 'application/json'
+			    },
+			body: JSON.stringify(data),
+		});
+		
+		return response.json();
+	}
+	
+	function del(){
+		var id = document.getElementById("elimina").elements[0].value;
+		
+		const response = fetch('http://localhost:8080/garage/auto/'+id,{
+			method: 'DELETE',
+			headers: {
+			      'Content-Type': 'application/json'
+			    },
+		});
+		
+		return response.json();
+	}
+	
+	function get(){
+		var id = document.getElementById("recupera").elements[0].value;
+		
+		const response = fetch('http://localhost:8080/garage/auto/'+id,{
+			method: 'GET',
+			headers: {
+			      'Content-Type': 'application/json'
+			    },
+		});
+		
+		return response.json();
+	}
+     
     </script>
 </head>
 <body ng-app="GarageManagement"
@@ -107,39 +64,36 @@
 
 
 				<h3>Aggiungi un'automobile</h3>
-				<form ng-submit="add()">
+				<form id='aggiungi'>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Marca" ng-model="form.marca"
-								size="60" required="required" />
+							<input type="text" placeholder="Marca" size="60" required="required" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Modello" ng-model="form.modello"
-								size="60" required="required" />
+							<input type="text" placeholder="Modello" size="60" required="required" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Colore" ng-model="form.colore"
-								size="60" required="required" />
+							<input type="text" placeholder="Colore" size="60" required="required" />
 						</div>
 					</div>
-					<input type="submit" value="Aggiungi" />
+					<input type="submit" value="Aggiungi" onclick='add()'/>
 				</form>
 			</div>
 			<div style="width: 50%; float: left;">
 
 
 				<h3>Elimina un'automobile</h3>
-				<form ng-submit="delete()">
+				<form id='elimina'>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Id" ng-model="form.id" size="60" />
+							<input type="text" placeholder="Id" size="60" />
 						</div>
 					</div>
-					<input type="submit" value="Elimina" />
+					<input type="submit" value="Elimina" onclick='del()'/>
 				</form>
 			</div>
 		</div>
@@ -149,14 +103,14 @@
 
 
 				<h3>Recupera un'automobile tramite il suo id</h3>
-				<form ng-submit="get()">
+				<form id='recupera'>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Id" ng-model="form.id2"
+							<input type="text" placeholder="Id"
 								size="60" />
 						</div>
 					</div>
-					<input type="submit" value="Recupera" />
+					<input type="submit" value="Recupera" onclick='get()'/>
 
 				</form>
 			</div>
