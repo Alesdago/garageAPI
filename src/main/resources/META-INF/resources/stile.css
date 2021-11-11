@@ -75,6 +75,27 @@ h6 {
 	letter-spacing: 0
 }
 
+@media ( min-width :550px) {
+	h1 {
+		font-size: 5rem
+	}
+	h2 {
+		font-size: 4.2rem
+	}
+	h3 {
+		font-size: 3.6rem
+	}
+	h4 {
+		font-size: 3rem
+	}
+	h5 {
+		font-size: 2.4rem
+	}
+	h6 {
+		font-size: 1.5rem
+	}
+}
+
 .container {
 	max-width: 960px;
 	margin: 0 auto 1.5em;
@@ -86,9 +107,21 @@ h6 {
 	padding: 0 1.04165%
 }
 
+.row:after {
+	display: table;
+	clear: both;
+	content: ''
+}
 
+.row [class*=" col-"], .row [class^=col-] {
+	float: left;
+	min-height: 50px;
+	margin-left: 2.083333%
+}
 
-
+.row [class*=" col-"]:first-child, .row [class^=col-]:first-child {
+	margin-left: 0
+}
 
 .row .col-1 {
 	width: 36.42291%
@@ -138,6 +171,17 @@ h6 {
 	width: 100%
 }
 
+@media screen and (max-width:768px) {
+	.row {
+		margin-top: 3
+	}
+	.row [class*=" col-"], .row [class^=col-] {
+		width: 100%;
+		margin-top: 2.0833%;
+		margin-left: 0
+	}
+}
+
 .btn, [type=submit], button {
 	overflow: hidden;
 	margin: 10px;
@@ -163,6 +207,57 @@ h6 {
 	appearance: none
 }
 
+.btn:hover, [type=submit]:hover, button:hover {
+	-webkit-transition: all 60ms ease;
+	transition: all 60ms ease;
+	opacity: .85
+}
+
+.btn:active, [type=submit]:active, button:active {
+	-webkit-transition: all 60ms ease;
+	transition: all 60ms ease;
+	-webkit-transform: scale(.97);
+	transform: scale(.97);
+	opacity: .75
+}
+
+.btn:focus, [type=submit]:focus, button:focus {
+	outline: 0
+}
+
+.btn:disabled, [type=submit]:disabled, button:disabled {
+	opacity: .8;
+	cursor: not-allowed
+}
+
+.btn-outline {
+	border: 3px solid #fff;
+	color: #fff;
+	background: 0 0;
+	transition: all .5s ease
+}
+
+.btn-outline:active, .btn-outline:hover {
+	color: #b23c29;
+	background: #fff
+}
+
+.btn-outline-inverted {
+	border: 3px solid #b23c29;
+	color: #b23c29;
+	background: 0 0;
+	transition: all .5s ease
+}
+
+.btn-outline-inverted:active, .btn-outline-inverted:hover {
+	color: #fff;
+	background: #b23c29
+}
+
+.btn-clear {
+	background: 0 0;
+	color: rgb(128, 53, 23)
+}
 
 input[type=email], input[type=password], input[type=search], input[type=text],
 	select {
@@ -198,4 +293,69 @@ input[type=email]:focus, input[type=password]:focus, input[type=search]:focus,
 	input[type=text]:focus, textarea:focus, textarea[type=text]:focus {
 	border: 1px solid #f99159;
 	border-radius: 4px
+}
+
+a {
+	color: #e36742
+}
+
+ul {
+	list-style: circle inside
+}
+
+ol {
+	list-style: decimal inside
+}
+
+.pull-right {
+	float: right
+}
+
+.pull-left {
+	float: left
+}
+
+.text-center {
+	text-align: center
+}
+
+.full-screen {
+	width: 100vw;
+	height: 100vh
+}
+
+.vertical-align {
+	display: flex;
+	align-items: center
+}
+
+.horizontal-align {
+	display: flex;
+	justify-content: center
+}
+
+.center {
+	display: flex;
+	align-items: center;
+	justify-content: center
+}
+
+code {
+	padding: .2rem .5rem;
+	margin: 0 .2rem;
+	font-size: 90%;
+	white-space: nowrap;
+	background: #F1F1F1;
+	border: 1px solid #E1E1E1;
+	border-radius: 4px
+}
+
+pre>code {
+	display: block;
+	padding: 1rem 1.5rem;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word
 }
