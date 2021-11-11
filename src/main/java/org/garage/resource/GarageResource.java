@@ -66,7 +66,7 @@ public class GarageResource {
 			return Response.status(Status.NO_CONTENT).build();
 		}
 		
-		LOG.error("Rimozione dell'auto non riuscita, l'id dell'auto da rimuovere non e' esistente");
+		LOG.error("Rimozione dell'auto non riuscita, l'id dell'auto da rimuovere non esiste");
 		return Response.status(Status.NOT_FOUND).build();
 	}
 
@@ -80,7 +80,7 @@ public class GarageResource {
 			return Response.ok().build();
 		}
 		
-		LOG.error("Modifica dell'auto non riuscita, l'id dell'auto da modificare non e' esistente");
+		LOG.error("Modifica dell'auto non riuscita, l'id dell'auto da modificare non esiste");
 		return Response.status(Status.NOT_FOUND).build();
 	}
 	
