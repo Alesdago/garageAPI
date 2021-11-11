@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <title>Gestione Garage</title>
 <link rel="stylesheet" href="stile.css" />
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 
 	function add(){
@@ -44,19 +44,24 @@
 	function get(){
 		var id = document.getElementById("recupera").elements[0].value;
 		
-		const response = fetch('http://localhost:8080/garage/auto/'+id,{
-			method: 'GET',
-			headers: {
-			      'Content-Type': 'application/json'
-			    },
-		});
+		$.ajax({ 
+				url: 'http://localhost:8080/garage/auto/'+id,
+				type: 'GET',
+				contentType: 'application/json',
+				success: function(result){
+					alert(result.id + " " + result.marca + " " + result.modello + " " + result.colore);
+					$("#divId").html(result.id);
+					$("#divColore").html(result.colore);
+					$("#divModello").html(result.modello);
+					$("#divMarca").html(result.marca);
+					
+					console.log(result);
+				},
+			    error: function(result){
+					console.log(result);
+				}
+		})
 		
-		response.then(function(result) {
-			  console.log('promise returned: ' + result);
-		});
-		
-		
-		return response.json();
 	}
      
     </script>
@@ -132,12 +137,11 @@
 					<div class="col-3">MODELLO</div>
 					<div class="col-3">MARCA</div>
 				</div>
-				<div class="row" ng-repeat="auto in garage">
-
-					<div class="col-3">{{ auto.id }}</div>
-					<div class="col-3">{{ auto.colore }}</div>
-					<div class="col-3">{{ auto.modello }}</div>
-					<div class="col-3">{{ auto.marca }}</div>
+				<div class="row">
+					<div class="col-3" id="divId"></div>
+					<div class="col-3" id="divColore"></div>
+					<div class="col-3" id="divModello"></div>
+					<div class="col-3" id="divMarca"></div>
 				</div>
 			</div>
 		</div>
