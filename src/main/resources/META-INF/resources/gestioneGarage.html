@@ -44,25 +44,26 @@
 	function get(){
 		var id = document.getElementById("recupera").elements[0].value;
 		
-		$.ajax({ 
-				url: 'http://localhost:8080/garage/auto/'+id,
-				type: 'GET',
-				contentType: 'application/json',
-				success: function(result){
-					alert(result.id + " " + result.marca + " " + result.modello + " " + result.colore);
-					$("#divId").html(result.id);
-					$("#divColore").html(result.colore);
-					$("#divModello").html(result.modello);
-					$("#divMarca").html(result.marca);
-					
-					console.log(result);
-				},
-			    error: function(result){
-					console.log(result);
-				}
-		})
-		
+		$(document).ready(function(){
+			$.ajax({ 
+					url: 'http://localhost:8080/garage/auto/'+id,
+					type: 'GET',
+					contentType: 'application/json',
+					success: function(result){
+						alert(result.id + " " + result.marca + " " + result.modello + " " + result.colore);
+						$("#divId").html(result.id);
+						$("#divColore").html(result.colore);
+						$("#divModello").html(result.modello);
+						$("#divMarca").html(result.marca);
+						console.log(result);
+					},
+				    error: function(result){
+						console.log(result);
+					}
+			});
+		});
 	}
+
      
     </script>
 </head>
