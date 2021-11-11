@@ -26,6 +26,22 @@
 		return response.json();
 	}
 	
+	
+	function modificaCampo(){
+		var id = document.getElementById("modificaC").elements[0].value;
+		var campo = document.getElementById("modificaC").elements[1].value;
+		var parametro = document.getElementById("modificaC").elements[2].value;
+		
+		
+		const response = fetch('http://localhost:8080/garage/auto/'+id + '/modifica-' + campo + '/' + parametro, {
+			method: 'PATCH',
+			headers: {
+			      'Content-Type': 'application/json'
+			    },
+		});
+		
+	}
+	
 </script>
 
 </head>
@@ -43,52 +59,55 @@
 				<form id="modifica">
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Id" size="60"
+							<input type="text" placeholder="Id" size="60" required="required" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<input type="text" placeholder="Marca" size="60"
 								required="required" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Marca"
-								size="60" required="required" />
+							<input type="text" placeholder="Modello" size="60"
+								required="required" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Modello" 
-								size="60" required="required" />
+							<input type="text" placeholder="Colore" size="60"
+								required="required" />
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-6">
-							<input type="text" placeholder="Colore"
-								size="60" required="required" />
-						</div>
-					</div>
-					<input type="submit" value="Invia modifica" onclick="modificaGarage()"/>
+					<input type="submit" value="Invia modifica"
+						onclick="modificaGarage()" />
 				</form>
 			</div>
 
 
 			<div style="width: 50%; float: left;">
 				<h3>Modifica campo</h3>
-				<form function="delete()">
+				<form id="modificaC">
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Id" ng-model="form.id" size="60" />
-						</div>
-						<div class="col-6">
-							<input type="text" placeholder="Campo" ng-model="form.campo"
-								size="60" />
-						</div>
-						<div class="col-6">
-							<input type="text" placeholder="Parametro"
-								ng-model="form.parametro" size="60" />
+							<input type="text" placeholder="Id"  size="60" />
 						</div>
 					</div>
-					<input type="submit" value="Elimina" />
-				</form>
+					<div class="row">
+						<div class="col-6">
+							<input type="text" placeholder="Campo" size="60" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<input type="text" placeholder="Parametro" size="60" />
+						</div>
+					</div>
 			</div>
+			<input type="submit" value="Elimina" onclick="modificaCampo()"/>
+			</form>
 		</div>
+	</div>
 </body>
 </html>
