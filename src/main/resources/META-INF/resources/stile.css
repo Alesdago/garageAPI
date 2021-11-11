@@ -182,7 +182,7 @@ h6 {
 	}
 }
 
-.btn, [type=submit], button {
+.btn, [type=submit], [type=reset], button {
 	overflow: hidden;
 	margin: 10px;
 	padding: 12px;
@@ -207,13 +207,13 @@ h6 {
 	appearance: none
 }
 
-.btn:hover, [type=submit]:hover, button:hover {
+.btn:hover, [type=submit]:hover, [type=reset]:hover, button:hover {
 	-webkit-transition: all 60ms ease;
 	transition: all 60ms ease;
 	opacity: .85
 }
 
-.btn:active, [type=submit]:active, button:active {
+.btn:active, [type=submit]:active, [type=reset]:active, button:active {
 	-webkit-transition: all 60ms ease;
 	transition: all 60ms ease;
 	-webkit-transform: scale(.97);
@@ -221,11 +221,11 @@ h6 {
 	opacity: .75
 }
 
-.btn:focus, [type=submit]:focus, button:focus {
+.btn:focus, [type=submit]:focus, [type=reset]:focus, button:focus {
 	outline: 0
 }
 
-.btn:disabled, [type=submit]:disabled, button:disabled {
+.btn:disabled, [type=submit]:disabled, [type=reset]:disabled, button:disabled {
 	opacity: .8;
 	cursor: not-allowed
 }

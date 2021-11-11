@@ -4,9 +4,6 @@
 <meta charset="utf-8" />
 <title>Ricerca Automobili</title>
 <link rel="stylesheet" href="stile.css" />
-<!-- Load AngularJS -->
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script type="text/javascript">
 	  
 		  /*     [
@@ -24,7 +21,7 @@
 				  }
 				]
 		 */
-      var app = angular.module("GarageManagement", []);
+      
 
       //Controller Part
       app.controller("GarageManagementController", function ($scope, $http) {
@@ -162,8 +159,7 @@
       });
     </script>
 </head>
-<body ng-app="GarageManagement"
-	ng-controller="GarageManagementController">
+<body>
 	<div class="container">
 		<h1 align="center">Ricerca automobili nel garage</h1>
 
@@ -192,6 +188,7 @@
 						</div>
 					</div>
 					<input type="submit" value="Ricerca" />
+					<input type="reset" value="Reset"/>
 				</form>
 			</div>
 			<div style="width: 50%; float: left;">
