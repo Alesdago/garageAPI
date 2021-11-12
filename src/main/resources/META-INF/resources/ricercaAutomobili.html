@@ -54,9 +54,9 @@ function apri() {
 		modelli.push(document.getElementById("inModello").value);
 		colori.push(document.getElementById("inColore").value);
 		
-		document.getElementById('inMarca').value = '';
-		document.getElementById('inModello').value = '';
-		document.getElementById('inColore').value = '';
+		document.getElementById('inMarca').value = "";
+		document.getElementById('inModello').value = "";
+		document.getElementById('inColore').value = "";
 		
 		
 		var marca = document.getElementById("marca");
@@ -78,7 +78,7 @@ function apri() {
 		  if(modello.checked == true){
 			  var stringaModelli = "";
 				for(var i=0; i<modelli.length; i++){
-					stringaModelli = stringaModelli.concat(modelli[i] + " ");
+					stringaModelli =  stringaModelli.concat(modelli[i] + " ");
 				}
 				$("#listaModelli").html(stringaModelli);
 		  }
@@ -113,12 +113,19 @@ function apri() {
 			    ]
 			  }
 		  ]
+		 
+		 
+		 PROBLEMI:
+		
+			 2 I NOSTRI PARAMETRI NON HANNO LE VIRGOLETTE
 		*/
-
-
+		
+		var marca = document.getElementById("marca");
+		var modello = document.getElementById("modello");
+		var colore = document.getElementById("colore");
 
 		var ricercami;
-		if(marche.length != 0 && modelli.length != 0 && colori.length != 0){
+		if(marca.checked == true && modello.checked == true && colore.checked == true){
 			ricercami = [
 				  {
 				    "campo": "marca",
@@ -134,7 +141,7 @@ function apri() {
 				  }
 			 ];
 		}
-		else if(marche.length != 0 && $modelli.length != 0 && colori.length == 0){
+		else if(marca.checked == true && modello.checked == true && colore.checked == false){
 			ricercami = [
 				  {
 				    "campo": "marca",
@@ -146,7 +153,7 @@ function apri() {
 				  }
 			 ];
 		}
-		else if(marche.length != 0 && $modelli.length == 0 && colori.length != 0){
+		else if(marca.checked == true && modello.checked == false && colore.checked == true){
 			ricercami = [
 				  {
 				    "campo": "marca",
@@ -158,7 +165,7 @@ function apri() {
 				  }
 			 ];
 		}
-		else if(marche.length == 0 && modelli.length != 0 && colori.length != 0){
+		else if(marca.checked == false && modello.checked == true && colore.checked == true){
 			ricercami = [
 				  {
 				    "campo": "modello",
@@ -170,7 +177,7 @@ function apri() {
 				  }
 			 ];
 		}
-		else if(marche.length != 0 && modelli.length == 0 && colori.length == 0){
+		else if(marca.checked == true && modello.checked == false && colore.checked == false){
 			ricercami = [
 				  {
 				    "campo": "marca",
@@ -178,7 +185,7 @@ function apri() {
 				  }
 			 ];
 		}
-		else if(marche.length == 0 && modelli.length != 0 && colori.length == 0){
+		else if(marca.checked == false && modello.checked == true && colore.checked == false){
 			ricercami = [
 				  {
 				    "campo": "modello",
@@ -186,7 +193,7 @@ function apri() {
 				  }
 			 ];
 		}
-		else if(marche.length == 0 && modelli.length == 0 && colori.length != 0){
+		else if(marca.checked == false && modello.checked == false && colore.checked == true){
 			ricercami = [
 				  {
 				    "campo": "colore",
@@ -276,8 +283,7 @@ function apri() {
 							
 							
 						</div>
-					</div>
-					<input type="reset" value="Reset" /> 
+					</div> 
 					<input type="submit" value="Ricerca" onclick="ricerca()" />
 				</form>
 			</div>
