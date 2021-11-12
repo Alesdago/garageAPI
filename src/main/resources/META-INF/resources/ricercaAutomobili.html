@@ -129,15 +129,15 @@ function apri() {
 			ricercami = [
 				  {
 				    "campo": "marca",
-				    "parametri": [ marche ]
+				    "parametri": marche
 				  },
 				  {
 				    "campo": "modello",
-				    "parametri": [ modelli ]
+				    "parametri": modelli
 				  },
 				  {
 				    "campo": "colore",
-				    "parametri": [ colori ]
+				    "parametri": colori
 				  }
 			 ];
 		}
@@ -145,11 +145,11 @@ function apri() {
 			ricercami = [
 				  {
 				    "campo": "marca",
-				    "parametri": [ marche ]
+				    "parametri": marche
 				  },
 				  {
 				    "campo": "modello",
-				    "parametri": [ modelli ]
+				    "parametri": modelli
 				  }
 			 ];
 		}
@@ -157,11 +157,11 @@ function apri() {
 			ricercami = [
 				  {
 				    "campo": "marca",
-				    "parametri": [ marche ]
+				    "parametri": marche
 				  },
 				  {
 				    "campo": "colore",
-				    "parametri": [ colori ]
+				    "parametri":  colori 
 				  }
 			 ];
 		}
@@ -169,11 +169,11 @@ function apri() {
 			ricercami = [
 				  {
 				    "campo": "modello",
-				    "parametri": [ modelli ]
+				    "parametri": modelli
 				  },
 				  {
 				    "campo": "colore",
-				    "parametri": [ colori ]
+				    "parametri": colori
 				  }
 			 ];
 		}
@@ -181,7 +181,7 @@ function apri() {
 			ricercami = [
 				  {
 				    "campo": "marca",
-				    "parametri": [ marche ]
+				    "parametri": marche 
 				  }
 			 ];
 		}
@@ -189,7 +189,7 @@ function apri() {
 			ricercami = [
 				  {
 				    "campo": "modello",
-				    "parametri": [ modelli ]
+				    "parametri": modelli 
 				  }
 			 ];
 		}
@@ -197,7 +197,7 @@ function apri() {
 			ricercami = [
 				  {
 				    "campo": "colore",
-				    "parametri": [ colori ]
+				    "parametri": colori
 				  }
 			 ];
 		}
@@ -207,13 +207,13 @@ function apri() {
 			$.ajax({ 
 					url: 'http://localhost:8080/garage/ricerca',
 					type: 'POST',
-					data: ricercami,
+					data: JSON.stringify(ricercami),
 					contentType: 'application/json',
 					success: function(result){
-						$("#divId").html(result.id);
-						$("#divColore").html(result.colore);
-						$("#divModello").html(result.modello);
-						$("#divMarca").html(result.marca);
+						//$("#divId").html(result.id);
+						//$("#divColore").html(result.colore);
+						//$("#divModello").html(result.modello);
+						//$("#divMarca").html(result.marca);
 						console.log(result);
 					},
 				    error: function(result){
