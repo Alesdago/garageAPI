@@ -210,10 +210,12 @@ function apri() {
 					data: JSON.stringify(ricercami),
 					contentType: 'application/json',
 					success: function(result){
-						//$("#divId").html(result.id);
-						//$("#divColore").html(result.colore);
-						//$("#divModello").html(result.modello);
-						//$("#divMarca").html(result.marca);
+						for(var i=0; i<result.length; i++){
+							$("#divId").html(result[i].id);
+							$("#divMarca").html(result[i].marca);
+							$("#divModello").html(result[i].modello);
+							$("#divColore").html(result[i].colore);
+						}	
 						console.log(result);
 					},
 				    error: function(result){
