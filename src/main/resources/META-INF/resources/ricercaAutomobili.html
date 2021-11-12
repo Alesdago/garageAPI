@@ -123,6 +123,16 @@ function apri() {
 		var marca = document.getElementById("marca");
 		var modello = document.getElementById("modello");
 		var colore = document.getElementById("colore");
+		var parametroMarca = "";
+		
+		for (var i; marche.length; i++) {
+			if(i == marche.length){
+				parametroMarca = "\"" + marche[i] + "\"";
+			}
+			else {
+			parametroMarca = "\"" + marche[i] + "\",";
+			}
+		}
 
 		var ricercami;
 		if(marca.checked == true && modello.checked == true && colore.checked == true){
@@ -181,7 +191,7 @@ function apri() {
 			ricercami = [
 				  {
 				    "campo": "marca",
-				    "parametri": [ marche ]
+				    "parametri": [ parametroMarca ]
 				  }
 			 ];
 		}
