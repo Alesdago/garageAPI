@@ -5,158 +5,61 @@
 <title>Ricerca Automobili</title>
 <link rel="stylesheet" href="stile.css" />
 <script type="text/javascript">
+
+
+function apri() {
+
+	  var marca = document.getElementById("marca");
+	  var modello = document.getElementById("modello");
+	  var colore = document.getElementById("colore");
+
+	  var ma = document.getElementById("ma");
+	  var mo = document.getElementById("mo");
+	  var co = document.getElementById("co");
+
 	  
-		  /*     [
-				  {
-				    "campo": "marca",
-				    "parametri": [
-				      "fiat", "citroen"
-				    ]
-				  },
-				  {
-				    "campo": "colore",
-				    "parametri": [
-				      "verde"
-				    ]
-				  }
-				]
-		 */
-      
+	  if (marca.checked == true){
+	    ma.style.display = "block";
+	  }
+	  else {
+	    ma.style.display = "none"; 
+	  }
+	  
+	  if(modello.checked == true){
+		  mo.style.display = "block";
+	  }
+	  else{
+		  mo.style.display = "none"
+	  }
+	  
+	  if(colore.checked == true){
+		  co.style.display = "block";
+	  }
+	  else{
+		  co.style.display = "none"
+	  }
+	}
+	
+	var marca=[];
+	
+	var colore=[];
+	
+	var modello=[];
+	
+	function aggiungi(){
+		
+		marca.push(document.getElementById("inMarca"));
+		modello.push(document.getElementById("inModello"));
+		colore.push(document.getElementById("inColore"));
+		
+		
+	}
+	
 
-      //Controller Part
-      app.controller("GarageManagementController", function ($scope, $http) {
+	  
+	  
 
-        //Initialize page with default data which is blank in this example
-        $scope.garage = [];
-
-        $scope.parametri1 = [];
-        $scope.parametri2 = [];
-        $scope.parametri3 = [];
-        
-
-        //Now load the data from server
-        _refreshPageData();
-
-      
-        $scope.search = function () {
-        	var data;
-        	if($scope.parametri1.length != 0 && $scope.parametri2.length != 0 && $scope.parametri3.length != 0){
-        		data = [
-  	  			  {
-					    "campo": "marca",
-					    "parametri": [ $scope.parametri1 ]
-					  },
-					  {
-					    "campo": "modello",
-					    "parametri": [ $scope.parametri2 ]
-					  },
-					  {
-					    "campo": "colore",
-					    "parametri": [ $scope.parametri3 ]
-					  }
-				 ];
-        	}
-        	else if($scope.parametri1.length != 0 && $scope.parametri2.length != 0 && $scope.parametri3.length == 0){
-        		data = [
-    	  			  {
-  					    "campo": "marca",
-  					    "parametri": [ $scope.parametri1 ]
-  					  },
-  					  {
-  					    "campo": "modello",
-  					    "parametri": [ $scope.parametri2 ]
-  					  }
-  				 ];
-        	}
-        	else if($scope.parametri1.length != 0 && $scope.parametri2.length == 0 && $scope.parametri3.length != 0){
-        		data = [
-    	  			  {
-  					    "campo": "marca",
-  					    "parametri": [ $scope.parametri1 ]
-  					  },
-  					  {
-  					    "campo": "colore",
-  					    "parametri": [ $scope.parametri3 ]
-  					  }
-  				 ];
-        	}
-        	else if($scope.parametri1.length == 0 && $scope.parametri2.length != 0 && $scope.parametri3.length != 0){
-        		data = [
-    	  			  {
-  					    "campo": "modello",
-  					    "parametri": [ $scope.parametri2 ]
-  					  },
-  					  {
-  					    "campo": "colore",
-  					    "parametri": [ $scope.parametri3 ]
-  					  }
-  				 ];
-        	}
-        	else if($scope.parametri1.length != 0 && $scope.parametri2.length == 0 && $scope.parametri3.length == 0){
-        		data = [
-    	  			  {
-  					    "campo": "marca",
-  					    "parametri": [ $scope.parametri1 ]
-  					  }
-  				 ];
-        	}
-        	else if($scope.parametri1.length == 0 && $scope.parametri2.length != 0 && $scope.parametri3.length == 0){
-        		data = [
-  					  {
-  					    "campo": "modello",
-  					    "parametri": [ $scope.parametri2 ]
-  					  }
-  				 ];
-        	}
-        	else if($scope.parametri1.length == 0 && $scope.parametri2.length == 0 && $scope.parametri3.length != 0){
-        		data = [
-    	  			  {
-  					    "campo": "colore",
-  					    "parametri": [ $scope.parametri3 ]
-  					  }
-  				 ];
-        	}
-          		
-
-          $http({
-            method: 'POST',
-            url: '/garage/ricerca',
-            data: angular.toJson(data),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }).then(_success, _error);
-        };
-
-        /* Private Methods */
-
-        function _refreshPageData() {
-          $http({
-            method: 'GET',
-            url: '/garage'
-          }).then(function successCallback(response) {
-            $scope.garage = response.data;
-          }, function errorCallback(response) {
-            console.log(response.statusText);
-          });
-        }
-
-        function _success(response) {
-          _refreshPageData();
-          _clearForm();
-        }
-
-        function _error(response) {
-          alert(response.data.message || response.statusText);
-        }
-
-        //Clear the form
-        function _clearForm() {
-          $scope.parametri1 = "";
-          $scope.parametri2 = "";
-          $scope.parametri3 = ""
-        }
-      });
+     
     </script>
 </head>
 <body class="sfondo">
@@ -168,29 +71,49 @@
 
 
 				<h3>Ricerca automobili</h3>
-				<form ng-submit="search()" onSubmit = "return false;">
+				<form onSubmit="return false;">
 					<div class="row">
 						<div class="col-6">
-						<input type="text" placeholder="Marca" ng-model="parametri1"
-								size="60" />
+
+							<label style="color: white"> Cerca per marca: </label> 
+							<input type="checkbox" id="marca" onclick="apri()">
+
+
+							<p id="ma" style="display: none">
+								<input type="text" placeholder="Marca" id="inMarca" size="60"> 
+								<a href= # onclick="aggiungi()"> Aggiungi</a>
+
+							</p>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Modello" ng-model="parametri2"
-								size="60"/>
+							<label style="color: white"> Cerca per modello: </label> 
+							<input type="checkbox" id="modello" onclick="apri()">
+
+
+							<p id="mo" style="display: none">
+								<input type="text" placeholder="Modello" id="inModello" size="60">
+								<a href= # onclick="aggiungi()"> Aggiungi</a>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Colore" ng-model="parametri3"
-								size="60"/>
+							<label style="color: white"> Cerca per colore: </label> 
+							<input type="checkbox" id="colore" onclick="apri()">
+
+
+							<p id="co" style="display: none">
+								<input type="text" placeholder="Colore" id="inColore" size="60"> 
+								<a href= # onclick="aggiungi()"> Aggiungi</a>
 						</div>
 					</div>
-					<input type="reset" value="Reset"/>
-					<input type="submit" value="Ricerca" />		
+					<input type="reset" value="Reset" /> <input type="submit"
+						value="Ricerca" />
 				</form>
 			</div>
+
+
 			<div style="width: 50%; float: left;">
 				<h3>Garage</h3>
 				<div class="row">
@@ -199,7 +122,7 @@
 					<div class="col-3">MODELLO</div>
 					<div class="col-3">MARCA</div>
 				</div>
-				<div class="row" ng-repeat="auto in garage">
+				<div class="row">
 
 					<div class="col-3">{{ auto.id }}</div>
 					<div class="col-3">{{ auto.colore }}</div>
