@@ -125,15 +125,15 @@ function apri() {
 		var colore = document.getElementById("colore");
 		var parametroMarca = "";
 		
-		for (var i; marche.length; i++) {
+		for (var i=0; i<marche.length; i++) {
 			if(i == marche.length){
-				parametroMarca = "\"" + marche[i] + "\"";
+				parametroMarca.concat("\"" + marche[i] + "\"");
 			}
 			else {
-			parametroMarca = "\"" + marche[i] + "\",";
+			parametroMarca.concat("\"" + marche[i] + "\",");
 			}
 		}
-
+		alert(parametroMarca);
 		var ricercami;
 		if(marca.checked == true && modello.checked == true && colore.checked == true){
 			ricercami = [
