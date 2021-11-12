@@ -99,14 +99,108 @@ function apri() {
 	}
 	
 	function ricerca(){
-		var data
+		 /*[
+			  {
+			    "campo": "marca",
+			    "parametri": [
+			      "fiat", "citroen"
+			    ]
+			  },
+			  {
+			    "campo": "colore",
+			    "parametri": [
+			      "verde"
+			    ]
+			  }
+		  ]
+		*/
+
+
+
+		var ricercami;
+		if(marche.length != 0 && modelli.length != 0 && colori.length != 0){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": [ marche ]
+				  },
+				  {
+				    "campo": "modello",
+				    "parametri": [ modelli ]
+				  },
+				  {
+				    "campo": "colore",
+				    "parametri": [ colori ]
+				  }
+			 ];
+		}
+		else if(marche.length != 0 && $modelli.length != 0 && colori.length == 0){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": [ marche ]
+				  },
+				  {
+				    "campo": "modello",
+				    "parametri": [ modelli ]
+				  }
+			 ];
+		}
+		else if(marche.length != 0 && $modelli.length == 0 && colori.length != 0){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": [ marche ]
+				  },
+				  {
+				    "campo": "colore",
+				    "parametri": [ colori ]
+				  }
+			 ];
+		}
+		else if(marche.length == 0 && modelli.length != 0 && colori.length != 0){
+			ricercami = [
+				  {
+				    "campo": "modello",
+				    "parametri": [ modelli ]
+				  },
+				  {
+				    "campo": "colore",
+				    "parametri": [ colori ]
+				  }
+			 ];
+		}
+		else if(marche.length != 0 && modelli.length == 0 && colori.length == 0){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": [ marche ]
+				  }
+			 ];
+		}
+		else if(marche.length == 0 && modelli.length != 0 && colori.length == 0){
+			ricercami = [
+				  {
+				    "campo": "modello",
+				    "parametri": [ modelli ]
+				  }
+			 ];
+		}
+		else if(marche.length == 0 && modelli.length == 0 && colori.length != 0){
+			ricercami = [
+				  {
+				    "campo": "colore",
+				    "parametri": [ colori ]
+				  }
+			 ];
+		}
 		
-		
+		alert(ricercami);
 		$(document).ready(function(){
 			$.ajax({ 
 					url: 'http://localhost:8080/garage/ricerca',
 					type: 'POST',
-					data: data,
+					data: $.parseJSON(ricercami),
 					contentType: 'application/json',
 					success: function(result){
 						$("#divId").html(result.id);
