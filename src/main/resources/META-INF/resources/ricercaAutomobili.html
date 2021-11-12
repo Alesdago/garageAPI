@@ -127,10 +127,10 @@ function apri() {
 		
 		for (var i=0; i<marche.length; i++) {
 			if(i == marche.length){
-				parametroMarca.concat("\"" + marche[i] + "\"");
+				parametroMarca = parametroMarca.concat("\"" + marche[i] + "\"");
 			}
 			else {
-			parametroMarca.concat("\"" + marche[i] + "\",");
+				parametroMarca = parametroMarca.concat("\"" + marche[i] + "\",");
 			}
 		}
 		alert(parametroMarca);
