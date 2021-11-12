@@ -93,7 +93,11 @@ h1 {
 }
 
 .row .col-3 {
-	width: 23.4375%
+	width: 23.4375%;
+	color : white;
+	text-shadow: 2px 3px black;
+	
+
 }
 
 .row .col-4 {
