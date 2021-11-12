@@ -29,12 +29,12 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 300;
 	font-family: Quicksand;
 	color: white;
-	text-shadow: 2px 3px black;
+	text-shadow: 2px 2px black;
 	font-family: Noto Sans, sans-serif;
 }
 
 h1 {
-	text-shadow: 4px 5px black;
+	text-shadow: 3px 4px black;
 	
 }
 
@@ -81,15 +81,16 @@ h1 {
 .row [class*=" col-"], .row [class^=col-] {
 	float: left;
 	min-height: 50px;
-	margin-left: 2.083333%
+	margin-left: 2%
 }
 
 .row [class*=" col-"]:first-child, .row [class^=col-]:first-child {
-	margin-left: 0
+	margin-left: 0;
 }
 
 .row .col-1 {
-	width: 36.42291%
+	width: 36.42291%;
+	
 }
 
 .row .col-2 {
@@ -98,9 +99,6 @@ h1 {
 
 .row .col-3 {
 	width: 23.4375%;
-	color : white;
-	text-shadow: 2px 3px black;
-	
 
 }
 
