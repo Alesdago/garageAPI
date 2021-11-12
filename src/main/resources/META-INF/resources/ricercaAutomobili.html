@@ -48,10 +48,21 @@ function apri() {
 	
 	function aggiungi(){
 		
-		marca.push(document.getElementById("inMarca"));
-		modello.push(document.getElementById("inModello"));
-		colore.push(document.getElementById("inColore"));
+		marca.push(document.getElementById("inMarca").value);
+		modello.push(document.getElementById("inModello").value);
+		colore.push(document.getElementById("inColore").value);
 		
+		document.getElementById('inMarca').value = '';
+		document.getElementById('inModello').value = '';
+		document.getElementById('inColore').value = '';
+		
+		
+		
+		
+		
+	}
+	
+	function ricerca(){
 		
 	}
 	
@@ -79,11 +90,12 @@ function apri() {
 							<input type="checkbox" id="marca" onclick="apri()">
 
 
-							<p id="ma" style="display: none">
+							<p id='ma' style="display: none">
 								<input type="text" placeholder="Marca" id="inMarca" size="60"> 
 								<a href= # onclick="aggiungi()"> Aggiungi</a>
-
+								<p id="listaMarche"></p>
 							</p>
+							
 						</div>
 					</div>
 					<div class="row">
@@ -95,6 +107,7 @@ function apri() {
 							<p id="mo" style="display: none">
 								<input type="text" placeholder="Modello" id="inModello" size="60">
 								<a href= # onclick="aggiungi()"> Aggiungi</a>
+								</p>
 						</div>
 					</div>
 					<div class="row">
@@ -106,10 +119,11 @@ function apri() {
 							<p id="co" style="display: none">
 								<input type="text" placeholder="Colore" id="inColore" size="60"> 
 								<a href= # onclick="aggiungi()"> Aggiungi</a>
+								</p>
 						</div>
 					</div>
-					<input type="reset" value="Reset" /> <input type="submit"
-						value="Ricerca" />
+					<input type="reset" value="Reset" /> 
+					<input type="submit" value="Ricerca" onclick="ricerca()" />
 				</form>
 			</div>
 
