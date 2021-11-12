@@ -122,18 +122,8 @@ function apri() {
 		
 		var marca = document.getElementById("marca");
 		var modello = document.getElementById("modello");
-		var colore = document.getElementById("colore");
-		var parametroMarca = "";
+		var colore = document.getElementById("colore");	
 		
-		for (var i=0; i<marche.length; i++) {
-			if(i == marche.length){
-				parametroMarca = parametroMarca.concat("\"" + marche[i] + "\"");
-			}
-			else {
-				parametroMarca = parametroMarca.concat("\"" + marche[i] + "\",");
-			}
-		}
-		alert(parametroMarca);
 		var ricercami;
 		if(marca.checked == true && modello.checked == true && colore.checked == true){
 			ricercami = [
@@ -191,7 +181,7 @@ function apri() {
 			ricercami = [
 				  {
 				    "campo": "marca",
-				    "parametri": [ parametroMarca ]
+				    "parametri": [ marche ]
 				  }
 			 ];
 		}
@@ -212,12 +202,12 @@ function apri() {
 			 ];
 		}
 		
-		alert(ricercami);
+		console.log(ricercami);
 		$(document).ready(function(){
 			$.ajax({ 
 					url: 'http://localhost:8080/garage/ricerca',
 					type: 'POST',
-					data: $.parseJSON(ricercami),
+					data: ricercami,
 					contentType: 'application/json',
 					success: function(result){
 						$("#divId").html(result.id);
