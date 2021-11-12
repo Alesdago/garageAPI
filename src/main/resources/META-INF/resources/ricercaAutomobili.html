@@ -4,6 +4,8 @@
 <meta charset="utf-8" />
 <title>Ricerca Automobili</title>
 <link rel="stylesheet" href="stile.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 
 
@@ -40,30 +42,84 @@ function apri() {
 	  }
 	}
 	
-	var marca=[];
+	var marche=[];
 	
-	var colore=[];
+	var colori=[];
 	
-	var modello=[];
+	var modelli=[];
 	
 	function aggiungi(){
 		
-		marca.push(document.getElementById("inMarca").value);
-		modello.push(document.getElementById("inModello").value);
-		colore.push(document.getElementById("inColore").value);
+		marche.push(document.getElementById("inMarca").value);
+		modelli.push(document.getElementById("inModello").value);
+		colori.push(document.getElementById("inColore").value);
 		
 		document.getElementById('inMarca').value = '';
 		document.getElementById('inModello').value = '';
 		document.getElementById('inColore').value = '';
 		
 		
+		var marca = document.getElementById("marca");
+		var modello = document.getElementById("modello");
+		var colore = document.getElementById("colore");
 		
-		
-		
+		  if (marca.checked == true){
+			var stringaMarche = "";
+			for(var i=0; i<marche.length; i++){
+				stringaMarche = stringaMarche.concat(marche[i] + " ");
+			}
+			$("#listaMarche").html(stringaMarche);
+		    
+		  }
+		  else {
+		    ma.style.display = "none"; 
+		  }
+		  
+		  if(modello.checked == true){
+			  var stringaModelli = "";
+				for(var i=0; i<modelli.length; i++){
+					stringaModelli = stringaModelli.concat(modelli[i] + " ");
+				}
+				$("#listaModelli").html(stringaModelli);
+		  }
+		  else{
+			  mo.style.display = "none"
+		  }
+		  
+		  if(colore.checked == true){
+			  var stringaColori = "";
+				for(var i=0; i<colori.length; i++){
+					stringaColori = stringaColori.concat(colori[i] + " ");
+				}
+				$("#listaColori").html(stringaColori);
+		  }
+		  else{
+			  co.style.display = "none"
+			  }
 	}
 	
 	function ricerca(){
+		var data
 		
+		
+		$(document).ready(function(){
+			$.ajax({ 
+					url: 'http://localhost:8080/garage/ricerca',
+					type: 'POST',
+					data: data,
+					contentType: 'application/json',
+					success: function(result){
+						$("#divId").html(result.id);
+						$("#divColore").html(result.colore);
+						$("#divModello").html(result.modello);
+						$("#divMarca").html(result.marca);
+						console.log(result);
+					},
+				    error: function(result){
+						console.log(result);
+					}
+			});
+		});
 	}
 	
 
@@ -86,28 +142,30 @@ function apri() {
 					<div class="row">
 						<div class="col-6">
 
-							<label style="color: white"> Cerca per marca: </label> 
-							<input type="checkbox" id="marca" onclick="apri()">
+							<label style="color: white"> Cerca per marca: </label> <input
+								type="checkbox" id="marca" onclick="apri()">
 
 
 							<p id='ma' style="display: none">
-								<input type="text" placeholder="Marca" id="inMarca" size="60"> 
-								<a href= # onclick="aggiungi()"> Aggiungi</a>
-								<p id="listaMarche"></p>
+								<input type="text" placeholder="Marca" id="inMarca" size="60">
+								<a href=# onclick="aggiungi()"> Aggiungi</a>
 							</p>
-							
+							<p id="listaMarche"></p>
+
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<label style="color: white"> Cerca per modello: </label> 
-							<input type="checkbox" id="modello" onclick="apri()">
+							<label style="color: white"> Cerca per modello: </label> <input
+								type="checkbox" id="modello" onclick="apri()">
 
 
 							<p id="mo" style="display: none">
-								<input type="text" placeholder="Modello" id="inModello" size="60">
-								<a href= # onclick="aggiungi()"> Aggiungi</a>
-								</p>
+								<input type="text" placeholder="Modello" id="inModello"
+									size="60"> <a href=# onclick="aggiungi()"> Aggiungi</a>
+							</p>
+							<p id="listaModelli"></p>
+
 						</div>
 					</div>
 					<div class="row">
@@ -118,8 +176,11 @@ function apri() {
 
 							<p id="co" style="display: none">
 								<input type="text" placeholder="Colore" id="inColore" size="60"> 
-								<a href= # onclick="aggiungi()"> Aggiungi</a>
-								</p>
+								<a href=# onclick="aggiungi()"> Aggiungi</a>
+							</p>
+							<p id="listaColori"></p>
+							
+							
 						</div>
 					</div>
 					<input type="reset" value="Reset" /> 
@@ -137,11 +198,10 @@ function apri() {
 					<div class="col-3">MARCA</div>
 				</div>
 				<div class="row">
-
-					<div class="col-3">{{ auto.id }}</div>
-					<div class="col-3">{{ auto.colore }}</div>
-					<div class="col-3">{{ auto.modello }}</div>
-					<div class="col-3">{{ auto.marca }}</div>
+					<div class="col-3" id="divId"></div>
+					<div class="col-3" id="divColore"></div>
+					<div class="col-3" id="divModello"></div>
+					<div class="col-3" id="divMarca"></div>
 				</div>
 			</div>
 		</div>
