@@ -1,11 +1,6 @@
-.main-hr {
-  width: 30%;
-  border: none;
-  border-top: 1px solid #c3c3c3;
-}
 .icon-btn {
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
   border: 1px solid #cdcdcd;
   background: white;
   border-radius: 25px;
@@ -14,26 +9,26 @@
   transition: width 0.2s ease-in-out;
 }
 .add-btn:hover {
-  width: 120px;
+  width: 100px;
 }
 .add-btn::before,
 .add-btn::after {
   transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
   content: "";
   position: absolute;
-  height: 4px;
+  height: 3px;
   width: 10px;
   top: calc(50% - 2px);
   background: red;
 }
 .add-btn::after {
-  right: 14px;
+  right: 7px;
   overflow: hidden;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
 }
 .add-btn::before {
-  left: 14px;
+  left: 7px;
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
 }
@@ -41,6 +36,7 @@
   outline: none;
 }
 .btn-txt {
+  color: black;
   opacity: 0;
   transition: opacity 0.2s;
 }
@@ -50,36 +46,36 @@
   border-radius: 2px;
 }
 .add-btn:hover .btn-txt {
-  opacity: 1;
+  opacity: 5;
 }
 .add-icon::after,
 .add-icon::before {
   transition: all 0.2s ease-in-out;
   content: "";
   position: absolute;
-  height: 20px;
+  height: 10px;
   width: 2px;
-  top: calc(50% - 10px);
+  top: calc(70% - 10px);
   background: red;
   overflow: hidden;
 }
 .add-icon::before {
-  left: 22px;
+  left: 10px;
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
 }
 .add-icon::after {
-  right: 22px;
+  right: 10px;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
 }
 .add-btn:hover .add-icon::before {
-  left: 15px;
-  height: 4px;
+  left: 10px;
+  height: 3px;
   top: calc(50% - 2px);
 }
 .add-btn:hover .add-icon::after {
-  right: 15px;
-  height: 4px;
+  right: 10px;
+  height: 3px;
   top: calc(50% - 2px);
 }

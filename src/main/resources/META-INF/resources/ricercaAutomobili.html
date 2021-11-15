@@ -287,23 +287,17 @@ function apri() {
 						<div class="col-6">
 							<label>Cerca per marca</label> 
 							<label class="switch"><input type="checkbox" id="marca" onclick="apri()">
-							<span class="slider round"></span></label>
-							
-							
-
-
+							<span class="slider round"></span></label>	
 							<p id='ma' style="display: none">
 								<input type="text" placeholder="Marca" id="inMarca" size="60">
-								<hr class="main-hr" />
-								  <button class="icon-btn add-btn" onclick="aggiungiMarca()">
+								
+								<button class="icon-btn add-btn" onclick="aggiungiMarca()">
 								    <div class="add-icon"></div>
 								    <div class="btn-txt">Aggiungi</div>
 								  </button>
-								  <button class="icon-btn add-btn">  
-								    <div class="btn-txt"><a href=# onclick="rimuoviMarca()"> Rimuovi</a></div>
+								  <button class="icon-btn add-btn" onclick="rimuoviMarca()">  
+								    <div class="btn-txt">Rimuovi</div>
 								  </button>
-								
-								
 							</p>
 							<p id="listaMarche"></p>
 
