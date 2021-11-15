@@ -6,7 +6,11 @@
 }
 
 body, h6 {
-	line-height: 1.6
+	line-height: 1.6;
+	color: white;
+	text-shadow: 1px 1px black;
+	font-family: Noto Sans, sans-serif;
+	
 }
 
 html {
@@ -25,19 +29,19 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 300;
 	font-family: Quicksand;
 	color: white;
-	text-shadow: 2px 3px black;
+	text-shadow: 2px 2px black;
 	font-family: Noto Sans, sans-serif;
 }
 
 h1 {
-	text-shadow: 4px 5px black;
+	text-shadow: 3px 4px black;
 	
 }
 
 
 @media ( min-width :550px) {
 	h1 {
-		font-size: 9rem
+		font-size: 6rem
 	}
 	h2 {
 		font-size: 4.2rem
@@ -77,15 +81,16 @@ h1 {
 .row [class*=" col-"], .row [class^=col-] {
 	float: left;
 	min-height: 50px;
-	margin-left: 2.083333%
+	margin-left: 2%
 }
 
 .row [class*=" col-"]:first-child, .row [class^=col-]:first-child {
-	margin-left: 0
+	margin-left: 0;
 }
 
 .row .col-1 {
-	width: 36.42291%
+	width: 36.42291%;
+	
 }
 
 .row .col-2 {
@@ -94,9 +99,6 @@ h1 {
 
 .row .col-3 {
 	width: 23.4375%;
-	color : white;
-	text-shadow: 2px 3px black;
-	
 
 }
 
@@ -261,7 +263,8 @@ input[type=email]:focus, input[type=password]:focus, input[type=search]:focus,
 }
 
 a {
-	color: #e36742
+	color: #e36742;
+	font-weight:bold;
 }
 
 ul {
@@ -323,4 +326,9 @@ pre>code {
 	white-space: -pre-wrap;
 	white-space: -o-pre-wrap;
 	word-wrap: break-word
+}
+
+.homediv{
+	display: flex;
+	justify-content: center;
 }

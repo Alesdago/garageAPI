@@ -71,7 +71,6 @@ public class DBMongo implements DBInterface{
 
 		FindIterable<Document> listaDoc = mongoClient.getDatabase("automobili").getCollection("garage").find(filtroAnd);
 		
-		LOG.debug(filtroAnd);
 
 		Gson gson = new Gson();
 		String json;
@@ -80,8 +79,6 @@ public class DBMongo implements DBInterface{
 			lista.add(gson.fromJson(json, Auto.class));
 		}
 		
-		LOG.debug("risultato ricerca: " + lista.toString());
-
 		return lista;
 	}
 

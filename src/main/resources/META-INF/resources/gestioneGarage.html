@@ -50,7 +50,6 @@
 					type: 'GET',
 					contentType: 'application/json',
 					success: function(result){
-						alert(result.id + " " + result.marca + " " + result.modello + " " + result.colore);
 						$("#divId").html(result.id);
 						$("#divColore").html(result.colore);
 						$("#divModello").html(result.modello);
@@ -136,7 +135,8 @@
 					<div class="col-3">ID</div>
 					<div class="col-3">MARCA</div>
 					<div class="col-3">MODELLO</div>
-					<div class="col-3">COLORE</div>
+					<div class="col-3">COLORE</div>				
+
 				</div>
 				<div class="row">
 					<div class="col-3" id="divId"></div>

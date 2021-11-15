@@ -4,159 +4,274 @@
 <meta charset="utf-8" />
 <title>Ricerca Automobili</title>
 <link rel="stylesheet" href="stile.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+
+
+function apri() {
+
+	  var marca = document.getElementById("marca");
+	  var modello = document.getElementById("modello");
+	  var colore = document.getElementById("colore");
+
+	  var ma = document.getElementById("ma");
+	  var mo = document.getElementById("mo");
+	  var co = document.getElementById("co");
+
 	  
-		  /*     [
+	  if (marca.checked == true){
+	    ma.style.display = "block";
+	  }
+	  else {
+	    ma.style.display = "none"; 
+	  }
+	  
+	  if(modello.checked == true){
+		  mo.style.display = "block";
+	  }
+	  else{
+		  mo.style.display = "none"
+	  }
+	  
+	  if(colore.checked == true){
+		  co.style.display = "block";
+	  }
+	  else{
+		  co.style.display = "none"
+	  }
+	}
+	
+	var marche=[];
+	
+	var colori=[];
+	
+	var modelli=[];
+	
+	
+	function aggiungiMarca(){
+		
+		marche.push(document.getElementById("inMarca").value);
+		document.getElementById('inMarca').value = "";
+		var marca = document.getElementById("marca");
+		
+		if (marca.checked == true){
+			var stringaMarche = "";
+			for(var i=0; i<marche.length; i++){
+				stringaMarche = stringaMarche.concat(marche[i] + " ");
+			}
+			$("#listaMarche").html(stringaMarche);
+			    
+		}
+		else {
+			ma.style.display = "none"; 
+		}
+		console.log(marche);
+		
+	}
+	
+	function rimuoviMarca(){
+		marche.pop();
+		console.log(marche);
+		var stringaMarche = "";
+		for(var i=0; i<marche.length; i++){
+			stringaMarche = stringaMarche.concat(marche[i] + " ");
+		}
+		$("#listaMarche").html(stringaMarche);
+	}
+	
+	function aggiungiModello(){
+		
+		modelli.push(document.getElementById("inModello").value);
+		document.getElementById('inModello').value = "";
+		var modello = document.getElementById("modello");
+		if(modello.checked == true){
+			  var stringaModelli = "";
+				for(var i=0; i<modelli.length; i++){
+					stringaModelli =  stringaModelli.concat(modelli[i] + " ");
+				}
+				$("#listaModelli").html(stringaModelli);
+		  }
+		  else{
+			  mo.style.display = "none"
+		  }
+		console.log(modelli);
+		
+	}
+	
+	function rimuoviModello(){
+		modelli.pop();
+		console.log(modelli);
+		var stringaModelli = "";
+		for(var i=0; i<modelli.length; i++){
+			stringaModelli = stringaModelli.concat(modelli[i] + " ");
+		}
+		$("#listaModelli").html(stringaModelli);
+	}
+	
+	function aggiungiColore(){
+		
+		colori.push(document.getElementById("inColore").value);
+		document.getElementById('inColore').value = "";
+		var colore = document.getElementById("colore");
+		 
+		if(colore.checked == true){
+			var stringaColori = "";
+			for(var i=0; i<colori.length; i++){
+				stringaColori = stringaColori.concat(colori[i] + " ");
+			}
+			$("#listaColori").html(stringaColori);
+		}
+		else{
+			co.style.display = "none"
+		}	  
+		  console.log(colori);
+	}
+	
+	
+	function rimuoviColore(){
+		colori.pop();
+		console.log(colori);
+		var stringaColori = "";
+		for(var i=0; i<colori.length; i++){
+			stringaColori = stringaColori.concat(colori[i] + " ");
+		}
+		$("#listaColori").html(stringaColori);
+	}
+	
+	function ricerca(){
+		 /*[
+			  {
+			    "campo": "marca",
+			    "parametri": [
+			      "fiat", "citroen"
+			    ]
+			  },
+			  {
+			    "campo": "colore",
+			    "parametri": [
+			      "verde"
+			    ]
+			  }
+		  ]
+		 
+		*/
+		
+		var marca = document.getElementById("marca");
+		var modello = document.getElementById("modello");
+		var colore = document.getElementById("colore");	
+		
+		var ricercami;
+		if(marca.checked == true && modello.checked == true && colore.checked == true){
+			ricercami = [
 				  {
 				    "campo": "marca",
-				    "parametri": [
-				      "fiat", "citroen"
-				    ]
+				    "parametri": marche
+				  },
+				  {
+				    "campo": "modello",
+				    "parametri": modelli
 				  },
 				  {
 				    "campo": "colore",
-				    "parametri": [
-				      "verde"
-				    ]
+				    "parametri": colori
 				  }
-				]
-		 */
-      
+			 ];
+		}
+		else if(marca.checked == true && modello.checked == true && colore.checked == false){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": marche
+				  },
+				  {
+				    "campo": "modello",
+				    "parametri": modelli
+				  }
+			 ];
+		}
+		else if(marca.checked == true && modello.checked == false && colore.checked == true){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": marche
+				  },
+				  {
+				    "campo": "colore",
+				    "parametri":  colori 
+				  }
+			 ];
+		}
+		else if(marca.checked == false && modello.checked == true && colore.checked == true){
+			ricercami = [
+				  {
+				    "campo": "modello",
+				    "parametri": modelli
+				  },
+				  {
+				    "campo": "colore",
+				    "parametri": colori
+				  }
+			 ];
+		}
+		else if(marca.checked == true && modello.checked == false && colore.checked == false){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": marche 
+				  }
+			 ];
+		}
+		else if(marca.checked == false && modello.checked == true && colore.checked == false){
+			ricercami = [
+				  {
+				    "campo": "modello",
+				    "parametri": modelli 
+				  }
+			 ];
+		}
+		else if(marca.checked == false && modello.checked == false && colore.checked == true){
+			ricercami = [
+				  {
+				    "campo": "colore",
+				    "parametri": colori
+				  }
+			 ];
+		}
+		var table = document.getElementById("myTable");
+		console.log(ricercami);
+		$(document).ready(function(){
+			$.ajax({ 
+					url: 'http://localhost:8080/garage/ricerca',
+					type: 'POST',
+					data: JSON.stringify(ricercami),
+					contentType: 'application/json',
+					success: function(result){
+						 for(var i=0; i<result.length; i++){
+							 var row = table.insertRow(table.length);
+							 var cellId = row.insertCell(0);
+							 var cellMarca = row.insertCell(1);
+							 var cellModello = row.insertCell(2);
+							 var cellColore = row.insertCell(3);
+							 cellId.innerHTML = result[i].id;
+							 cellMarca.innerHTML = result[i].marca;
+							 cellModello.innerHTML = result[i].modello;
+							 cellColore.innerHTML = result[i].colore;
+						 }
+						console.log(result);
+					},
+				    error: function(result){
+						console.log(result);
+					}
+			});
+		});
+	}
+	
 
-      //Controller Part
-      app.controller("GarageManagementController", function ($scope, $http) {
+	  
+	  
 
-        //Initialize page with default data which is blank in this example
-        $scope.garage = [];
-
-        $scope.parametri1 = [];
-        $scope.parametri2 = [];
-        $scope.parametri3 = [];
-        
-
-        //Now load the data from server
-        _refreshPageData();
-
-      
-        $scope.search = function () {
-        	var data;
-        	if($scope.parametri1.length != 0 && $scope.parametri2.length != 0 && $scope.parametri3.length != 0){
-        		data = [
-  	  			  {
-					    "campo": "marca",
-					    "parametri": [ $scope.parametri1 ]
-					  },
-					  {
-					    "campo": "modello",
-					    "parametri": [ $scope.parametri2 ]
-					  },
-					  {
-					    "campo": "colore",
-					    "parametri": [ $scope.parametri3 ]
-					  }
-				 ];
-        	}
-        	else if($scope.parametri1.length != 0 && $scope.parametri2.length != 0 && $scope.parametri3.length == 0){
-        		data = [
-    	  			  {
-  					    "campo": "marca",
-  					    "parametri": [ $scope.parametri1 ]
-  					  },
-  					  {
-  					    "campo": "modello",
-  					    "parametri": [ $scope.parametri2 ]
-  					  }
-  				 ];
-        	}
-        	else if($scope.parametri1.length != 0 && $scope.parametri2.length == 0 && $scope.parametri3.length != 0){
-        		data = [
-    	  			  {
-  					    "campo": "marca",
-  					    "parametri": [ $scope.parametri1 ]
-  					  },
-  					  {
-  					    "campo": "colore",
-  					    "parametri": [ $scope.parametri3 ]
-  					  }
-  				 ];
-        	}
-        	else if($scope.parametri1.length == 0 && $scope.parametri2.length != 0 && $scope.parametri3.length != 0){
-        		data = [
-    	  			  {
-  					    "campo": "modello",
-  					    "parametri": [ $scope.parametri2 ]
-  					  },
-  					  {
-  					    "campo": "colore",
-  					    "parametri": [ $scope.parametri3 ]
-  					  }
-  				 ];
-        	}
-        	else if($scope.parametri1.length != 0 && $scope.parametri2.length == 0 && $scope.parametri3.length == 0){
-        		data = [
-    	  			  {
-  					    "campo": "marca",
-  					    "parametri": [ $scope.parametri1 ]
-  					  }
-  				 ];
-        	}
-        	else if($scope.parametri1.length == 0 && $scope.parametri2.length != 0 && $scope.parametri3.length == 0){
-        		data = [
-  					  {
-  					    "campo": "modello",
-  					    "parametri": [ $scope.parametri2 ]
-  					  }
-  				 ];
-        	}
-        	else if($scope.parametri1.length == 0 && $scope.parametri2.length == 0 && $scope.parametri3.length != 0){
-        		data = [
-    	  			  {
-  					    "campo": "colore",
-  					    "parametri": [ $scope.parametri3 ]
-  					  }
-  				 ];
-        	}
-          		
-
-          $http({
-            method: 'POST',
-            url: '/garage/ricerca',
-            data: angular.toJson(data),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }).then(_success, _error);
-        };
-
-        /* Private Methods */
-
-        function _refreshPageData() {
-          $http({
-            method: 'GET',
-            url: '/garage'
-          }).then(function successCallback(response) {
-            $scope.garage = response.data;
-          }, function errorCallback(response) {
-            console.log(response.statusText);
-          });
-        }
-
-        function _success(response) {
-          _refreshPageData();
-          _clearForm();
-        }
-
-        function _error(response) {
-          alert(response.data.message || response.statusText);
-        }
-
-        //Clear the form
-        function _clearForm() {
-          $scope.parametri1 = "";
-          $scope.parametri2 = "";
-          $scope.parametri3 = ""
-        }
-      });
+     
     </script>
 </head>
 <body class="sfondo">
@@ -168,44 +283,69 @@
 
 
 				<h3>Ricerca automobili</h3>
-				<form ng-submit="search()" onSubmit = "return false;">
+				<form onSubmit="return false;">
 					<div class="row">
 						<div class="col-6">
-						<input type="text" placeholder="Marca" ng-model="parametri1"
-								size="60" />
+
+							<label style="color: white"> Cerca per marca: </label> 
+							<input type="checkbox" id="marca" onclick="apri()">
+
+
+							<p id='ma' style="display: none">
+								<input type="text" placeholder="Marca" id="inMarca" size="60">
+								<a href=# onclick="aggiungiMarca()"> Aggiungi</a>
+								<a href=# onclick="rimuoviMarca()"> Rimuovi</a>
+							</p>
+							<p id="listaMarche"></p>
+
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Modello" ng-model="parametri2"
-								size="60"/>
+							<label style="color: white"> Cerca per modello: </label>
+							 <input type="checkbox" id="modello" onclick="apri()">
+
+
+							<p id="mo" style="display: none">
+								<input type="text" placeholder="Modello" id="inModello"size="60"> 
+								<a href=# onclick="aggiungiModello()"> Aggiungi</a>
+								<a href=# onclick="rimuoviModello()"> Rimuovi</a>
+							</p>
+							<p id="listaModelli"></p>
+
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<input type="text" placeholder="Colore" ng-model="parametri3"
-								size="60"/>
+							<label style="color: white"> Cerca per colore: </label> 
+							<input type="checkbox" id="colore" onclick="apri()">
+
+
+							<p id="co" style="display: none">
+								<input type="text" placeholder="Colore" id="inColore" size="60"> 
+								<a href=# onclick="aggiungiColore()"> Aggiungi</a>
+								<a href=# onclick="rimuoviColore()"> Rimuovi</a>
+							</p>
+							<p id="listaColori"></p>
+							
+							
 						</div>
-					</div>
-					<input type="reset" value="Reset"/>
-					<input type="submit" value="Ricerca" />		
+					</div> 
+					<input type="submit" value="Ricerca" onclick="ricerca()" />
 				</form>
 			</div>
+
+
 			<div style="width: 50%; float: left;">
 				<h3>Garage</h3>
-				<div class="row">
-					<div class="col-3">ID</div>
-					<div class="col-3">COLORE</div>
-					<div class="col-3">MODELLO</div>
-					<div class="col-3">MARCA</div>
-				</div>
-				<div class="row" ng-repeat="auto in garage">
-
-					<div class="col-3">{{ auto.id }}</div>
-					<div class="col-3">{{ auto.colore }}</div>
-					<div class="col-3">{{ auto.modello }}</div>
-					<div class="col-3">{{ auto.marca }}</div>
-				</div>
+				<table id="myTable">
+				  <tr>
+				    <td>ID</td>
+				    <td>MARCA</td>
+				    <td>MODELLO</td>
+				    <td>COLORE</td>
+				  </tr>
+				</table>
 			</div>
 		</div>
 
