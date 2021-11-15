@@ -238,7 +238,7 @@ function apri() {
 				  }
 			 ];
 		}
-		
+		var table = document.getElementById("myTable");
 		console.log(ricercami);
 		$(document).ready(function(){
 			$.ajax({ 
@@ -247,12 +247,17 @@ function apri() {
 					data: JSON.stringify(ricercami),
 					contentType: 'application/json',
 					success: function(result){
-						for(var i=0; i<result.length; i++){
-							$("#divId").html(result[i].id);
-							$("#divMarca").html(result[i].marca);
-							$("#divModello").html(result[i].modello);
-							$("#divColore").html(result[i].colore);
-						}	
+						 for(var i=0; i<result.length; i++){
+							 var row = table.insertRow(table.length);
+							 var cellId = row.insertCell(0);
+							 var cellMarca = row.insertCell(1);
+							 var cellModello = row.insertCell(2);
+							 var cellColore = row.insertCell(3);
+							 cellId.innerHTML = result[i].id;
+							 cellMarca.innerHTML = result[i].marca;
+							 cellModello.innerHTML = result[i].modello;
+							 cellColore.innerHTML = result[i].colore;
+						 }
 						console.log(result);
 					},
 				    error: function(result){
@@ -333,18 +338,14 @@ function apri() {
 
 			<div style="width: 50%; float: left;">
 				<h3>Garage</h3>
-				<div class="row">
-					<div class="col-3">ID</div>
-					<div class="col-3">COLORE</div>
-					<div class="col-3">MODELLO</div>
-					<div class="col-3">MARCA</div>
-				</div>
-				<div class="row">
-					<div class="col-3" id="divId"></div>
-					<div class="col-3" id="divColore"></div>
-					<div class="col-3" id="divModello"></div>
-					<div class="col-3" id="divMarca"></div>
-				</div>
+				<table id="myTable">
+				  <tr>
+				    <td>ID</td>
+				    <td>MARCA</td>
+				    <td>MODELLO</td>
+				    <td>COLORE</td>
+				  </tr>
+				</table>
 			</div>
 		</div>
 
