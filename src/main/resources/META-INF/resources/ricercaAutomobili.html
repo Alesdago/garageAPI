@@ -141,26 +141,22 @@ function apri() {
 	}
 	
 	function ricerca(){
-		 /*[
-			  {
-			    "campo": "marca",
-			    "parametri": [
-			      "fiat", "citroen"
-			    ]
-			  },
-			  {
-			    "campo": "colore",
-			    "parametri": [
-			      "verde"
-			    ]
-			  }
-		  ]
-		 
-		*/
 		
 		var marca = document.getElementById("marca");
 		var modello = document.getElementById("modello");
 		var colore = document.getElementById("colore");	
+		
+		var table = document.getElementById("myTable");
+		
+		var x = document.getElementById("myTable").rows.length;
+		
+		if(x!=0){
+			for(var i = x - 1; i > 0; i--)
+			{
+			    table.deleteRow(i);
+			}
+		}
+	
 		
 		var ricercami;
 		if(marca.checked == true && modello.checked == true && colore.checked == true){
@@ -239,8 +235,9 @@ function apri() {
 				  }
 			 ];
 		}
-		var table = document.getElementById("myTable");
+	
 		console.log(ricercami);
+		
 		$(document).ready(function(){
 			$.ajax({ 
 					url: 'http://localhost:8080/garage/ricerca',
@@ -287,7 +284,7 @@ function apri() {
 				<form onSubmit="return false;">
 					<div class="row">
 						<div class="col-6">
-							<label style="color: white">Cerca per marca</label> 
+							<label>Cerca per marca</label> 
 							<label class="switch"><input type="checkbox" id="marca" onclick="apri()">
 							<span class="slider round"></span></label>
 							
@@ -305,7 +302,7 @@ function apri() {
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<label style="color: white">Cerca per modello</label>
+							<label>Cerca per modello</label>
 							<label class="switch"><input type="checkbox" id="modello" onclick="apri()">
 							<span class="slider round"></span></label>
 
@@ -321,7 +318,7 @@ function apri() {
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<label style="color: white">Cerca per colore</label> 
+							<label>Cerca per colore</label> 
 							<label class="switch"><input type="checkbox" id="colore" onclick="apri()">
 							<span class="slider round"></span></label>
 
@@ -344,11 +341,11 @@ function apri() {
 			<div style="width: 50%; float: left;">
 				<h3>Garage</h3>
 				<table id="myTable">
-				  <tr>
-				    <td>ID</td>
-				    <td>MARCA</td>
-				    <td>MODELLO</td>
-				    <td>COLORE</td>
+				  <tr class="header">
+				    <th>ID</th>
+				    <th>MARCA</th>
+				    <th>MODELLO</th>
+				    <th>COLORE</th>
 				  </tr>
 				</table>
 			</div>
