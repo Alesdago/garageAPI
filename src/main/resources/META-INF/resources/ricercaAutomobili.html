@@ -5,6 +5,7 @@
 <title>Ricerca Automobili</title>
 <link rel="stylesheet" href="stile.css" />
 <link rel="stylesheet" href="check.css" />
+<link rel="stylesheet" href="provaButton.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -293,8 +294,16 @@ function apri() {
 
 							<p id='ma' style="display: none">
 								<input type="text" placeholder="Marca" id="inMarca" size="60">
-								<a href=# onclick="aggiungiMarca()"> Aggiungi</a>
-								<a href=# onclick="rimuoviMarca()"> Rimuovi</a>
+								<hr class="main-hr" />
+								  <button class="icon-btn add-btn" onclick="aggiungiMarca()">
+								    <div class="add-icon"></div>
+								    <div class="btn-txt">Aggiungi</div>
+								  </button>
+								  <button class="icon-btn add-btn">  
+								    <div class="btn-txt"><a href=# onclick="rimuoviMarca()"> Rimuovi</a></div>
+								  </button>
+								
+								
 							</p>
 							<p id="listaMarche"></p>
 
