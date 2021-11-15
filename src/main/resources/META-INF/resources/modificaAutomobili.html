@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Modifica Automobili</title>
+<link rel="stylesheet" href="stile.css" />
+
+<script type="text/javascript">
+	
+	function modificaGarage(){
+		var id = document.getElementById("modifica").elements[0].value;
+		var marca = document.getElementById("modifica").elements[1].value;
+		var modello = document.getElementById("modifica").elements[2].value;
+		var colore = document.getElementById("modifica").elements[3].value;
+		
+		const data = {"colore": colore,"modello": modello,  "marca": marca,  "id": 0};
+		
+		const response = fetch('http://localhost:8080/garage/auto/'+id,{
+			method: 'PUT',
+			headers: {
+			      'Content-Type': 'application/json'
+			    },
+			body: JSON.stringify(data),
+		});
+		
+		alert("garage modificato con successo!");
+		return response.json();
+	}
+	
+	
+	function modificaCampo(){
+		var id = document.getElementById("modificaC").elements[0].value;
+		var campo = document.getElementById("modificaC").elements[1].value;
+		var parametro = document.getElementById("modificaC").elements[2].value;
+		
+		
+		const response = fetch('http://localhost:8080/garage/auto/'+id + '/modifica-' + campo + '/' + parametro, {
+			method: 'PATCH',
+			headers: {
+			      'Content-Type': 'application/json'
+			    },
+		});
+		
+		alert(campo + " auto modificato con successo!");
+		
+	}
+	
+</script>
+
+</head>
+
+<body class="sfondo">
+
+	<div class="container">
+		<h1 align="center">Modifica Automobili</h1>
+
+		<div style="width: 100%; float: left;">
+			<div style="width: 50%; float: left;">
+
+
+				<h3>Modifica Garage via ID</h3>
+				<form id="modifica" onSubmit = "return false;">
+					<div class="row">
+						<div class="col-6">
+							<input type="text" placeholder="Id" size="60" required="required" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<input type="text" placeholder="Marca" size="60"
+								required="required" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<input type="text" placeholder="Modello" size="60"
+								required="required" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<input type="text" placeholder="Colore" size="60"
+								required="required" />
+						</div>
+					</div>
+					<input type="reset" value="Reset" /> <input type="submit"
+						value="Invia modifica" onclick="modificaGarage()" />
+
+				</form>
+			</div>
+
+
+			<div style="width: 50%; float: left;">
+				<h3>Modifica campo</h3>
+				<form id="modificaC" onSubmit = "return false;">
+					<div class="row">
+						<div class="col-6">
+							<input type="text" placeholder="Id" size="60" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<select name="campo">
+								<option value="">Scegli il campo</option>
+								<option value="marca">Marca</option>
+								<option value="modello">Modello</option>
+								<option value="colore">Colore</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<input type="text" placeholder="Parametro" size="60" />
+						</div>
+					</div>
+					<input type="reset" value="Reset" /> <input type="submit"
+						value="Modifica" onclick="modificaCampo()" />
+
+				</form>
+			</div>
+		</div>
+
+
+		<div align="center">
+			<a href="home.html"><button>Torna alla home</button></a>
+		</div>
+	</div>
+</body>
+</html>

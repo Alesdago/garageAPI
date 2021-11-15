@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Ricerca Automobili</title>
+<link rel="stylesheet" href="stile.css" />
+<link rel="stylesheet" href="check.css" />
+<link rel="stylesheet" href="provaButton.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+function apri() {
+
+	  var marca = document.getElementById("marca");
+	  var modello = document.getElementById("modello");
+	  var colore = document.getElementById("colore");
+
+	  var ma = document.getElementById("ma");
+	  var mo = document.getElementById("mo");
+	  var co = document.getElementById("co");
+
+	  
+	  if (marca.checked == true){
+	    ma.style.display = "block";
+	  }
+	  else {
+	    ma.style.display = "none"; 
+	  }
+	  
+	  if(modello.checked == true){
+		  mo.style.display = "block";
+	  }
+	  else{
+		  mo.style.display = "none"
+	  }
+	  
+	  if(colore.checked == true){
+		  co.style.display = "block";
+	  }
+	  else{
+		  co.style.display = "none"
+	  }
+	}
+	
+	var marche=[];
+	
+	var colori=[];
+	
+	var modelli=[];
+	
+	
+	function aggiungiMarca(){
+		
+		marche.push(document.getElementById("inMarca").value);
+		document.getElementById('inMarca').value = "";
+		var marca = document.getElementById("marca");
+		
+		var stringaMarche = "";
+		for(var i=0; i<marche.length; i++){
+			stringaMarche = stringaMarche.concat(marche[i] + " ");
+		}
+		$("#listaMarche").html(stringaMarche);
+	
+		console.log(marche);
+		
+	}
+	
+	function rimuoviMarca(){
+		marche.pop();
+		console.log(marche);
+		var stringaMarche = "";
+		for(var i=0; i<marche.length; i++){
+			stringaMarche = stringaMarche.concat(marche[i] + " ");
+		}
+		$("#listaMarche").html(stringaMarche);
+	}
+	
+	function aggiungiModello(){
+		
+		modelli.push(document.getElementById("inModello").value);
+		document.getElementById('inModello').value = "";
+		var modello = document.getElementById("modello");
+		
+			  var stringaModelli = "";
+				for(var i=0; i<modelli.length; i++){
+					stringaModelli =  stringaModelli.concat(modelli[i] + " ");
+				}
+				$("#listaModelli").html(stringaModelli);
+		
+		console.log(modelli);
+		
+	}
+	
+	function rimuoviModello(){
+		modelli.pop();
+		console.log(modelli);
+		var stringaModelli = "";
+		for(var i=0; i<modelli.length; i++){
+			stringaModelli = stringaModelli.concat(modelli[i] + " ");
+		}
+		$("#listaModelli").html(stringaModelli);
+	}
+	
+	function aggiungiColore(){
+		
+		colori.push(document.getElementById("inColore").value);
+		document.getElementById('inColore').value = "";
+		var colore = document.getElementById("colore");
+		 
+		var stringaColori = "";
+		for(var i=0; i<colori.length; i++){
+			stringaColori = stringaColori.concat(colori[i] + " ");
+		}
+		$("#listaColori").html(stringaColori);
+	
+		  console.log(colori);
+	}
+	
+	
+	function rimuoviColore(){
+		colori.pop();
+		console.log(colori);
+		var stringaColori = "";
+		for(var i=0; i<colori.length; i++){
+			stringaColori = stringaColori.concat(colori[i] + " ");
+		}
+		$("#listaColori").html(stringaColori);
+	}
+	
+	function ricerca(){
+		
+		
+		var table = document.getElementById("myTable");
+		
+		var x = document.getElementById("myTable").rows.length;
+		
+		if(x!=0){
+			for(var i = x - 1; i > 0; i--)
+			{
+			    table.deleteRow(i);
+			}
+		}
+	
+		
+		var ricercami;
+		if(marche.length!=0 && modelli.length!=0 && colori.length!=0){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": marche
+				  },
+				  {
+				    "campo": "modello",
+				    "parametri": modelli
+				  },
+				  {
+				    "campo": "colore",
+				    "parametri": colori
+				  }
+			 ];
+		}
+		else if(marche.length!=0 && modelli.length!=0 && colori.length==0){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": marche
+				  },
+				  {
+				    "campo": "modello",
+				    "parametri": modelli
+				  }
+			 ];
+		}
+		else if(marche.length!=0 && modelli.length==0 && colori.length!=0){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": marche
+				  },
+				  {
+				    "campo": "colore",
+				    "parametri":  colori 
+				  }
+			 ];
+		}
+		else if(marche.length==0 && modelli.length!=0 && colori.length!=0){
+			ricercami = [
+				  {
+				    "campo": "modello",
+				    "parametri": modelli
+				  },
+				  {
+				    "campo": "colore",
+				    "parametri": colori
+				  }
+			 ];
+		}
+		else if(marche.length!=0 && modelli.length==0 && colori.length==0){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": marche 
+				  }
+			 ];
+		}
+		else if(marche.length==0 && modelli.length!=0 && colori.length==0){
+			ricercami = [
+				  {
+				    "campo": "modello",
+				    "parametri": modelli 
+				  }
+			 ];
+		}
+		else if(marche.length==0 && modelli.length==0 && colori.length!=0){
+			ricercami = [
+				  {
+				    "campo": "colore",
+				    "parametri": colori
+				  }
+			 ];
+		}
+	
+		console.log(ricercami);
+		
+		$(document).ready(function(){
+			$.ajax({ 
+					url: 'http://localhost:8080/garage/ricerca',
+					type: 'POST',
+					data: JSON.stringify(ricercami),
+					contentType: 'application/json',
+					success: function(result){
+						 for(var i=0; i<result.length; i++){
+							 var row = table.insertRow(table.length);
+							 var cellId = row.insertCell(0);
+							 var cellMarca = row.insertCell(1);
+							 var cellModello = row.insertCell(2);
+							 var cellColore = row.insertCell(3);
+							 cellId.innerHTML = result[i].id;
+							 cellMarca.innerHTML = result[i].marca;
+							 cellModello.innerHTML = result[i].modello;
+							 cellColore.innerHTML = result[i].colore;
+						 }
+						console.log(result);
+					},
+				    error: function(result){
+						console.log(result);
+					}
+			});
+		});
+	}
+	
+
+	  
+	  
+
+     
+    </script>
+</head>
+<body class="sfondo">
+	<div class="container">
+		<h1 align="center">Ricerca automobili nel garage</h1>
+
+		<div style="width: 100%; float: left;">
+			<div style="width: 50%; float: left;">
+
+
+				<h3>Ricerca automobili</h3>
+				<form onSubmit="return false;">
+					<div class="row">
+						<div class="col-6">
+							<label>Cerca per marca</label> 
+							<p id='ma'>
+								<input type="text" placeholder="Marca" id="inMarca" size="60">
+								
+								<button class="icon-btn add-btn" onclick="aggiungiMarca()">
+								    <div class="add-icon"></div>
+								    <div class="btn-txt">Aggiungi</div>
+								  </button>
+								  <button class="icon-btn add-btn" onclick="rimuoviMarca()">  
+								    <div class="btn-txt">Rimuovi</div>
+								  </button>
+							</p>
+							<p id="listaMarche"></p>
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<label>Cerca per modello</label>
+
+
+							<p id="mo">
+								<input type="text" placeholder="Modello" id="inModello"size="60"> 
+								<a href=# onclick="aggiungiModello()"> Aggiungi</a>
+								<a href=# onclick="rimuoviModello()"> Rimuovi</a>
+							</p>
+							<p id="listaModelli"></p>
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<label>Cerca per colore</label> 
+
+							<p id="co" >
+								<input type="text" placeholder="Colore" id="inColore" size="60"> 
+								<a href=# onclick="aggiungiColore()"> Aggiungi</a>
+								<a href=# onclick="rimuoviColore()"> Rimuovi</a>
+							</p>
+							<p id="listaColori"></p>
+							
+							
+						</div>
+					</div> 
+					<input type="submit" value="Ricerca" onclick="ricerca()" />
+				</form>
+			</div>
+
+
+			<div style="width: 50%; float: left;">
+				<h3>Garage</h3>
+				<table id="myTable">
+				  <tr class="header">
+				    <th>ID</th>
+				    <th>MARCA</th>
+				    <th>MODELLO</th>
+				    <th>COLORE</th>
+				  </tr>
+				</table>
+			</div>
+		</div>
+
+		<div align="center">
+			<a href="home.html"><button>Torna alla home</button></a>
+		</div>
+	</div>
+</body>
+</html>
