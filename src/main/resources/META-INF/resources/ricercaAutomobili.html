@@ -48,34 +48,44 @@ function apri() {
 	
 	var modelli=[];
 	
-	function aggiungi(){
+	
+	function aggiungiMarca(){
 		
 		marche.push(document.getElementById("inMarca").value);
-		modelli.push(document.getElementById("inModello").value);
-		colori.push(document.getElementById("inColore").value);
-		
 		document.getElementById('inMarca').value = "";
-		document.getElementById('inModello').value = "";
-		document.getElementById('inColore').value = "";
-		
-		
 		var marca = document.getElementById("marca");
-		var modello = document.getElementById("modello");
-		var colore = document.getElementById("colore");
 		
-		  if (marca.checked == true){
+		if (marca.checked == true){
 			var stringaMarche = "";
 			for(var i=0; i<marche.length; i++){
 				stringaMarche = stringaMarche.concat(marche[i] + " ");
 			}
 			$("#listaMarche").html(stringaMarche);
-		    
-		  }
-		  else {
-		    ma.style.display = "none"; 
-		  }
-		  
-		  if(modello.checked == true){
+			    
+		}
+		else {
+			ma.style.display = "none"; 
+		}
+		console.log(marche);
+		
+	}
+	
+	function rimuoviMarca(){
+		marche.pop();
+		console.log(marche);
+		var stringaMarche = "";
+		for(var i=0; i<marche.length; i++){
+			stringaMarche = stringaMarche.concat(marche[i] + " ");
+		}
+		$("#listaMarche").html(stringaMarche);
+	}
+	
+	function aggiungiModello(){
+		
+		modelli.push(document.getElementById("inModello").value);
+		document.getElementById('inModello').value = "";
+		var modello = document.getElementById("modello");
+		if(modello.checked == true){
 			  var stringaModelli = "";
 				for(var i=0; i<modelli.length; i++){
 					stringaModelli =  stringaModelli.concat(modelli[i] + " ");
@@ -85,17 +95,48 @@ function apri() {
 		  else{
 			  mo.style.display = "none"
 		  }
-		  
-		  if(colore.checked == true){
-			  var stringaColori = "";
-				for(var i=0; i<colori.length; i++){
-					stringaColori = stringaColori.concat(colori[i] + " ");
-				}
-				$("#listaColori").html(stringaColori);
-		  }
-		  else{
-			  co.style.display = "none"
-			  }
+		console.log(modelli);
+		
+	}
+	
+	function rimuoviModello(){
+		modelli.pop();
+		console.log(modelli);
+		var stringaModelli = "";
+		for(var i=0; i<modelli.length; i++){
+			stringaModelli = stringaModelli.concat(modelli[i] + " ");
+		}
+		$("#listaModelli").html(stringaModelli);
+	}
+	
+	function aggiungiColore(){
+		
+		colori.push(document.getElementById("inColore").value);
+		document.getElementById('inColore').value = "";
+		var colore = document.getElementById("colore");
+		 
+		if(colore.checked == true){
+			var stringaColori = "";
+			for(var i=0; i<colori.length; i++){
+				stringaColori = stringaColori.concat(colori[i] + " ");
+			}
+			$("#listaColori").html(stringaColori);
+		}
+		else{
+			co.style.display = "none"
+		}	  
+		  console.log(colori);
+	}
+	
+	
+	function rimuoviColore(){
+		colori.pop();
+		console.log(colori);
+		var stringaColori = "";
+		for(var i=0; i<colori.length; i++){
+			stringaColori = stringaColori.concat(colori[i] + " ");
+		}
+		$("#listaColori").html(stringaColori);
 	}
 	
 	function ricerca(){
@@ -114,10 +155,6 @@ function apri() {
 			  }
 		  ]
 		 
-		 
-		 PROBLEMI:
-		
-			 2 I NOSTRI PARAMETRI NON HANNO LE VIRGOLETTE
 		*/
 		
 		var marca = document.getElementById("marca");
@@ -245,13 +282,14 @@ function apri() {
 					<div class="row">
 						<div class="col-6">
 
-							<label style="color: white"> Cerca per marca: </label> <input
-								type="checkbox" id="marca" onclick="apri()">
+							<label style="color: white"> Cerca per marca: </label> 
+							<input type="checkbox" id="marca" onclick="apri()">
 
 
 							<p id='ma' style="display: none">
 								<input type="text" placeholder="Marca" id="inMarca" size="60">
-								<a href=# onclick="aggiungi()"> Aggiungi</a>
+								<a href=# onclick="aggiungiMarca()"> Aggiungi</a>
+								<a href=# onclick="rimuoviMarca()"> Rimuovi</a>
 							</p>
 							<p id="listaMarche"></p>
 
@@ -259,13 +297,14 @@ function apri() {
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<label style="color: white"> Cerca per modello: </label> <input
-								type="checkbox" id="modello" onclick="apri()">
+							<label style="color: white"> Cerca per modello: </label>
+							 <input type="checkbox" id="modello" onclick="apri()">
 
 
 							<p id="mo" style="display: none">
-								<input type="text" placeholder="Modello" id="inModello"
-									size="60"> <a href=# onclick="aggiungi()"> Aggiungi</a>
+								<input type="text" placeholder="Modello" id="inModello"size="60"> 
+								<a href=# onclick="aggiungiModello()"> Aggiungi</a>
+								<a href=# onclick="rimuoviModello()"> Rimuovi</a>
 							</p>
 							<p id="listaModelli"></p>
 
@@ -279,7 +318,8 @@ function apri() {
 
 							<p id="co" style="display: none">
 								<input type="text" placeholder="Colore" id="inColore" size="60"> 
-								<a href=# onclick="aggiungi()"> Aggiungi</a>
+								<a href=# onclick="aggiungiColore()"> Aggiungi</a>
+								<a href=# onclick="rimuoviColore()"> Rimuovi</a>
 							</p>
 							<p id="listaColori"></p>
 							
