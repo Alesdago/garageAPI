@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <title>Ricerca Automobili</title>
 <link rel="stylesheet" href="stile.css" />
+<link rel="stylesheet" href="check.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -286,9 +287,11 @@ function apri() {
 				<form onSubmit="return false;">
 					<div class="row">
 						<div class="col-6">
-
-							<label style="color: white"> Cerca per marca: </label> 
-							<input type="checkbox" id="marca" onclick="apri()">
+							<label style="color: white">Cerca per marca</label> 
+							<label class="switch"><input type="checkbox" id="marca" onclick="apri()">
+							<span class="slider round"></span></label>
+							
+							
 
 
 							<p id='ma' style="display: none">
@@ -302,8 +305,9 @@ function apri() {
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<label style="color: white"> Cerca per modello: </label>
-							 <input type="checkbox" id="modello" onclick="apri()">
+							<label style="color: white">Cerca per modello</label>
+							<label class="switch"><input type="checkbox" id="modello" onclick="apri()">
+							<span class="slider round"></span></label>
 
 
 							<p id="mo" style="display: none">
@@ -317,8 +321,9 @@ function apri() {
 					</div>
 					<div class="row">
 						<div class="col-6">
-							<label style="color: white"> Cerca per colore: </label> 
-							<input type="checkbox" id="colore" onclick="apri()">
+							<label style="color: white">Cerca per colore</label> 
+							<label class="switch"><input type="checkbox" id="colore" onclick="apri()">
+							<span class="slider round"></span></label>
 
 
 							<p id="co" style="display: none">
