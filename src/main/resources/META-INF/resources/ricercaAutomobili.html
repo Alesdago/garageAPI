@@ -57,17 +57,12 @@ function apri() {
 		document.getElementById('inMarca').value = "";
 		var marca = document.getElementById("marca");
 		
-		if (marca.checked == true){
-			var stringaMarche = "";
-			for(var i=0; i<marche.length; i++){
-				stringaMarche = stringaMarche.concat(marche[i] + " ");
-			}
-			$("#listaMarche").html(stringaMarche);
-			    
+		var stringaMarche = "";
+		for(var i=0; i<marche.length; i++){
+			stringaMarche = stringaMarche.concat(marche[i] + " ");
 		}
-		else {
-			ma.style.display = "none"; 
-		}
+		$("#listaMarche").html(stringaMarche);
+	
 		console.log(marche);
 		
 	}
@@ -87,16 +82,13 @@ function apri() {
 		modelli.push(document.getElementById("inModello").value);
 		document.getElementById('inModello').value = "";
 		var modello = document.getElementById("modello");
-		if(modello.checked == true){
+		
 			  var stringaModelli = "";
 				for(var i=0; i<modelli.length; i++){
 					stringaModelli =  stringaModelli.concat(modelli[i] + " ");
 				}
 				$("#listaModelli").html(stringaModelli);
-		  }
-		  else{
-			  mo.style.display = "none"
-		  }
+		
 		console.log(modelli);
 		
 	}
@@ -117,16 +109,12 @@ function apri() {
 		document.getElementById('inColore').value = "";
 		var colore = document.getElementById("colore");
 		 
-		if(colore.checked == true){
-			var stringaColori = "";
-			for(var i=0; i<colori.length; i++){
-				stringaColori = stringaColori.concat(colori[i] + " ");
-			}
-			$("#listaColori").html(stringaColori);
+		var stringaColori = "";
+		for(var i=0; i<colori.length; i++){
+			stringaColori = stringaColori.concat(colori[i] + " ");
 		}
-		else{
-			co.style.display = "none"
-		}	  
+		$("#listaColori").html(stringaColori);
+	
 		  console.log(colori);
 	}
 	
@@ -143,9 +131,6 @@ function apri() {
 	
 	function ricerca(){
 		
-		var marca = document.getElementById("marca");
-		var modello = document.getElementById("modello");
-		var colore = document.getElementById("colore");	
 		
 		var table = document.getElementById("myTable");
 		
@@ -160,7 +145,7 @@ function apri() {
 	
 		
 		var ricercami;
-		if(marca.checked == true && modello.checked == true && colore.checked == true){
+		if(marche.length!=0 && modelli.length!=0 && colori.length!=0){
 			ricercami = [
 				  {
 				    "campo": "marca",
@@ -176,7 +161,7 @@ function apri() {
 				  }
 			 ];
 		}
-		else if(marca.checked == true && modello.checked == true && colore.checked == false){
+		else if(marche.length!=0 && modelli.length!=0 && colori.length==0){
 			ricercami = [
 				  {
 				    "campo": "marca",
@@ -188,7 +173,7 @@ function apri() {
 				  }
 			 ];
 		}
-		else if(marca.checked == true && modello.checked == false && colore.checked == true){
+		else if(marche.length!=0 && modelli.length==0 && colori.length!=0){
 			ricercami = [
 				  {
 				    "campo": "marca",
@@ -200,7 +185,7 @@ function apri() {
 				  }
 			 ];
 		}
-		else if(marca.checked == false && modello.checked == true && colore.checked == true){
+		else if(marche.length==0 && modelli.length!=0 && colori.length!=0){
 			ricercami = [
 				  {
 				    "campo": "modello",
@@ -212,7 +197,7 @@ function apri() {
 				  }
 			 ];
 		}
-		else if(marca.checked == true && modello.checked == false && colore.checked == false){
+		else if(marche.length!=0 && modelli.length==0 && colori.length==0){
 			ricercami = [
 				  {
 				    "campo": "marca",
@@ -220,7 +205,7 @@ function apri() {
 				  }
 			 ];
 		}
-		else if(marca.checked == false && modello.checked == true && colore.checked == false){
+		else if(marche.length==0 && modelli.length!=0 && colori.length==0){
 			ricercami = [
 				  {
 				    "campo": "modello",
@@ -228,7 +213,7 @@ function apri() {
 				  }
 			 ];
 		}
-		else if(marca.checked == false && modello.checked == false && colore.checked == true){
+		else if(marche.length==0 && modelli.length==0 && colori.length!=0){
 			ricercami = [
 				  {
 				    "campo": "colore",
@@ -286,9 +271,7 @@ function apri() {
 					<div class="row">
 						<div class="col-6">
 							<label>Cerca per marca</label> 
-							<label class="switch"><input type="checkbox" id="marca" onclick="apri()">
-							<span class="slider round"></span></label>	
-							<p id='ma' style="display: none">
+							<p id='ma'>
 								<input type="text" placeholder="Marca" id="inMarca" size="60">
 								
 								<button class="icon-btn add-btn" onclick="aggiungiMarca()">
@@ -306,11 +289,9 @@ function apri() {
 					<div class="row">
 						<div class="col-6">
 							<label>Cerca per modello</label>
-							<label class="switch"><input type="checkbox" id="modello" onclick="apri()">
-							<span class="slider round"></span></label>
 
 
-							<p id="mo" style="display: none">
+							<p id="mo">
 								<input type="text" placeholder="Modello" id="inModello"size="60"> 
 								<a href=# onclick="aggiungiModello()"> Aggiungi</a>
 								<a href=# onclick="rimuoviModello()"> Rimuovi</a>
@@ -322,11 +303,8 @@ function apri() {
 					<div class="row">
 						<div class="col-6">
 							<label>Cerca per colore</label> 
-							<label class="switch"><input type="checkbox" id="colore" onclick="apri()">
-							<span class="slider round"></span></label>
 
-
-							<p id="co" style="display: none">
+							<p id="co" >
 								<input type="text" placeholder="Colore" id="inColore" size="60"> 
 								<a href=# onclick="aggiungiColore()"> Aggiungi</a>
 								<a href=# onclick="rimuoviColore()"> Rimuovi</a>
