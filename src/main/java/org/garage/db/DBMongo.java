@@ -59,6 +59,7 @@ public class DBMongo implements DBInterface{
 			List<Bson> listaFiltriOr = new ArrayList<Bson>();
 
 			for(String parametro: condizione.getParametri()) {
+				parametro = parametro.toLowerCase();
 				Bson filtro = eq(condizione.getCampo(),parametro);
 				listaFiltriOr.add(filtro);
 			}
@@ -76,7 +77,17 @@ public class DBMongo implements DBInterface{
 		String json;
 		for(Document doc:listaDoc) {
 			json = doc.toJson();
-			lista.add(gson.fromJson(json, Auto.class));
+			Auto a = gson.fromJson(json, Auto.class);
+			
+			String colore = a.getColore().substring(0, 1).toUpperCase() + a.getColore().substring(1);
+			String modello = a.getModello().substring(0, 1).toUpperCase() + a.getModello().substring(1);
+			String marca = a.getMarca().substring(0, 1).toUpperCase() + a.getMarca().substring(1);
+			
+			a.setColore(colore);
+			a.setMarca(marca);
+			a.setModello(modello);
+			
+			lista.add(a);
 		}
 		
 		return lista;
@@ -101,9 +112,9 @@ public class DBMongo implements DBInterface{
 
 		Document document = new Document()
 				.append("id", auto.getId())
-				.append("colore", auto.getColore())
-				.append("modello", auto.getModello())
-				.append("marca", auto.getMarca());
+				.append("colore", auto.getColore().toLowerCase())
+				.append("modello", auto.getModello().toLowerCase())
+				.append("marca", auto.getMarca().toLowerCase());
 		mongoClient.getDatabase("automobili").getCollection("garage").insertOne(document);
 		LOG.info("auto aggiunta al database");
 		
