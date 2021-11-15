@@ -327,3 +327,8 @@ pre>code {
 	white-space: -o-pre-wrap;
 	word-wrap: break-word
 }
+
+.homediv{
+	display: flex;
+	justify-content: center;
+}
