@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Gestione Garage</title>
+<link rel="stylesheet" href="stile.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	function add() {
+		var marca = document.getElementById("aggiungi").elements[0].value;
+		var modello = document.getElementById("aggiungi").elements[1].value;
+		var colore = document.getElementById("aggiungi").elements[2].value;
+
+		const data = {
+			"colore" : colore,
+			"modello" : modello,
+			"marca" : marca
+		};
+		
+
+		$(document).ready(function(){
+			$.ajax({ 
+					url: 'http://localhost:8080/garage',
+					type: 'POST',
+					data: JSON.stringify(data),
+					contentType: 'application/json',
+					success: function(result){
+						$('#aggiunta').text(JSON.stringify(data) + " AGGIUNTA CON SUCCESSO!");
+						console.log(data);
+					},
+				    error: function(result){
+						console.log(result);
+					}
+			});
+		});
+
+
+	}
+
+	function del() {
+		var id = document.getElementById("elimina").elements[0].value;
+
+		$(document).ready(function(){
+			$.ajax({ 
+					url: 'http://localhost:8080/garage/auto/' + id,
+					type: 'DELETE',
+					data: id,
+					contentType: 'application/json',
+					success: function(result){
+						$('#eliminata').text(" ELIMINATA CON SUCCESSO!");
+						
+					},
+				    error: function(result){
+						
+					}
+			});
+		});
+
+	}
+
+	function get() {
+		var id = document.getElementById("recupera").elements[0].value;
+
+		$(document).ready(function(){
+			$.ajax({ 
+					url: 'http://localhost:8080/garage/auto/'+id,
+					type: 'GET',
+					data: id,
+					contentType: 'application/json',
+					success: function(result){
+						
+						
+						console.log(result);
+						$("#divId").html(result.id); 
+					      $("#divColore").html(result.colore); 
+					      $("#divModello").html(result.modello); 
+					      $("#divMarca").html(result.marca);
+
+					},
+				    error: function(result){
+						
+					}
+			});
+		});
+}
+	
+</script>
+</head>
+<body>
+	<div class="container">
+		<h1 align="center">GESTIONE GARAGE</h1>
+
+		<div style="width: 100%; float: left;">
+			<div style="width: 50%; float: left;">
+
+
+				<h3>Aggiungi un'automobile</h3>
+				<form id='aggiungi' onSubmit="return false;">
+					<div class="row">
+						<div class="col-6">
+							<input type="text" placeholder="Marca" size="60"
+								required="required" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<input type="text" placeholder="Modello" size="60"
+								required="required" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<input type="text" placeholder="Colore" size="60"
+								required="required" />
+						</div>
+					</div>
+					<input type="reset" value="Reset" /> <input type="submit"
+						value="Aggiungi" onclick='add()' />
+				</form>
+				<div id="aggiunta"></div>
+			</div>
+
+			<div style="width: 50%; float: left;">
+
+
+				<h3>Elimina un'automobile</h3>
+				<form id='elimina' onSubmit="return false;">
+					<div class="row">
+						<div class="col-6">
+							<input type="text" placeholder="Id" size="60" />
+						</div>
+					</div>
+					<input type="reset" value="Reset" /> <input type="submit"
+						value="Elimina" onclick='del()' />
+
+				</form>
+				<div id="eliminata"></div>
+			</div>
+		</div>
+
+		<div style="width: 100%; float: left;">
+			<div style="width: 50%; float: left;">
+
+
+				<h3>Recupera un'automobile tramite il suo id</h3>
+				<form id='recupera' onSubmit="return false;">
+					<div class="row">
+						<div class="col-6">
+							<input type="text" placeholder="Id" size="60" />
+						</div>
+					</div>
+					<input type="reset" value="Reset" /> <input type="submit"
+						value="Recupera" onclick='get()' /> <br>
+					<div id="auto"></div>
+					<br>
+			</div>
+
+			</form>
+
+			<div style="width: 50%; float: left;">
+				<h3>Garage</h3>
+				<div class="row">
+					<div class="col-3">ID</div>
+					<div class="col-3">MARCA</div>
+					<div class="col-3">MODELLO</div>
+					<div class="col-3">COLORE</div>
+
+				</div>
+				<div class="row">
+					<div class="col-3" id="divId"></div>
+					<div class="col-3" id="divMarca"></div>
+					<div class="col-3" id="divModello"></div>
+					<div class="col-3" id="divColore"></div>
+				</div>
+			</div>
+		</div>
+
+		<div align="center">
+			<a href="home.html"><button>Torna alla home</button></a>
+		</div>
+	</div>
+</body>
+</html>

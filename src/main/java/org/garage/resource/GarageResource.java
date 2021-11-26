@@ -31,7 +31,7 @@ public class GarageResource {
 
 	private static final Logger LOG = Logger.getLogger(GarageResource.class);
 
-
+	
 	@POST
 	public void aggiungiAuto(Auto auto){
 		garage.aggiungiAuto(auto);
