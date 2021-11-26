@@ -16,16 +16,16 @@
 		var modello = document.getElementById("modifica").elements[2].value;
 		var colore = document.getElementById("modifica").elements[3].value;
 		
-		const data = [id, {"colore": colore,"modello": modello,  "marca": marca,  "id": 0}];
+		const data = {"colore": colore,"modello": modello,  "marca": marca,  "id": 0};
 		
 		$(document).ready(function(){
 			$.ajax({ 
-					url: 'servletModificaGarage',
-					type: 'POST',
+					url: 'http://localhost:8080/garage/auto/' + id,
+					type: 'PUT',
 					data: JSON.stringify(data),
 					contentType: 'application/json',
 					success: function(data, textStatus, jqXHR){
-						$('#modificato').text(JSON.stringify(data));
+						$('#modificato').text("Auto all'id: " + id + " modificata con successo");
 						console.log(data);
 					},
 					error: function(jqXHR, textStatus, errorThrown){
@@ -45,13 +45,12 @@
 		
 		$(document).ready(function(){
 			$.ajax({ 
-					url: 'servletModificaCampo',
-					type: 'POST',
-					data: JSON.stringify(data),
+					url: 'http://localhost:8080/garage/auto/'+ id + '/modifica-' + campo + '/' + parametro,
+					type: 'PATCH',
 					contentType: 'application/json',
-					success: function(data, textStatus, jqXHR){
-						$('#campoModificato').text(JSON.stringify(data));
-						console.log(data);
+					success: function(data,textStatus, jqHXR){
+						$('#campoModificato').text("Campo: " + campo + " modificato per l'auto con l'id: " + id);
+						console.log(textStatus);
 					},
 					error: function(jqXHR, textStatus, errorThrown){
 						console.log(textStatus);}
