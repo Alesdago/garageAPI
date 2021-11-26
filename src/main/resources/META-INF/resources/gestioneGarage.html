@@ -19,9 +19,11 @@
 			"modello" : modello,
 			"marca" : marca
 		};
-		
-
-		$(document).ready(function(){
+		if(colore==""||modello===""||marca===""){
+			$('#aggiunta').text("inserire tutti i campi")
+		}
+		else{
+			$(document).ready(function(){
 			$.ajax({ 
 					url: 'http://localhost:8080/garage',
 					type: 'POST',
@@ -36,6 +38,7 @@
 					}
 			});
 		});
+		}
 
 
 	}
@@ -54,7 +57,7 @@
 						
 					},
 				    error: function(result){
-						
+				    	$('#eliminata').text("NON E' PRESENTE NESSUNA AUTO CON ID " + id);
 					}
 			});
 		});
@@ -79,6 +82,7 @@
 					},
 				    error: function(result){
 				    	 console.log(result);
+				    	 $('#auto').text("NON E' PRESENTE NESSUNA AUTO CON ID " + id);
 					}
 			});
 		});
