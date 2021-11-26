@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modifica Automobili</title>
+<link rel="stylesheet" href="CSS/style.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	function modificaGarage(){
+		var id = document.getElementById("modifica").elements[0].value;
+		var marca = document.getElementById("modifica").elements[1].value;
+		var modello = document.getElementById("modifica").elements[2].value;
+		var colore = document.getElementById("modifica").elements[3].value;
+		
+		const data = [id, {"colore": colore,"modello": modello,  "marca": marca,  "id": 0}];
+		
+		$(document).ready(function(){
+			$.ajax({ 
+					url: 'servletModificaGarage',
+					type: 'POST',
+					data: JSON.stringify(data),
+					contentType: 'application/json',
+					success: function(data, textStatus, jqXHR){
+						$('#modificato').text(JSON.stringify(data));
+						console.log(data);
+					},
+					error: function(jqXHR, textStatus, errorThrown){
+						console.log(textStatus);}
+			});
+		});
+
+	}
+	
+	
+	function modificaCampo(){
+		var id = document.getElementById("modificaC").elements[0].value;
+		var campo = document.getElementById("modificaC").elements[1].value;
+		var parametro = document.getElementById("modificaC").elements[2].value;
+		
+		const data =[id,campo,parametro];
+		
+		$(document).ready(function(){
+			$.ajax({ 
+					url: 'servletModificaCampo',
+					type: 'POST',
+					data: JSON.stringify(data),
+					contentType: 'application/json',
+					success: function(data, textStatus, jqXHR){
+						$('#campoModificato').text(JSON.stringify(data));
+						console.log(data);
+					},
+					error: function(jqXHR, textStatus, errorThrown){
+						console.log(textStatus);}
+			});
+		});
+		
+	}
+	
+	function menu() {
+		  var x = document.getElementById("myTopnav");
+		  if (x.className === "topnav") {
+		    x.className += " responsive";
+		  } else {
+		    x.className = "topnav";
+		  }
+		}
+	
+</script>
+
+</head>
+
+<body class="sfondo">
+	<div class="topnav" id="myTopnav">
+		<a href="home.html">HOME</a> <a href="gestisciGarageJS.html">GESTISCI
+			GARAGE</a> <a href="ricercaJS.html">RICERCA AUTO</a> <a
+			href="modificaGarageJS.html" class="active">MODIFICA AUTO</a> <a
+			href="javascript:void(0);" class="icon" onclick="menu()"> <i
+			class="fa fa-bars"></i>
+		</a>
+	</div>
+	<div class="container">
+		<h1 align="center">Modifica Automobili</h1>
+
+
+
+		<h3>Modifica Garage via ID</h3>
+		<form id="modifica" onSubmit="return false;">
+			<div class="row">
+				<div class="col-6">
+					<input type="text" placeholder="Id" size="60" required="required" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<input type="text" placeholder="Marca" size="60"
+						required="required" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<input type="text" placeholder="Modello" size="60"
+						required="required" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<input type="text" placeholder="Colore" size="60"
+						required="required" />
+				</div>
+			</div>
+			<input type="reset" value="Reset" /> <input type="submit"
+				value="Invia modifica" onclick="modificaGarage()" />
+
+		</form>
+		<div id="modificato"></div>
+
+
+
+		<h3>Modifica campo</h3>
+		<form id="modificaC" onSubmit="return false;">
+			<div class="row">
+				<div class="col-6">
+					<input type="text" placeholder="Id" size="60" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<select name="campo">
+						<option value="">Scegli il campo</option>
+						<option value="marca">Marca</option>
+						<option value="modello">Modello</option>
+						<option value="colore">Colore</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<input type="text" placeholder="Parametro" size="60" />
+				</div>
+			</div>
+			<input type="reset" value="Reset" /> <input type="submit"
+				value="Modifica" onclick="modificaCampo()" />
+
+		</form>
+		<div id="campoModificato"></div>
+
+	</div>
+</body>
+</html>
