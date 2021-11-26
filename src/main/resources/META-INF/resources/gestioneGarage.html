@@ -73,15 +73,12 @@
 					type: 'GET',
 					data: id,
 					contentType: 'application/json',
-					success: function(result){
-						  console.log(result);
-						  $("#divId").html(result.id); 
-					      $("#divColore").html(result.colore); 
-					      $("#divModello").html(result.modello); 
-					      $("#divMarca").html(result.marca);
+					success: function(data, textStatus, jqXHR){
+						  console.log(data);
+						  $("#auto").html(data.id + " " + data.marca + " " + data.modello + " " + data.colore); 
 					},
-				    error: function(result){
-				    	 console.log(result);
+				    error: function(data, textStatus, jqXHR){
+				    	 console.log(data);
 				    	 $('#auto').text("NON E' PRESENTE NESSUNA AUTO CON ID " + id);
 					}
 			});
@@ -177,23 +174,6 @@
 					<div id="auto"></div>
 					<br>
 			</form>
-			</div>
-
-			<div style="width: 50%; float: left;">
-				<h3>Garage</h3>
-				<div class="row">
-					<div class="col-3">ID</div>
-					<div class="col-3">MARCA</div>
-					<div class="col-3">MODELLO</div>
-					<div class="col-3">COLORE</div>
-
-				</div>
-				<div class="row">
-					<div class="col-3" id="divId"></div>
-					<div class="col-3" id="divMarca"></div>
-					<div class="col-3" id="divModello"></div>
-					<div class="col-3" id="divColore"></div>
-				</div>
 			</div>
 		</div>
 	</div>
