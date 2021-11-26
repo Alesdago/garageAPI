@@ -50,7 +50,6 @@
 			$.ajax({ 
 					url: 'http://localhost:8080/garage/auto/' + id,
 					type: 'DELETE',
-					data: id,
 					contentType: 'application/json',
 					success: function(result){
 						$('#eliminata').text(" ELIMINATA CON SUCCESSO!");
@@ -71,7 +70,6 @@
 			$.ajax({ 
 					url: 'http://localhost:8080/garage/auto/'+id,
 					type: 'GET',
-					data: id,
 					contentType: 'application/json',
 					success: function(data, textStatus, jqXHR){
 						  console.log(data);
