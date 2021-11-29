@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <title>Ricerca Automobili</title>
 <link rel="stylesheet" href="CSS/style.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -254,12 +254,8 @@
 						<div class="col-6">
 								<input type="text" placeholder="Aggiungi una marca" id="inMarca" size="60">
 
-								<button class="bottone" onclick="aggiungiMarca()">
-									Aggiungi
-								</button>
-								<button class="bottone" onclick="rimuoviMarca()">
-									Rimuovi
-								</button>
+								<button class="bott" onclick="aggiungiMarca()"><i class="fas fa-plus-circle"></i></button>
+								<button class="bott" onclick="rimuoviMarca()"><i class="fas fa-minus-circle"></i></button>
 							<p id="listaMarche"></p>
 						</div>
 					</div>
@@ -268,30 +264,17 @@
 							
 								<input type="text" placeholder="Aggiungi un modello" id="inModello"
 									size="60">
-								<button class="bottone" onclick="aggiungiModello()">
-									
-									Aggiungi
-								</button>
-								<button class="bottone" onclick="rimuoviModello()">
-									Rimuovi
-								</button>
-							
+								<button class="bott" onclick="aggiungiModello()"><i class="fas fa-plus-circle"></i></button>
+								<button class="bott" onclick="rimuoviModello()"><i class="fas fa-minus-circle"></i></button>
 							<p id="listaModelli"></p>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-6">			
 								<input type="text" placeholder="Aggiungi un colore" id="inColore" size="60">
-								<button class="bottone" onclick="aggiungiColore()">
-								
-									Aggiungi
-								</button>
-								<button class="bottone" onclick="rimuoviColore()">
-									Rimuovi
-								</button>
+								<button class="bott" onclick="aggiungiColore()"><i class="fas fa-plus-circle"></i></button>
+								<button class="bott" onclick="rimuoviColore()"><i class="fas fa-minus-circle"></i></button>
 							<p id="listaColori"></p>
-
-
 						</div>
 					</div>
 					

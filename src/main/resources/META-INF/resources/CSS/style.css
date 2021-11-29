@@ -359,7 +359,7 @@ pre>code {
 
 
 .bottone {
- color: #222427; 
+ 	color: #222427; 
     -webkit-border-radius: 20px; 
     -moz-border-radius: 20px; 
     border-radius: 20px; 
@@ -372,6 +372,7 @@ pre>code {
     background-color: #eedc00; 
     border-color: #eedc00; 
     font-family: sans-serif;
+    cursor: pointer;
 }
 .bottone:hover {
  background-color: #6448e3;
@@ -379,9 +380,18 @@ pre>code {
  border-width: 1px;
 }
 
-.bottone:icon { 
-    background: url(gmail-icon.png) no-repeat; 
-    float: left; 
-    width: 10px; 
-    height: 40px; 
+.bott{
+  display:block; 
+  outline:none;
+  border:0 none; 
+  background-color: transparent;
+  border-radius: 500px;
+  color: black;
+  padding: 0px 3px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.bott:hover {
+  color: #eedc00;
 }
