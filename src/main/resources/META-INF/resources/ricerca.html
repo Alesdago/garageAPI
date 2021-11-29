@@ -242,10 +242,10 @@
 		  </a>
 		</div>
 	
-	<div class="container">
+	
 	<h1 align="center">Ricerca automobili nel garage</h1>
-		<div style="width: 100%; float: left;">
-			<div style="width: 50%; float: left;">
+		<div class= "container">
+			<div class= "item">
 
 
 				<h3>Ricerca automobili</h3>
@@ -254,12 +254,11 @@
 						<div class="col-6">
 								<input type="text" placeholder="Aggiungi una marca" id="inMarca" size="60">
 
-								<button class="icon-btn add-btn" onclick="aggiungiMarca()">
-									<div class="add-icon"></div>
-									<div class="btn-txt">Aggiungi</div>
+								<button class="bottone" onclick="aggiungiMarca()">
+									Aggiungi
 								</button>
-								<button class="icon-btn add-btn" onclick="rimuoviMarca()">
-									<div class="btn-txt">Rimuovi</div>
+								<button class="bottone" onclick="rimuoviMarca()">
+									Rimuovi
 								</button>
 							<p id="listaMarche"></p>
 						</div>
@@ -269,12 +268,12 @@
 							
 								<input type="text" placeholder="Aggiungi un modello" id="inModello"
 									size="60">
-								<button class="icon-btn add-btn" onclick="aggiungiModello()">
-									<div class="add-icon"></div>
-									<div class="btn-txt">Aggiungi</div>
+								<button class="bottone" onclick="aggiungiModello()">
+									
+									Aggiungi
 								</button>
-								<button class="icon-btn add-btn" onclick="rimuoviModello()">
-									<div class="btn-txt">Rimuovi</div>
+								<button class="bottone" onclick="rimuoviModello()">
+									Rimuovi
 								</button>
 							
 							<p id="listaModelli"></p>
@@ -283,35 +282,39 @@
 					<div class="row">
 						<div class="col-6">			
 								<input type="text" placeholder="Aggiungi un colore" id="inColore" size="60">
-								<button class="icon-btn add-btn" onclick="aggiungiColore()">
-									<div class="add-icon"></div>
-									<div class="btn-txt">Aggiungi</div>
+								<button class="bottone" onclick="aggiungiColore()">
+								
+									Aggiungi
 								</button>
-								<button class="icon-btn add-btn" onclick="rimuoviColore()">
-									<div class="btn-txt">Rimuovi</div>
+								<button class="bottone" onclick="rimuoviColore()">
+									Rimuovi
 								</button>
 							<p id="listaColori"></p>
 
 
 						</div>
 					</div>
-					<input type="submit" value="Ricerca" onclick="ricerca()" />
+					
+					
+					<input class="bottone" type="submit" value="Ricerca" onclick="ricerca()" />
 				</form>
 			</div>
 
 
-			<div style="width: 50%; float: left;">
+			<div class="item">
 				<h3>Garage</h3>
-				<table id="myTable">
+				<table id="myTable" class="tabella">
+					<thead>
 					<tr class="header">
 						<th>ID</th>
 						<th>MARCA</th>
 						<th>MODELLO</th>
 						<th>COLORE</th>
 					</tr>
+					</thead>
 				</table>
 			</div>
 		</div>
-	</div>
+	
 </body>
 </html>
