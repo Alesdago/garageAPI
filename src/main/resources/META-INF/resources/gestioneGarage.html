@@ -115,24 +115,25 @@
 				<h3>Aggiungi un'automobile</h3>
 				<form id='aggiungi' onSubmit="return false;">
 					<div class="row">
-						<div class="col-6">
+						<div>
 							<input type="text" placeholder="Marca" size="60"
 								required="required" />
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-6">
+						<div>
 							<input type="text" placeholder="Modello" size="60"
 								required="required" />
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-6">
+						<div>
 							<input type="text" placeholder="Colore" size="60"
 								required="required" />
 						</div>
 					</div>
-					<input type="reset" value="Reset" /> <input type="submit"
+					<br>
+					<input class="bottone" type="reset" value="Reset" /> <input class="bottone" type="submit"
 						value="Aggiungi" onclick='add()' />
 				</form>
 				<div id="aggiunta"></div>
@@ -144,11 +145,11 @@
 				<h3>Elimina un'automobile</h3>
 				<form id='elimina' onSubmit="return false;">
 					<div class="row">
-						<div class="col-6">
+						<div>
 							<input type="text" placeholder="Id" size="60" />
 						</div>
 					</div>
-					<input type="reset" value="Reset" /> <input type="submit"
+					<input class="bottone" type="reset" value="Reset" /> <input class="bottone" type="submit"
 						value="Elimina" onclick='del()' />
 
 				</form>
@@ -163,11 +164,11 @@
 				<h3>Recupera un'automobile tramite il suo id</h3>
 				<form id='recupera' onSubmit="return false;">
 					<div class="row">
-						<div class="col-6">
+						<div>
 							<input type="text" placeholder="Id" size="60" />
 						</div>
 					</div>
-					<input type="reset" value="Reset" /> <input type="submit"
+					<input class="bottone" type="reset" value="Reset" /> <input class="bottone" type="submit"
 						value="Recupera" onclick='get()' /> <br>
 					<div id="auto"></div>
 					<br>

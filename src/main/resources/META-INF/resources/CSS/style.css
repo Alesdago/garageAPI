@@ -147,11 +147,11 @@ h1, h2, h3, h4, h5, h6 {
 
 input[type=email], input[type=password], input[type=search], input[type=text],
 	select {
-	width: 100%;
-	padding: 12px 20px;
+	width: 50%;
+	padding: 8px 20px;
 	margin: 8px 0;
 	display: inline-block;
-	border: 1px solid #ccc;
+	border: 1.5px solid #341aae;
 	border-radius: 4px;
 	box-sizing: border-box;
 	-webkit-transition: .5s;
@@ -177,7 +177,7 @@ textarea, textarea[type=text] {
 
 input[type=email]:focus, input[type=password]:focus, input[type=search]:focus,
 	input[type=text]:focus, textarea:focus, textarea[type=text]:focus {
-	border: 1px solid #f99159;
+	border: 1.5px solid #eedc00;
 	border-radius: 4px
 }
 
@@ -381,11 +381,9 @@ pre>code {
 }
 
 .bott{
-  display:block; 
+  background-color: transparent;
   outline:none;
   border:0 none; 
-  background-color: transparent;
-  border-radius: 500px;
   color: black;
   padding: 0px 3px;
   font-size: 30px;

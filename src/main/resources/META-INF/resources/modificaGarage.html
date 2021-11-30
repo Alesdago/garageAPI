@@ -111,29 +111,30 @@
 				<h3>Modifica Garage via ID</h3>
 				<form id="modifica" onSubmit="return false;">
 					<div class="row">
-						<div class="col-6">
+						<div>
 							<input type="text" placeholder="Id" size="60" required="required" />
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-6">
+						<div>
 							<input type="text" placeholder="Marca" size="60"
 								required="required" />
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-6">
+						<div>
 							<input type="text" placeholder="Modello" size="60"
 								required="required" />
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-6">
+						<div>
 							<input type="text" placeholder="Colore" size="60"
 								required="required" />
 						</div>
 					</div>
-					<input type="reset" value="Reset" /> <input type="submit"
+					<br>
+					<input class="bottone" type="reset" value="Reset" /> <input class="bottone" type="submit"
 						value="Invia modifica" onclick="modificaGarage()" />
 
 				</form>
@@ -144,12 +145,12 @@
 				<h3>Modifica campo</h3>
 				<form id="modificaC" onSubmit="return false;">
 					<div class="row">
-						<div class="col-6">
+						<div>
 							<input type="text" placeholder="Id" size="60" />
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-6">
+						<div>
 							<select name="campo">
 								<option value="">Scegli il campo</option>
 								<option value="marca">Marca</option>
@@ -159,11 +160,12 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-6">
+						<div>
 							<input type="text" placeholder="Parametro" size="60" />
 						</div>
 					</div>
-					<input type="reset" value="Reset" /> <input type="submit"
+					<br>
+					<input class="bottone" type="reset" value="Reset" /> <input class="bottone" type="submit"
 						value="Modifica" onclick="modificaCampo()" />
 
 				</form>
