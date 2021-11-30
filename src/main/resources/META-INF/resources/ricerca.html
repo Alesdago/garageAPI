@@ -25,7 +25,7 @@
 		}
 		else{
 			marche.push(valoreInserito);
-			valoreInserito = "";
+			document.getElementById("inMarca").value = "";
 			var marca = document.getElementById("marca");
 			
 			var stringaMarche = "";
@@ -59,7 +59,7 @@
 		}
 		else{
 		modelli.push(valoreInserito);
-		valoreInserito = "";
+		document.getElementById("inModello").value = "";
 		var modello = document.getElementById("modello");
 		
 			  var stringaModelli = "";
@@ -83,7 +83,7 @@
 	}
 	
 	function aggiungiColore(){
-		var valoreInserito = document.getElementById("inModello").value;
+		var valoreInserito = document.getElementById("inColore").value;
 		valoreInserito = valoreInserito.trim();
 		console.log(valoreInserito);
 		if(valoreInserito === "" || valoreInserito == null){
@@ -91,7 +91,7 @@
 		}
 		else{
 			modelli.push(valoreInserito);
-			valoreInserito = "";
+			document.getElementById("inColore").value = "";
 			var colore = document.getElementById("colore");
 			 
 			var stringaColori = "";
