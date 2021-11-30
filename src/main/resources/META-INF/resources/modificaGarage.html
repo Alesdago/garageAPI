@@ -31,9 +31,7 @@
 						contentType : 'application/json',
 						success : function(data, textStatus, jqXHR) {
 							$('#modificato').css('color', 'green');
-							$('#modificato').text(
-									"Auto all'id: " + id
-											+ " modificata con successo");
+							$('#modificato').text("Auto all'id (" + id + ") MODIFICATA CON SUCCESSO!");
 							console.log(data);
 						},
 						error : function(jqXHR, textStatus, errorThrown) {
@@ -66,12 +64,7 @@
 										success : function(data, textStatus,
 												jqHXR) {
 											$('#campoModificato').css('color', 'green');
-											$('#campoModificato')
-													.text(
-															"Campo: "
-																	+ campo
-																	+ " modificato per l'auto con l'id: "
-																	+ id);
+											$('#campoModificato').text("Campo ("+ campo + ") modificato con successo per l'auto con id (" + id + ")");
 											console.log(textStatus);
 										},
 										error : function(jqXHR, textStatus,
