@@ -81,7 +81,7 @@
 						  console.log(jqXHR.statusText);
 						  if(jqXHR.statusText === "OK"){
 							  $('#auto').css('color', 'green');
-							  $("#auto").html(result.id + " " + result.marca + " " + result.modello + " " + result.colore); 
+							  $("#auto").html("Automobile con id (" + result.id + ") : " + result.marca + " " + result.modello + " " + result.colore); 
 						  }
 						  else{
 							  $('#auto').css('color', 'red');
