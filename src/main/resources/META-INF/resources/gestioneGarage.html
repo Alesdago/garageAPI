@@ -32,7 +32,7 @@
 					contentType: 'application/json',
 					success: function(result){
 						$('#aggiunta').css('color', 'green');
-						$('#aggiunta').text(JSON.stringify(data) + " AGGIUNTA CON SUCCESSO!");
+						$('#aggiunta').text("(" + data.marca + " " + data.modello + " " + data.colore + ") AGGIUNTA CON SUCCESSO!");
 						console.log(data);
 					},
 				    error: function(result){
