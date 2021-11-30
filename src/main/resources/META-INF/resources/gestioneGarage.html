@@ -77,17 +77,19 @@
 					url: 'garage/auto/'+id,
 					type: 'GET',
 					contentType: 'application/json',
-					success: function(data, textStatus, jqXHR){
-						  console.log(data);
-						  $('#auto').css('color', 'green');
-						  $("#auto").html(data.id + " " + data.marca + " " + data.modello + " " + data.colore); 
-						  
+					success: function(result, textStatus, jqXHR){
+						  console.log(jqXHR.statusText);
+						  if(jqXHR.statusText === "OK"){
+							  $('#auto').css('color', 'green');
+							  $("#auto").html(result.id + " " + result.marca + " " + result.modello + " " + result.colore); 
+						  }
+						  else{
+							  $('#auto').css('color', 'red');
+						      $('#auto').text("NON E' PRESENTE NESSUNA AUTO CON ID " + id);	
+						  }  
 					},
-				    error: function(data, textStatus, jqXHR){
-				    	 console.log(data);
-				    	 $('#auto').css('color', 'red');
-				    	 $('#auto').text("NON E' PRESENTE NESSUNA AUTO CON ID " + id);	
-				    	 
+				    error: function(result, textStatus, jqXHR){
+				    	 console.log(textStatus);
 					}
 			});
 		});
