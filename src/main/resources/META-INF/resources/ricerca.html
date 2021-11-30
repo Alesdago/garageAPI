@@ -17,16 +17,23 @@
 	
 	
 	function aggiungiMarca(){
-		
-		marche.push(document.getElementById("inMarca").value);
-		document.getElementById('inMarca').value = "";
-		var marca = document.getElementById("marca");
-		
-		var stringaMarche = "";
-		for(var i=0; i<marche.length; i++){
-			stringaMarche = stringaMarche.concat(marche[i] + " ");
+		var valoreInserito = document.getElementById("inMarca").value;
+		console.log(valoreInserito);
+		if(valoreInserito === "" || valoreInserito == null){
+			return;
 		}
-		$("#listaMarche").html(stringaMarche);
+		else{
+			marche.push(valoreInserito);
+			valoreInserito = "";
+			var marca = document.getElementById("marca");
+			
+			var stringaMarche = "";
+			for(var i=0; i<marche.length; i++){
+				stringaMarche = stringaMarche.concat(marche[i] + " ");
+			}
+			$("#listaMarche").html(stringaMarche);
+		}
+		
 	
 		console.log(marche);
 		
@@ -43,9 +50,14 @@
 	}
 	
 	function aggiungiModello(){
-		
-		modelli.push(document.getElementById("inModello").value);
-		document.getElementById('inModello').value = "";
+		var valoreInserito = document.getElementById("inModello").value;
+		console.log(valoreInserito);
+		if(valoreInserito === "" || valoreInserito == null){
+			return;
+		}
+		else{
+		modelli.push(valoreInserito);
+		valoreInserito = "";
 		var modello = document.getElementById("modello");
 		
 			  var stringaModelli = "";
@@ -53,7 +65,7 @@
 					stringaModelli =  stringaModelli.concat(modelli[i] + " ");
 				}
 				$("#listaModelli").html(stringaModelli);
-		
+		}
 		console.log(modelli);
 		
 	}
@@ -69,17 +81,22 @@
 	}
 	
 	function aggiungiColore(){
-		
-		colori.push(document.getElementById("inColore").value);
-		document.getElementById('inColore').value = "";
-		var colore = document.getElementById("colore");
-		 
-		var stringaColori = "";
-		for(var i=0; i<colori.length; i++){
-			stringaColori = stringaColori.concat(colori[i] + " ");
+		var valoreInserito = document.getElementById("inModello").value;
+		console.log(valoreInserito);
+		if(valoreInserito === "" || valoreInserito == null){
+			return;
 		}
-		$("#listaColori").html(stringaColori);
-	
+		else{
+			modelli.push(valoreInserito);
+			valoreInserito = "";
+			var colore = document.getElementById("colore");
+			 
+			var stringaColori = "";
+			for(var i=0; i<colori.length; i++){
+				stringaColori = stringaColori.concat(colori[i] + " ");
+			}
+			$("#listaColori").html(stringaColori);
+		}
 		  console.log(colori);
 	}
 	
