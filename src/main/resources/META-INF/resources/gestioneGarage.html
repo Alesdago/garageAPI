@@ -20,6 +20,7 @@
 			"marca" : marca
 		};
 		if(colore==""||modello===""||marca===""){
+			$('#aggiunta').css('color', 'red');
 			$('#aggiunta').text("inserire tutti i campi")
 		}
 		else{
@@ -30,6 +31,7 @@
 					data: JSON.stringify(data),
 					contentType: 'application/json',
 					success: function(result){
+						$('#aggiunta').css('color', 'green');
 						$('#aggiunta').text(JSON.stringify(data) + " AGGIUNTA CON SUCCESSO!");
 						console.log(data);
 					},
@@ -52,11 +54,15 @@
 					type: 'DELETE',
 					contentType: 'application/json',
 					success: function(result){
+						$('#eliminata').css('color', 'green');
 						$('#eliminata').text(" ELIMINATA CON SUCCESSO!");
+						
 						
 					},
 				    error: function(result){
+				    	$('#eliminata').css('color', 'red');
 				    	$('#eliminata').text("NON E' PRESENTE NESSUNA AUTO CON ID " + id);
+				    	
 					}
 			});
 		});
@@ -73,11 +79,15 @@
 					contentType: 'application/json',
 					success: function(data, textStatus, jqXHR){
 						  console.log(data);
+						  $('#auto').css('color', 'green');
 						  $("#auto").html(data.id + " " + data.marca + " " + data.modello + " " + data.colore); 
+						  
 					},
 				    error: function(data, textStatus, jqXHR){
 				    	 console.log(data);
-				    	 $('#auto').text("NON E' PRESENTE NESSUNA AUTO CON ID " + id);
+				    	 $('#auto').css('color', 'red');
+				    	 $('#auto').text("NON E' PRESENTE NESSUNA AUTO CON ID " + id);	
+				    	 
 					}
 			});
 		});
