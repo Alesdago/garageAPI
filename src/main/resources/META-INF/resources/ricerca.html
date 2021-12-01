@@ -219,20 +219,39 @@
 					data: JSON.stringify(ricercami),
 					contentType: 'application/json',
 					success: function(result){
-						 for(var i=0; i<result.length; i++){
-							 var row = table.insertRow(table.length);
-							 var cellId = row.insertCell(0);
-							 var cellMarca = row.insertCell(1);
-							 var cellModello = row.insertCell(2);
-							 var cellColore = row.insertCell(3);
-							 cellId.innerHTML = result[i].id;
-							 cellMarca.innerHTML = result[i].marca;
-							 cellModello.innerHTML = result[i].modello;
-							 cellColore.innerHTML = result[i].colore;
-						 }
+							$('#nascondi').css('visibility', 'visible');
+							if(result.length!=0){
+								$('#myTable').css('visibility', 'visible');
+								$('#msg').css('visibility', 'hidden');
+								$('#msg').css('display', 'none');
+								 for(var i=0; i<result.length; i++){
+									 var row = table.insertRow(table.length);
+									 var cellId = row.insertCell(0);
+									 var cellMarca = row.insertCell(1);
+									 var cellModello = row.insertCell(2);
+									 var cellColore = row.insertCell(3);
+									 cellId.innerHTML = result[i].id;
+									 cellMarca.innerHTML = result[i].marca;
+									 cellModello.innerHTML = result[i].modello;
+									 cellColore.innerHTML = result[i].colore;
+							} 
+						}
+							else{
+								$('#myTable').css('visibility', 'hidden');
+								$('#msg').css('visibility', 'visible');
+								$('#msg').css('display', 'inline');
+								$('#msg').text('Non è presente nessuna automobile che rispetta i parametri di ricerca.');
+							}
+						
 						console.log(result);
 					},
 				    error: function(result){
+				    	$('#nascondi').css('visibility', 'visible');
+				    	$('#myTable').css('visibility', 'hidden');
+				    	$('#msg').css('visibility', 'visible');
+				    	$('#msg').css('display', 'inline');
+						$('#msg').text('STAI CERCANDO A VUOTO');
+						
 						console.log(result);
 					}
 			});
@@ -306,9 +325,10 @@
 			</div>
 
 
-			<div class="item">
+			<div class="item nascondi" id="nascondi">
 				<h3>Garage</h3>
-				<table id="myTable" class="tabella">
+				<div id="msg" class="nascondi"></div>
+				<table id="myTable" class="tabella nascondi">
 					<thead>
 					<tr class="header">
 						<th>ID</th>
