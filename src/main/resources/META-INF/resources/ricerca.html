@@ -275,22 +275,22 @@
 <body>
 	
 		<div class="topnav" id="myTopnav">
-		  <a href="home.html">HOME</a>
-		  <a href="gestioneGarage.html">GESTISCI GARAGE</a>
-		  <a href="ricerca.html" class="active">RICERCA AUTO</a>
-		  <a href="modificaGarage.html">MODIFICA AUTO</a>
+		  <a href="home.html"><i class="fas fa-home"></i> HOME</a>
+		  <a href="gestioneGarage.html"><i class="fas fa-cog"></i> GESTISCI GARAGE</a>
+		  <a href="ricerca.html" class="active"><i class="fas fa-search"></i> RICERCA AUTO</a>
+		  <a href="modificaGarage.html"><i class="fas fa-wrench"></i> MODIFICA AUTO</a>
 		  <a href="javascript:void(0);" class="icon" onclick="menu()">
 		    <i class="fa fa-bars"></i>
 		  </a>
 		</div>
 	
 	
-	<h1 align="center">Ricerca automobili nel garage</h1>
+	<h1 align="center">RICERCA &nbsp;AUTOMOBILI</h1>
 		<div class= "container">
 			<div class= "item">
 
 
-				<h3>Ricerca automobili</h3>
+				<h3>Ricerca automobili <i class="fas fa-car-side"></i></h3>
 				<form onSubmit="return false;">
 					<div class="row">
 						<div>
@@ -320,13 +320,13 @@
 					</div>
 					
 					<br>
-					<input class="bottone" type="submit" value="Ricerca" onclick="ricerca()" />
+					<button class="bottone" type="submit" onclick="ricerca()">RICERCA <i class="fas fa-search"></i></button>
 				</form>
 			</div>
 
 
 			<div class="item nascondi" id="nascondi">
-				<h3>Garage</h3>
+				<h3>Garage <i class="fas fa-warehouse"></i></h3>
 				<div id="msg" class="nascondi"></div>
 				<table id="myTable" class="tabella nascondi">
 					<thead>
@@ -339,7 +339,9 @@
 					</thead>
 				</table>
 			</div>
+
 		</div>
+		<footer>CIAO</footer>
 	
 </body>
 </html>

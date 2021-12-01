@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <title>Gestione Garage</title>
 <link rel="stylesheet" href="CSS/style.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -108,10 +108,10 @@
 </head>
 <body>
 	<div class="topnav" id="myTopnav">
-		  <a href="home.html">HOME</a>
-		  <a href="gestioneGarage.html" class="active">GESTISCI GARAGE</a>
-		  <a href="ricerca.html">RICERCA AUTO</a>
-		  <a href="modificaGarage.html">MODIFICA AUTO</a>
+		  <a href="home.html"><i class="fas fa-home"></i> HOME</a>
+		  <a href="gestioneGarage.html" class="active"><i class="fas fa-cog"></i> GESTISCI GARAGE</a>
+		  <a href="ricerca.html"><i class="fas fa-search"></i> RICERCA AUTO</a>
+		  <a href="modificaGarage.html"><i class="fas fa-wrench"></i> MODIFICA AUTO</a>
 		  <a href="javascript:void(0);" class="icon" onclick="menu()">
 		    <i class="fa fa-bars"></i>
 		  </a>
@@ -124,7 +124,7 @@
 			<div class= "item">
 
 
-				<h3>Aggiungi un'automobile</h3>
+				<h3>Aggiungi un'auto <i class="fas fa-car"> <i class="fas fa-plus"></i></i></h3>
 				<form id='aggiungi' onSubmit="return false;">
 					<div class="row">
 						<div>
@@ -145,8 +145,9 @@
 						</div>
 					</div>
 					<br>
-					<input class="bottone" type="reset" value="Reset" /> <input class="bottone" type="submit"
-						value="Aggiungi" onclick='add()' />
+					<button class="bottone" type="reset">Reset <i class="fas fa-redo"></i></button>
+					&nbsp; 
+					<input class="bottone" type="submit" value="Aggiungi" onclick='add()'/>
 				</form>
 				<div id="aggiunta"></div>
 			</div>
@@ -154,15 +155,17 @@
 			<div class="item">
 
 
-				<h3>Elimina un'automobile</h3>
+				<h3>Elimina un'auto <i class="fas fa-car"></i> <i class="far fa-trash-alt"></i></h3>
 				<form id='elimina' onSubmit="return false;">
 					<div class="row">
 						<div>
-							<input type="text" placeholder="Id" size="60" />
+							<input type="text" placeholder="Inserisci ID" size="60" />
 						</div>
 					</div>
-					<input class="bottone" type="reset" value="Reset" /> <input class="bottone" type="submit"
-						value="Elimina" onclick='del()' />
+					<br>
+					<button class="bottone" type="reset">Reset <i class="fas fa-redo"></i></button> 
+					&nbsp; 
+					<input class="bottone" type="submit" value="Elimina" onclick='del()' />
 
 				</form>
 				<div id="eliminata"></div>
@@ -173,15 +176,17 @@
 			<div class="item">
 
 
-				<h3>Recupera un'automobile tramite il suo id</h3>
+				<h3>Ricerca tramite ID <i class="fas fa-car"></i> <i class="fas fa-search"></i></h3>
 				<form id='recupera' onSubmit="return false;">
 					<div class="row">
 						<div>
-							<input type="text" placeholder="Id" size="60" />
+							<input type="text" placeholder="Inserisci ID" size="60" />
 						</div>
 					</div>
-					<input class="bottone" type="reset" value="Reset" /> <input class="bottone" type="submit"
-						value="Recupera" onclick='get()' /> <br>
+					<br>
+					<button class="bottone" type="reset">Reset <i class="fas fa-redo"></i></button>
+					&nbsp; 
+					<button class="bottone" type="submit" onclick='get()'>Ricerca <i class="fas fa-search"></i></button> <br>
 					<div id="auto"></div>
 					<br>
 			</form>

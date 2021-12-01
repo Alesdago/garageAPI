@@ -4,8 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Modifica Automobili</title>
 <link rel="stylesheet" href="CSS/style.css" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -90,24 +89,23 @@
 
 <body class="sfondo">
 	<div class="topnav" id="myTopnav">
-		<a href="home.html">HOME</a> <a href="gestioneGarage.html">GESTISCI
-			GARAGE</a> <a href="ricerca.html">RICERCA AUTO</a> <a
-			href="modificaGarage.html" class="active">MODIFICA AUTO</a> <a
-			href="javascript:void(0);" class="icon" onclick="menu()"> <i
-			class="fa fa-bars"></i>
-		</a>
+		<a href="home.html"><i class="fas fa-home"></i> HOME</a> 
+		<a href="gestioneGarage.html"><i class="fas fa-cog"></i> GESTISCI GARAGE</a> 
+		<a href="ricerca.html"><i class="fas fa-search"></i> RICERCA AUTO</a> 
+		<a href="modificaGarage.html" class="active"><i class="fas fa-wrench"></i> MODIFICA AUTO</a> 
+		<a href="javascript:void(0);" class="icon" onclick="menu()"><i class="fa fa-bars"></i></a>
 	</div>
 	<div>
-		<h1 align="center">Modifica Automobili</h1>
+		<h1 align="center">MODIFICA &nbsp;AUTOMOBILI</h1>
 
 
 		<div class="container">
 			<div class="item">
-				<h3>Modifica Garage via ID</h3>
+				<h3>Modifica Garage <i class="fas fa-tools"></i></h3>
 				<form id="modifica" onSubmit="return false;">
 					<div class="row">
 						<div>
-							<input type="text" placeholder="Id" size="60" required="required" />
+							<input type="text" placeholder="Inserisci ID dell'auto" size="60" required="required" />
 						</div>
 					</div>
 					<div class="row">
@@ -137,7 +135,7 @@
 			</div>
 
 			<div class="item">
-				<h3>Modifica campo</h3>
+				<h3>Modifica campo <i class="fas fa-wrench"></i></h3>
 				<form id="modificaC" onSubmit="return false;">
 					<div class="row">
 						<div>

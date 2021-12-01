@@ -334,9 +334,10 @@ pre>code {
     cursor: pointer;
 }
 .bottone:hover {
- background-color: #6448e3;
+ background-color: #341aae;
  border-color: black;
- border-width: 1px;
+ color: white;
+ border-width: 2px;
 }
 
 .bott{
