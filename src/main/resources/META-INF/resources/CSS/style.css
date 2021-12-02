@@ -361,3 +361,11 @@ footer {
   color: black;
   bottom: 0;
 }
+
+button[title]:hover:after {
+  color: #341aae;
+  content: attr(title);
+  position: absolute;
+  bottom: -10%;
+  left: 35%;
+}
