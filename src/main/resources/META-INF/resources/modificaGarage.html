@@ -29,38 +29,26 @@
 				|| modello === null || colore === "" || colore === null) {
 			$('#modificato').css('color', 'red');
 			$('#modificato').text("INSERIRE VALORI IN TUTTI I CAMPI");
-		} else {
-			$(document)
-					.ready(
-							function() {
-								$
-										.ajax({
-											url : 'garage/auto/' + id,
-											type : 'PUT',
-											data : JSON.stringify(data),
-											contentType : 'application/json',
-											success : function(data,
-													textStatus, jqXHR) {
-												$('#modificato').css('color',
-														'green');
-												$('#modificato')
-														.text(
-																"Auto all'id ("
-																		+ id
-																		+ ") MODIFICATA CON SUCCESSO!");
-												console.log(data);
-											},
-											error : function(jqXHR, textStatus,
-													errorThrown) {
-												$('#modificato').css('color',
-														'red');
-												$('#modificato').text(
-														"NON E' PRESENTE NESSUNA AUTO CON ID "
-																+ id);
-												console.log(textStatus);
-											}
-										});
-							});
+		} 
+		else {
+			$(document).ready(function() {
+				$.ajax({
+					url : 'garage/auto/' + id,
+					type : 'PUT',
+					data : JSON.stringify(data),
+					contentType : 'application/json',
+					success : function(data,textStatus, jqXHR) {
+						$('#modificato').css('color','green');
+						$('#modificato').text("Auto all'id ("+ id + ") MODIFICATA CON SUCCESSO!");
+						console.log(data);
+					},
+					error : function(jqXHR, textStatus,errorThrown) {
+						$('#modificato').css('color','red');
+						$('#modificato').text("NON E' PRESENTE NESSUNA AUTO CON ID "+ id);
+						console.log(textStatus);
+					}
+				});
+			});
 		}
 
 	}
@@ -81,39 +69,23 @@
 
 		else {
 			$(document)
-					.ready(
-							function() {
-								$
-										.ajax({
-											url : 'garage/auto/' + id
-													+ '/modifica-' + campo
-													+ '/' + parametro,
-											type : 'PATCH',
-											contentType : 'application/json',
-											success : function(data,
-													textStatus, jqHXR) {
-												$('#campoModificato').css(
-														'color', 'green');
-												$('#campoModificato')
-														.text(
-																"Campo ("
-																		+ campo
-																		+ ") modificato con successo per l'auto con id ("
-																		+ id
-																		+ ")");
-												console.log(textStatus);
-											},
-											error : function(jqXHR, textStatus,
-													errorThrown) {
-												$('#campoModificato').css(
-														'color', 'red');
-												$('#campoModificato').text(
-														"NON E' PRESENTE NESSUNA AUTO CON ID "
-																+ id);
-												console.log(textStatus);
-											}
-										});
-							});
+			.ready(function() {
+				$.ajax({
+					url : 'garage/auto/' + id + '/modifica-' + campo + '/'+ parametro,
+					type : 'PATCH',
+					contentType : 'application/json',
+					success : function(data, textStatus,jqHXR) {
+						$('#campoModificato').css('color','green');
+						$('#campoModificato').text("Campo ("+ campo + ") modificato con successo per l'auto con id ("+ id + ")");
+						console.log(textStatus);
+					},
+					error : function(jqXHR, textStatus,errorThrown) {
+						$('#campoModificato').css('color', 'red');
+						$('#campoModificato').text("NON E' PRESENTE NESSUNA AUTO CON ID " + id);
+						console.log(textStatus);
+					}
+				});
+			});
 
 		}
 
@@ -153,7 +125,7 @@
 				<form id="modifica" onSubmit="return false;">
 					<div class="row">
 						<div>
-							<input type="text" placeholder="Inserisci ID dell'auto" size="60"
+							<input type="number" placeholder="Inserisci ID dell'auto" size="60"
 								required="required" />
 						</div>
 					</div>
@@ -198,7 +170,7 @@
 					</div>
 					<div class="row">
 						<div>
-							<select name="campo">
+							<select name="campo" required="required" >
 								<option value="NO">Scegli il campo</option>
 								<option value="marca">Marca</option>
 								<option value="modello">Modello</option>
@@ -208,7 +180,7 @@
 					</div>
 					<div class="row">
 						<div>
-							<input type="text" placeholder="Parametro" size="60" />
+							<input type="text" placeholder="Parametro" size="60" required="required" />
 						</div>
 					</div>
 					<br>
