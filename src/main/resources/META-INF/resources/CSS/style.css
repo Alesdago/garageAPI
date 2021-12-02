@@ -98,15 +98,7 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-<<<<<<< HEAD
 input[type=email], input[type=password], input[type=search], input[type=text],
-=======
-
-
-
-
-input[type=number], input[type=password], input[type=search], input[type=text],
->>>>>>> 4229b480d3934d442c9db29031ae0673157fe2ef
 	select {
 	width: 50%;
 	padding: 8px 20px;
@@ -136,7 +128,7 @@ textarea, textarea[type=text] {
 	outline: 0
 }
 
-input[type=number]:focus, input[type=password]:focus, input[type=search]:focus,
+input[type=email]:focus, input[type=password]:focus, input[type=search]:focus,
 	input[type=text]:focus, textarea:focus, textarea[type=text]:focus {
 	border: 1.5px solid #eedc00;
 	border-radius: 4px

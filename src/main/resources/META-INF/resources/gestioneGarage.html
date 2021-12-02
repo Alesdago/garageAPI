@@ -14,33 +14,17 @@
 		var marca = document.getElementById("aggiungi").elements[0].value;
 		var modello = document.getElementById("aggiungi").elements[1].value;
 		var colore = document.getElementById("aggiungi").elements[2].value;
-		
-		marca = marca.trim();
-		modello = modello.trim();
-		colore = colore.trim();
-		
-		if(colore===""||modello===""||marca===""){
+
+		const data = {
+			"colore" : colore,
+			"modello" : modello,
+			"marca" : marca
+		};
+		if(colore==""||modello===""||marca===""){
 			$('#aggiunta').css('color', 'red');
-			$('#aggiunta').text("COMPILARE TUTTI I CAMPI")
-			
-			if(marca===""){
-				document.getElementById("aggiungi").elements[0].value = "";
-			}
-			if(modello===""){
-				document.getElementById("aggiungi").elements[1].value = "";
-			}
-			if(colore===""){
-				document.getElementById("aggiungi").elements[2].value = "";
-			}	
+			$('#aggiunta').text("inserire tutti i campi")
 		}
-		
 		else{
-			const data = {
-					"colore" : colore,
-					"modello" : modello,
-					"marca" : marca
-			};
-			
 			$(document).ready(function(){
 			$.ajax({ 
 					url: 'garage',
@@ -49,12 +33,10 @@
 					contentType: 'application/json',
 					success: function(result){
 						$('#aggiunta').css('color', 'green');
-						$('#aggiunta').text("AUTOMOBILE (" + data.marca + " " + data.modello + " " + data.colore + ") AGGIUNTA CON SUCCESSO!");
+						$('#aggiunta').text("(" + data.marca + " " + data.modello + " " + data.colore + ") AGGIUNTA CON SUCCESSO!");
 						console.log(data);
 					},
 				    error: function(result){
-				    	$('#aggiunta').css('color', 'red');
-						$('#aggiunta').text("ERRORE NELL'AGGIUNTA DELL'AUTOMOBILE - RIPROVARE!");
 						console.log(result);
 					}
 			});
@@ -65,12 +47,8 @@
 	}
 
 	function del() {
-		var id = document.getElementById("elimina").value;
-		id = id.trim();
-		if(id === "" || id === null){
-			document.getElementById("elimina").value = "";
-			return;
-		}
+		var id = document.getElementById("elimina").elements[0].value;
+
 		$(document).ready(function(){
 			$.ajax({ 
 					url: 'garage/auto/' + id,
@@ -93,12 +71,8 @@
 	}
 
 	function get() {
-		var id = document.getElementById("recupera").value;
-		id = id.trim();
-		if(id === "" || id === null){
-			document.getElementById("recupera").value = "";
-			return;
-		}
+		var id = document.getElementById("recupera").elements[0].value;
+
 		$(document).ready(function(){
 			$.ajax({ 
 					url: 'garage/auto/'+id,
@@ -108,7 +82,7 @@
 						  console.log(jqXHR.statusText);
 						  if(jqXHR.statusText === "OK"){
 							  $('#auto').css('color', 'green');
-							  $("#auto").html("AUTOMOBILE CON ID (" + result.id + ") : " + result.marca + " " + result.modello + " " + result.colore); 
+							  $("#auto").html("Automobile con id (" + result.id + ") : " + result.marca + " " + result.modello + " " + result.colore); 
 						  }
 						  else{
 							  $('#auto').css('color', 'red');
@@ -116,8 +90,6 @@
 						  }  
 					},
 				    error: function(result, textStatus, jqXHR){
-				    	 $('#auto').css('color', 'red');
-					     $('#auto').text("ERRORE NELLA RICERCA DELL'AUTOMOBILE - RIPROVARE!");
 				    	 console.log(textStatus);
 					}
 			});
@@ -185,10 +157,10 @@
 
 
 				<h3>Elimina un'auto <i class="fas fa-car"></i> <i class="far fa-trash-alt"></i></h3>
-				<form onSubmit="return false;">
+				<form id='elimina' onSubmit="return false;">
 					<div class="row">
 						<div>
-							<input id='elimina' type="number" placeholder="Inserisci ID" size="60" required="required"/>
+							<input type="text" placeholder="Inserisci ID" size="60" />
 						</div>
 					</div>
 					<br>
@@ -206,10 +178,10 @@
 
 
 				<h3>Ricerca tramite ID <i class="fas fa-car"></i> <i class="fas fa-search"></i></h3>
-				<form onSubmit="return false;">
+				<form id='recupera' onSubmit="return false;">
 					<div class="row">
 						<div>
-							<input id='recupera' type="number" placeholder="Inserisci ID" size="60" required="required"/>
+							<input type="text" placeholder="Inserisci ID" size="60" />
 						</div>
 					</div>
 					<br>
