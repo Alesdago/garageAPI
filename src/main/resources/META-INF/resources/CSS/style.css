@@ -353,3 +353,11 @@ pre>code {
 .bott:hover {
   color: #eedc00;
 }
+
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: #eedc00;
+  color: black;
+  bottom: 0;
+}
