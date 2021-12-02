@@ -4,81 +4,33 @@
 <title>Home</title>
 <link rel="stylesheet" href="CSS/nicepage.css" media="screen">
 <link rel="stylesheet" href="CSS/Home.css" media="screen">
-<script class="u-script" type="text/javascript" src="JS/jquery.js"></script>
-<script class="u-script" type="text/javascript" src="JS/nicepage.js"></script>
+<link rel="stylesheet" href="CSS/style.css" media="screen">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link id="u-theme-google-font" rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
 
-
+<script type="text/javascript">
+	function menu() {
+		  var x = document.getElementById("myTopnav");
+		  if (x.className === "topnav") {
+		    x.className += " responsive";
+		  } else {
+		    x.className = "topnav";
+		  }
+	}
+</script>
 
 </head>
 <body class="u-body">
-	<header class="u-clearfix u-header u-palette-3-base u-header"
-		id="sec-6667">
-		<div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-			<a href="" class="u-image u-logo u-image-1">
-				<img src="CSS/images/garage.jpg"
-				class="u-logo-image u-logo-image-1">
-			</a>
-			<nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
-				<div class="menu-collapse"
-					style="font-size: 1rem; letter-spacing: 0px; font-weight: 700; text-transform: uppercase;">
-					<a
-						class="u-button-style u-custom-active-border-color u-custom-active-color u-custom-border u-custom-border-color u-custom-borders u-custom-color u-custom-hover-border-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-						href="#"> <svg>
-							<use xmlns:xlink="http://www.w3.org/1999/xlink"
-								xlink:href="#menu-hamburger"></use></svg> <svg version="1.1"
-							xmlns="http://www.w3.org/2000/svg"
-							xmlns:xlink="http://www.w3.org/1999/xlink">
-							<defs>
-							<symbol id="menu-hamburger" viewBox="0 0 16 16"
-								style="width: 16px; height: 16px;">
-							<rect y="1" width="16" height="2"></rect>
-							<rect y="7" width="16" height="2"></rect>
-							<rect y="13" width="16" height="2"></rect>
-				</symbol>
-				</defs></svg>
-					</a>
-				</div>
-				<div class="u-custom-menu u-nav-container">
-					<ul class="u-nav u-spacing-2 u-unstyled u-nav-1">
-						<li class="u-nav-item"><a
-							class="u-border-3 u-border-active-custom-color-1 u-border-hover-palette-1-dark-1 u-button-style u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-							href="home.html" style="padding: 10px 20px;">Home</a></li>
-						
-						<li class="u-nav-item"><a
-							class="u-border-3 u-border-active-custom-color-1 u-border-hover-palette-1-dark-1 u-button-style u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-							href="gestioneGarage.html" style="padding: 10px 20px;">Gestisci Garage</a></li>
-						<li class="u-nav-item"><a
-							class="u-border-3 u-border-active-custom-color-1 u-border-hover-palette-1-dark-1 u-button-style u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-							href="ricerca.html" style="padding: 10px 20px;">Ricerca Auto</a></li>
-						<li class="u-nav-item"><a class="u-border-3 u-border-active-custom-color-1 u-border-hover-palette-1-dark-1 u-button-style u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
-							href="modificaGarage.html" style="padding: 10px 20px;">Modifica Auto</a></li>
-					</ul>
-				</div>
-				<div class="u-custom-menu u-nav-container-collapse">
-					<div
-						class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-						<div class="u-inner-container-layout u-sidenav-overflow">
-							<div class="u-menu-close"></div>
-							<ul
-								class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-								<li class="u-nav-item"><a class="u-button-style u-nav-link"
-									href="home.html" style="padding: 10px 20px;">Home</a></li>
-								<li class="u-nav-item"><a class="u-button-style u-nav-link"
-									href="gestioneGarage.html" style="padding: 10px 20px;">Gestisci Garage</a></li>
-								<li class="u-nav-item"><a class="u-button-style u-nav-link"
-									href="ricerca.html" style="padding: 10px 20px;">Ricerca Auto</a></li>
-								<li class="u-nav-item"><a class="u-button-style u-nav-link"
-									href="modificaGarage.html" style="padding: 10px 20px;">Modifica Auto</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-				</div>
-			</nav>
+	<div class="topnav" id="myTopnav">
+		  <a href="home.html" class="active"><i class="fas fa-home"></i> HOME</a>
+		  <a href="gestioneGarage.html"><i class="fas fa-cog"></i> GESTISCI GARAGE</a>
+		  <a href="ricerca.html"><i class="fas fa-search"></i> RICERCA AUTO</a>
+		  <a href="modificaGarage.html"><i class="fas fa-wrench"></i> MODIFICA AUTO</a>
+		  <a href="javascript:void(0);" class="icon" onclick="menu()">
+		    <i class="fa fa-bars"></i>
+		  </a>
 		</div>
-	</header>
 	<section class="u-clearfix u-valign-middle u-section-1"
 		id="carousel_bf8f">
 		<div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
