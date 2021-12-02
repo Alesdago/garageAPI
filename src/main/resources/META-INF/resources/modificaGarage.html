@@ -9,6 +9,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+	
 	function modificaGarage() {
 		var id = document.getElementById("modifica").elements[0].value;
 		var marca = document.getElementById("modifica").elements[1].value
@@ -25,8 +26,8 @@
 			"id" : 0
 		};
 
-		if (marca === "" || marca === null || modello === ""
-				|| modello === null || colore === "" || colore === null) {
+		if (marca === "" || marca === null || modello === "" || modello === null
+				|| colore === "" || colore === null) {
 			$('#modificato').css('color', 'red');
 			$('#modificato').text("INSERIRE VALORI IN TUTTI I CAMPI");
 		} 
@@ -50,24 +51,21 @@
 				});
 			});
 		}
-
 	}
 
 	function modificaCampo() {
 		var id = document.getElementById("modificaC").elements[0].value;
 		var campo = document.getElementById("modificaC").elements[1].value;
-		var parametro = document.getElementById("modificaC").elements[2].value
-				.trim();
+		var parametro = document.getElementById("modificaC").elements[2].value.trim();
 
 		const data = [ id, campo, parametro ];
-
-		if (campo === "NO" || id === "" || id === null || parametro === ""
-				|| parametro === null) {
+		
+		if (campo === "NO" || id === "" || id === null || parametro === "" || parametro === null) {
 			$('#campoModificato').css('color', 'red');
 			$('#campoModificato').text("INSERIRE VALORI IN TUTTI I CAMPI");
 		}
-
-		else {
+		
+		else{
 			$(document)
 			.ready(function() {
 				$.ajax({
@@ -86,9 +84,9 @@
 					}
 				});
 			});
-
 		}
 
+		
 	}
 
 	function menu() {
@@ -165,12 +163,12 @@
 				<form id="modificaC" onSubmit="return false;">
 					<div class="row">
 						<div>
-							<input type="text" placeholder="Id" size="60" />
+							<input type="number" placeholder="Id" size="60" required="required" />
 						</div>
 					</div>
 					<div class="row">
 						<div>
-							<select name="campo" required="required" >
+							<select name="campo" required>
 								<option value="NO">Scegli il campo</option>
 								<option value="marca">Marca</option>
 								<option value="modello">Modello</option>
@@ -180,7 +178,7 @@
 					</div>
 					<div class="row">
 						<div>
-							<input type="text" placeholder="Parametro" size="60" required="required" />
+							<input type="text" placeholder="Parametro" required="required" size="60" />
 						</div>
 					</div>
 					<br>
