@@ -347,17 +347,20 @@ pre>code {
 	color: #eedc00;
 }
 
-@media ( max-width : 950x) {
-	footertyu {
+
+	.footer-1 {
 		position: fixed; 
 		text-align : center;
-		padding: 3px;
+		padding: 1px;
 		background-color: #eedc00;
 		color: black;
 		bottom: 0;
 		text-align: center;
 		box-sizing: border-box;
-	}
+		width: 100%; 
+		height: 65px;
+		font-size: 14px;
+	
 }
 
 button[title]:hover:after {
