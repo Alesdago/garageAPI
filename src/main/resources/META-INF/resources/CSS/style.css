@@ -373,9 +373,12 @@ button[title]:hover:after {
 
 
 footer{
- position: fixed;
+ position: relative;
  bottom: 0;
- height: 115px;
+ height: 120px;
+ clear: both;
+    
+    margin-top: -100px
 }
 .footer-distributed{
  background-color: #eedc00;
@@ -383,10 +386,10 @@ footer{
  box-sizing: border-box;
  width: 100%;
  text-align: left;
- font: bold 16px sans-serif;
+ font: bold 10px sans-serif;
  
  padding: 3px;
- margin-top: 10px;
+ margin-top: 5px;
 }
  
 .footer-distributed .footer-left,
@@ -437,21 +440,21 @@ footer{
 }
  
 .footer-distributed .footer-center i{
- background-color:  #33383b;
- color: white;
+ background-color: transparent;
+ color: #3c3c3c;
  font-size: 16px;
  width: 23px;
  height: 23px;
 border-radius: 50%; 
  text-align: center;
- line-height: 30px;
+ line-height: 25px;
  margin: 5px 10px;
  vertical-align: middle;
 }
  
 .footer-distributed .footer-center i.fa-envelope{
  font-size: 16px;
- line-height: 30px;
+ line-height: 25px;
  
 }
  
@@ -466,7 +469,7 @@ border-radius: 50%;
  display:block;
  font-weight: normal;
  font-size:16px;
- line-height:2;
+ line-height:20px;
 }
  
 .footer-distributed .footer-center p a{
@@ -498,22 +501,6 @@ border-radius: 50%;
  margin-top: 25px;
 }
  
-.footer-distributed .footer-icons a{
- display: inline-block;
- width: 35px;
- height: 35px;
- cursor: pointer;
- background-color:  #33383b;
- border-radius: 2px;
- 
- font-size: 20px;
- color: #ffffff;
- text-align: center;
- line-height: 35px;
- 
- margin-right: 3px;
- margin-bottom: 5px;
-}
  
  
 @media (max-width: 880px) {
