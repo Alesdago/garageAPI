@@ -373,14 +373,13 @@ button[title]:hover:after {
 
 
 footer{
- position: absolute;
- left:0;
+ position: relative;
  bottom: 0;
  height: 120px;
  clear: both;
     
     margin-top: -100px
-   
+
 
 
 
