@@ -373,12 +373,17 @@ button[title]:hover:after {
 
 
 footer{
- position: relative;
+ position: absolute;
+ left:0;
  bottom: 0;
  height: 120px;
  clear: both;
     
     margin-top: -100px
+   
+
+
+
 }
 .footer-distributed{
  background-color: #eedc00;
@@ -526,5 +531,7 @@ border-radius: 50%;
  line-height: normal;
  font-size: auto;
  }
+ 
+ html,body,.container{ height: 100%; margin: 0; padding: 0; }
  
 }
