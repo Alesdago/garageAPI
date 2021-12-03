@@ -381,9 +381,7 @@ footer{
  width: 100%;
  text-align: left;
  font: bold 10px sans-serif;
- 
- padding: 3px;
- margin-top: 5px;
+ padding: 10px;
 }
  
 .footer-distributed .footer-left,
