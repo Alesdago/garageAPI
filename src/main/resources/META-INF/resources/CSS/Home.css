@@ -1,0 +1,128 @@
+ .u-section-1 {
+  min-height: 602px;
+}
+
+.u-section-1 .u-layout-wrap-1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.u-section-1 .u-layout-cell-1 {
+  background-image: none;
+  min-height: 602px;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 30px 120px;
+}
+
+.u-section-1 .u-line-1 {
+  width: 326px;
+  height: 3px;
+  transform-origin: left center 0px;
+  margin: 60px auto 0 0;
+}
+
+.u-section-1 .u-text-1 {
+  font-size: 3.75rem;
+  font-weight: 700;
+  margin: 20px 0 0;
+}
+
+.u-section-1 .u-line-2 {
+  width: 175px;
+  height: 9px;
+  transform-origin: left center;
+  margin: 30px auto 0 0;
+}
+
+.u-section-1 .u-text-2 {
+  margin: 39px 0 0;
+}
+
+.u-section-1 .u-image-1 {
+  min-height: 602px;
+  background-image: url("images/box-garage-auto.jpg");
+  background-position: 77.4% 100%;
+}
+
+.u-section-1 .u-container-layout-2 {
+  padding: 30px 60px;
+}
+
+@media (max-width: 1199px) {
+   .u-section-1 {
+    min-height: 496px;
+  }
+
+  .u-section-1 .u-layout-cell-1 {
+    min-height: 496px;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+
+  .u-section-1 .u-line-1 {
+    width: 270px;
+  }
+
+  .u-section-1 .u-image-1 {
+    min-height: 496px;
+  }
+}
+
+@media (max-width: 991px) {
+   .u-section-1 {
+    min-height: 380px;
+  }
+
+  .u-section-1 .u-layout-cell-1 {
+    min-height: 100px;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .u-section-1 .u-image-1 {
+    background-position: 71.15% 50%;
+    min-height: 380px;
+  }
+
+  .u-section-1 .u-container-layout-2 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+   .u-section-1 {
+    min-height: 670px;
+  }
+
+  .u-section-1 .u-image-1 {
+    min-height: 570px;
+  }
+
+  .u-section-1 .u-container-layout-2 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 575px) {
+   .u-section-1 {
+    min-height: 459px;
+  }
+
+  .u-section-1 .u-text-1 {
+    font-size: 1.5rem;
+  }
+
+  .u-section-1 .u-image-1 {
+    min-height: 359px;
+  }
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modifica Automobili</title>
+<link rel="stylesheet" href="CSS/style.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	function modificaGarage() {
+		var id = document.getElementById("modifica").elements[0].value;
+		var marca = document.getElementById("modifica").elements[1].value
+				.trim();
+		var modello = document.getElementById("modifica").elements[2].value
+				.trim();
+		var colore = document.getElementById("modifica").elements[3].value
+				.trim();
+
+		const data = {
+			"colore" : colore,
+			"modello" : modello,
+			"marca" : marca,
+			"id" : 0
+		};
+
+		if (marca === "" || marca === null || modello === "" || modello === null
+				|| colore === "" || colore === null) {
+			$('#modificato').css('color', 'red');
+			$('#modificato').text("INSERIRE VALORI IN TUTTI I CAMPI");
+		} 
+		else {
+			$(document).ready(function() {
+				$.ajax({
+					url : 'garage/auto/' + id,
+					type : 'PUT',
+					data : JSON.stringify(data),
+					contentType : 'application/json',
+					success : function(data,textStatus, jqXHR) {
+						$('#modificato').css('color','green');
+						$('#modificato').text("Auto all'id ("+ id + ") MODIFICATA CON SUCCESSO!");
+						console.log(data);
+					},
+					error : function(jqXHR, textStatus,errorThrown) {
+						$('#modificato').css('color','red');
+						$('#modificato').text("NON E' PRESENTE NESSUNA AUTO CON ID "+ id);
+						console.log(textStatus);
+					}
+				});
+			});
+		}
+	}
+
+	function modificaCampo() {
+		var id = document.getElementById("modificaC").elements[0].value;
+		var campo = document.getElementById("modificaC").elements[1].value;
+		var parametro = document.getElementById("modificaC").elements[2].value.trim();
+
+		const data = [ id, campo, parametro ];
+		
+		if (campo === "NO" || id === "" || id === null || parametro === "" || parametro === null) {
+			$('#campoModificato').css('color', 'red');
+			$('#campoModificato').text("INSERIRE VALORI IN TUTTI I CAMPI");
+		}
+		
+		else{
+			$(document)
+			.ready(function() {
+				$.ajax({
+					url : 'garage/auto/' + id + '/modifica-' + campo + '/'+ parametro,
+					type : 'PATCH',
+					contentType : 'application/json',
+					success : function(data, textStatus,jqHXR) {
+						$('#campoModificato').css('color','green');
+						$('#campoModificato').text("Campo ("+ campo + ") modificato con successo per l'auto con id ("+ id + ")");
+						console.log(textStatus);
+					},
+					error : function(jqXHR, textStatus,errorThrown) {
+						$('#campoModificato').css('color', 'red');
+						$('#campoModificato').text("NON E' PRESENTE NESSUNA AUTO CON ID " + id);
+						console.log(textStatus);
+					}
+				});
+			});
+		}
+
+		
+	}
+
+	function menu() {
+		var x = document.getElementById("myTopnav");
+		if (x.className === "topnav") {
+			x.className += " responsive";
+		} else {
+			x.className = "topnav";
+		}
+	}
+</script>
+
+</head>
+
+<body>
+	<div class="topnav" id="myTopnav">
+		<a href="home.html"><i class="fas fa-home"></i> HOME</a> <a
+			href="gestioneGarage.html"><i class="fas fa-cog"></i> GESTISCI
+			GARAGE</a> <a href="ricerca.html"><i class="fas fa-search"></i>
+			RICERCA AUTO</a> <a href="modificaGarage.html" class="active"><i
+			class="fas fa-wrench"></i> MODIFICA AUTO</a> <a
+			href="javascript:void(0);" class="icon" onclick="menu()"><i
+			class="fa fa-bars"></i></a>
+	</div>
+	<div>
+		<h1 align="center">MODIFICA &nbsp;AUTOMOBILI</h1>
+
+
+		<div class="container">
+			<div class="item">
+				<h3>
+					Modifica Garage <i class="fas fa-tools"></i>
+				</h3>
+				<form id="modifica" onSubmit="return false;">
+					<div class="row">
+						<div>
+							<input type="number" placeholder="Inserisci ID dell'auto" size="60"
+								required="required" />
+						</div>
+					</div>
+					<div class="row">
+						<div>
+							<input type="text" placeholder="Marca" size="60"
+								required="required" />
+						</div>
+					</div>
+					<div class="row">
+						<div>
+							<input type="text" placeholder="Modello" size="60"
+								required="required" />
+						</div>
+					</div>
+					<div class="row">
+						<div>
+							<input type="text" placeholder="Colore" size="60"
+								required="required" />
+						</div>
+					</div>
+					<br>
+					<button class="bottone" type="reset">
+						Reset <i class="fas fa-redo"></i>
+					</button>
+					&nbsp; <input class="bottone" type="submit" value="Modifica"
+						onclick="modificaGarage()" />
+
+				</form>
+				<div id="modificato"></div>
+			</div>
+
+			<div class="item">
+				<h3>
+					Modifica campo <i class="fas fa-wrench"></i>
+				</h3>
+				<form id="modificaC" onSubmit="return false;">
+					<div class="row">
+						<div>
+							<input type="number" placeholder="Id" size="60" required="required" />
+						</div>
+					</div>
+					<div class="row">
+						<div>
+							<select name="campo" required>
+								<option value="NO">Scegli il campo</option>
+								<option value="marca">Marca</option>
+								<option value="modello">Modello</option>
+								<option value="colore">Colore</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div>
+							<input type="text" placeholder="Parametro" required="required" size="60" />
+						</div>
+					</div>
+					<br>
+					<button class="bottone" type="reset">
+						Reset <i class="fas fa-redo"></i>
+					</button>
+					&nbsp; <input class="bottone" type="submit" value="Modifica"
+						onclick="modificaCampo()" />
+
+				</form>
+				<div id="campoModificato"></div>
+			</div>
+		</div>
+	</div>
+<br>
+	<!--  
+		<footer class="footer-1">
+			<p><i>Alessandro D'Agostini - Adriana Ridolfi - Sarah Dari<br>2021 - <i class="far fa-copyright"> Copyright</i></i></p>
+		</footer>
+		-->
+		<footer class="footer-distributed">
+
+		<div class="footer-left">
+
+			<h3>
+				Garage<span>Italiani</span>
+			</h3>
+
+
+			<p class="footer-company-name">Alessandro D'agostini, Adriana
+				Ridolfi, Sarah Dari &copy; 2021</p>
+		</div>
+
+		<div class="footer-center">
+
+
+			<i class="fas fa-map-marker-alt"></i>
+			<p>Viale Europa, 190 (RM)</p>
+
+			<br> <i class="fas fa-phone"></i>
+			<p>+39 3312345678</p>
+
+			<br> <i class="far fa-envelope"></i>
+			<p>
+				<a href="mailto:">garageitaliani@posteitaliane.it</a>
+			</p>
+
+
+		</div>
+
+		<div class="footer-right">
+
+			<p class="footer-company-about" style="font: normal 13px FreeMono, monospace;">
+				<i style="font:18px FreeMono, monospace; font-weight: bold;">About the company:</i> <br> GarageItaliani nasce nel 2021,
+				in concomitanza all'inizio dello stage formativo presso
+				PosteItaliane di tre <s>ragazze</s>
+			</p>
+
+			
+		</div>
+
+	</footer>
+</body>
+</html>

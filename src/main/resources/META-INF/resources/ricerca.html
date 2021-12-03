@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ricerca Automobili</title>
+<link rel="stylesheet" href="CSS/style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	
+	var marche=[];
+	
+	var colori=[];
+	
+	var modelli=[];
+	
+	
+	function aggiungiMarca(){
+		var valoreInserito = document.getElementById("inMarca").value;
+		valoreInserito = valoreInserito.trim();
+		console.log(valoreInserito);
+		if(valoreInserito === "" || valoreInserito == null){
+			document.getElementById("inMarca").value = "";
+			return;
+		}
+		else{
+			marche.push(valoreInserito);
+			document.getElementById("inMarca").value = "";
+			var marca = document.getElementById("marca");
+			
+			var stringaMarche = "";
+			for(var i=0; i<marche.length; i++){
+				stringaMarche = stringaMarche.concat(marche[i] + " ");
+			}
+			$("#listaMarche").html(stringaMarche);
+		}
+		
+	
+		console.log(marche);
+		
+	}
+	
+	function rimuoviMarca(){
+		marche.pop();
+		console.log(marche);
+		var stringaMarche = "";
+		for(var i=0; i<marche.length; i++){
+			stringaMarche = stringaMarche.concat(marche[i] + " ");
+		}
+		$("#listaMarche").html(stringaMarche);
+	}
+	
+	function aggiungiModello(){
+		var valoreInserito = document.getElementById("inModello").value;
+		valoreInserito = valoreInserito.trim();
+		console.log(valoreInserito);
+		if(valoreInserito === "" || valoreInserito == null){
+			document.getElementById("inModello").value = "";
+			return;
+		}
+		else{
+		modelli.push(valoreInserito);
+		document.getElementById("inModello").value = "";
+		var modello = document.getElementById("modello");
+		
+			  var stringaModelli = "";
+				for(var i=0; i<modelli.length; i++){
+					stringaModelli =  stringaModelli.concat(modelli[i] + " ");
+				}
+				$("#listaModelli").html(stringaModelli);
+		}
+		console.log(modelli);
+		
+	}
+	
+	function rimuoviModello(){
+		modelli.pop();
+		console.log(modelli);
+		var stringaModelli = "";
+		for(var i=0; i<modelli.length; i++){
+			stringaModelli = stringaModelli.concat(modelli[i] + " ");
+		}
+		$("#listaModelli").html(stringaModelli);
+	}
+	
+	function aggiungiColore(){
+		var valoreInserito = document.getElementById("inColore").value;
+		valoreInserito = valoreInserito.trim();
+		console.log(valoreInserito);
+		if(valoreInserito === "" || valoreInserito == null){
+			document.getElementById("inColore").value = "";
+			return;
+		}
+		else{
+			colori.push(valoreInserito);
+			document.getElementById("inColore").value = "";
+			var colore = document.getElementById("colore");
+			 
+			var stringaColori = "";
+			for(var i=0; i<colori.length; i++){
+				stringaColori = stringaColori.concat(colori[i] + " ");
+			}
+			$("#listaColori").html(stringaColori);
+		}
+		  console.log(colori);
+	}
+	
+	
+	function rimuoviColore(){
+		colori.pop();
+		console.log(colori);
+		var stringaColori = "";
+		for(var i=0; i<colori.length; i++){
+			stringaColori = stringaColori.concat(colori[i] + " ");
+		}
+		$("#listaColori").html(stringaColori);
+	}
+	
+	function ricerca(){
+		
+		
+		var table = document.getElementById("myTable");
+		
+		var x = document.getElementById("myTable").rows.length;
+		
+		if(x!=0){
+			for(var i = x - 1; i > 0; i--)
+			{
+			    table.deleteRow(i);
+			}
+		}
+	
+		
+		var ricercami;
+		if(marche.length!=0 && modelli.length!=0 && colori.length!=0){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": marche
+				  },
+				  {
+				    "campo": "modello",
+				    "parametri": modelli
+				  },
+				  {
+				    "campo": "colore",
+				    "parametri": colori
+				  }
+			 ];
+		}
+		else if(marche.length!=0 && modelli.length!=0 && colori.length==0){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": marche
+				  },
+				  {
+				    "campo": "modello",
+				    "parametri": modelli
+				  }
+			 ];
+		}
+		else if(marche.length!=0 && modelli.length==0 && colori.length!=0){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": marche
+				  },
+				  {
+				    "campo": "colore",
+				    "parametri":  colori 
+				  }
+			 ];
+		}
+		else if(marche.length==0 && modelli.length!=0 && colori.length!=0){
+			ricercami = [
+				  {
+				    "campo": "modello",
+				    "parametri": modelli
+				  },
+				  {
+				    "campo": "colore",
+				    "parametri": colori
+				  }
+			 ];
+		}
+		else if(marche.length!=0 && modelli.length==0 && colori.length==0){
+			ricercami = [
+				  {
+				    "campo": "marca",
+				    "parametri": marche 
+				  }
+			 ];
+		}
+		else if(marche.length==0 && modelli.length!=0 && colori.length==0){
+			ricercami = [
+				  {
+				    "campo": "modello",
+				    "parametri": modelli 
+				  }
+			 ];
+		}
+		else if(marche.length==0 && modelli.length==0 && colori.length!=0){
+			ricercami = [
+				  {
+				    "campo": "colore",
+				    "parametri": colori
+				  }
+			 ];
+		}
+	
+		console.log(ricercami);
+		
+		$(document).ready(function(){
+			$.ajax({ 
+					url: 'garage/ricerca',
+					type: 'POST',
+					data: JSON.stringify(ricercami),
+					contentType: 'application/json',
+					success: function(result){
+							$('#nascondi').css('visibility', 'visible');
+							if(result.length!=0){
+								$('#myTable').css('visibility', 'visible');
+								$('#msg').css('visibility', 'hidden');
+								$('#msg').css('display', 'none');
+								 for(var i=0; i<result.length; i++){
+									 var row = table.insertRow(table.length);
+									 var cellId = row.insertCell(0);
+									 var cellMarca = row.insertCell(1);
+									 var cellModello = row.insertCell(2);
+									 var cellColore = row.insertCell(3);
+									 cellId.innerHTML = result[i].id;
+									 cellMarca.innerHTML = result[i].marca;
+									 cellModello.innerHTML = result[i].modello;
+									 cellColore.innerHTML = result[i].colore;
+							} 
+						}
+							else{
+								$('#myTable').css('visibility', 'hidden');
+								$('#msg').css('visibility', 'visible');
+								$('#msg').css('display', 'inline');
+								$('#msg').text('Non è presente nessuna automobile che rispetta i parametri di ricerca.');
+							}
+						
+						console.log(result);
+					},
+				    error: function(result){
+				    	$('#nascondi').css('visibility', 'visible');
+				    	$('#myTable').css('visibility', 'hidden');
+				    	$('#msg').css('visibility', 'visible');
+				    	$('#msg').css('display', 'inline');
+						$('#msg').text('STAI CERCANDO A VUOTO');
+						
+						console.log(result);
+					}
+			});
+		});
+	}
+	
+	function menu() {
+		  var x = document.getElementById("myTopnav");
+		  if (x.className === "topnav") {
+		    x.className += " responsive";
+		  } else {
+		    x.className = "topnav";
+		  }
+		}
+	  
+	  
+
+     
+    </script>
+</head>
+<body>
+	
+		<div class="topnav" id="myTopnav">
+		  <a href="home.html"><i class="fas fa-home"></i> HOME</a>
+		  <a href="gestioneGarage.html"><i class="fas fa-cog"></i> GESTISCI GARAGE</a>
+		  <a href="ricerca.html" class="active"><i class="fas fa-search"></i> RICERCA AUTO</a>
+		  <a href="modificaGarage.html"><i class="fas fa-wrench"></i> MODIFICA AUTO</a>
+		  <a href="javascript:void(0);" class="icon" onclick="menu()">
+		    <i class="fa fa-bars"></i>
+		  </a>
+		</div>
+	
+		<div>
+		<h1 align="center">RICERCA &nbsp;AUTOMOBILI</h1>
+		<div class= "container">
+			<div class= "item">
+
+
+				<h3>Ricerca automobili <i class="fas fa-car-side"></i></h3>
+				<form onSubmit="return false;">
+					<div class="row">
+						<div>
+								<input type="text" placeholder="Aggiungi una marca" id="inMarca" size="60">
+								<button class="bott" onclick="aggiungiMarca()"><i class="fas fa-plus-circle"></i></button>
+								<button class="bott" onclick="rimuoviMarca()"><i class="fas fa-minus-circle"></i></button>
+							<p id="listaMarche"></p>
+						</div>
+					</div>
+					<div class="row">
+						<div>
+							
+								<input type="text" placeholder="Aggiungi un modello" id="inModello"
+									size="60">
+								<button class="bott" onclick="aggiungiModello()"><i class="fas fa-plus-circle"></i></button>
+								<button class="bott" onclick="rimuoviModello()"><i class="fas fa-minus-circle"></i></button>
+							<p id="listaModelli"></p>
+						</div>
+					</div>
+					<div class="row">
+						<div>			
+								<input type="text" placeholder="Aggiungi un colore" id="inColore" size="60">
+								<button class="bott" onclick="aggiungiColore()"><i class="fas fa-plus-circle"></i></button>
+								<button class="bott" onclick="rimuoviColore()"><i class="fas fa-minus-circle"></i></button>
+							<p id="listaColori"></p>
+						</div>
+					</div>
+					
+					<br>
+					<button class="bottone" type="submit" onclick="ricerca()">RICERCA <i class="fas fa-search"></i></button>
+				</form>
+			</div>
+
+
+			<div class="item nascondi" id="nascondi">
+				<h3>Garage <i class="fas fa-warehouse"></i></h3>
+				<div id="msg" class="nascondi"></div>
+				<table id="myTable" class="tabella nascondi">
+					<thead>
+					<tr class="header">
+						<th>ID</th>
+						<th>MARCA</th>
+						<th>MODELLO</th>
+						<th>COLORE</th>
+					</tr>
+					</thead>
+				</table>
+			</div>
+		  </div>
+		  <br>
+		 
+		</div>
+		<!--  
+		<footer class="footer-1">
+			<p><i>Alessandro D'Agostini - Adriana Ridolfi - Sarah Dari<br>2021 - <i class="far fa-copyright"> Copyright</i></i></p>
+		</footer>
+		-->
+		<footer class="footer-distributed">
+
+		<div class="footer-left">
+
+			<h3>
+				Garage<span>Italiani</span>
+			</h3>
+
+
+			<p class="footer-company-name">Alessandro D'agostini, Adriana
+				Ridolfi, Sarah Dari &copy; 2021</p>
+		</div>
+
+		<div class="footer-center">
+
+
+			<i class="fas fa-map-marker-alt"></i>
+			<p>Viale Europa, 190 (RM)</p>
+
+			<br> <i class="fas fa-phone"></i>
+			<p>+39 3312345678</p>
+
+			<br> <i class="far fa-envelope"></i>
+			<p>
+				<a href="mailto:">garageitaliani@posteitaliane.it</a>
+			</p>
+
+
+		</div>
+
+		<div class="footer-right">
+
+			<p class="footer-company-about" style="font: normal 13px FreeMono, monospace;">
+				<i style="font:18px FreeMono, monospace; font-weight: bold;">About the company:</i> <br> GarageItaliani nasce nel 2021,
+				in concomitanza all'inizio dello stage formativo presso
+				PosteItaliane di tre <s>ragazze</s>
+			</p>
+
+			
+		</div>
+
+	</footer>
+</body>
+</html>
